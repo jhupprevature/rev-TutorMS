@@ -1,0 +1,63 @@
+Scenario:
+	Given:
+	When:
+	Then:
+
+Scenario: As a user, I want to login so that I can access my home page.
+	Given: User is on login page
+	And: User exists in DB
+	When: User inputs login credentials
+	And: User clicks login button
+	And: User email and password are verified
+	Then: User is redirected to role-appropriate home page.
+
+*This scenario will change after MVP (Tutor users must be approved).
+Scenario: As a user, I want to register a new account so that I can access my home page.
+	Given: User is on login page
+	When: User clicks "Register new user"
+	And: User completes registration form
+	Then: New user is created in system
+	And: Confirmation message is displayed
+	And: User is redirected to role-appropriate home page. *
+
+Scenario: As a student, I want to see tutor schedules so that I can schedule tutoring.
+	Given: Student is logged in.
+	And: Student has selected a chosen tutor.
+	When: Student clicks "View Availability"
+	Then: Student can schedule tutoring.
+
+*Added because reasons.
+*Add stretch of denying or requesting reschedule of tutoring session?
+Scenario: As a student, I want to schedule a session with a tutor so that I can have a tutoring session.
+	Given: Student is logged in.
+	And: Student has selected an available tutor.
+	When: Student clicks "Schedule Tutoring Session"
+	And: Student completes optional request form. (topic/instructor/etc)
+	Then: Tutoring session is created/scheduled.
+	And: Tutor is notified of scheduled session at next login.
+
+Scenario: As a student, I want to search for my course so that I can schedule a tutoring session.
+	Given: Student is logged in.
+	When: Student clicks "Search for Tutors"
+	And: Student inputs course or subject
+	Then: A list of tutors that tutor the matching subject are displayed.
+	And: Student can schedule tutoring.
+
+Scenario: As a user, I want to view contact information so that I can communicate with other users.
+	Given: User is logged in.
+	And: User has selected another user profile.
+	When: User clicks "View Contact Info"
+	Then: Another user's contact info is displayed.
+
+*Add stretch of summary page for subject/course analytics?
+Scenario: As a tutor, I want to view my number of hours spent in tutoring so that I can keep track of it.
+	Given: Tutor is logged in.
+	When: Tutor navigates to the "Tutoring Summary" page.
+	Then: Tutor's total hours worked are displayed.
+
+*This scenario will change after MVP (to include a students).
+*Add a stretch of summary page for subject/course analytics?
+Scenario: As a tutor manager, I want to view total hours spent in tutoring for each tutor so that I can keep track of it.
+	Given: Tutor manager is logged in.
+	When: Manager navigates to the "Tutoring Summary" page.
+	Then: A list of tutors with their total hours worked is displayed.
