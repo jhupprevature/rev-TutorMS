@@ -6,7 +6,7 @@ Background:
 Scenario: Registered User, Successful Login
     When User inputs valid email
     * User inputs valid password
-    * User clicks login button
+    * User clicks "Login" button
     Then User is re-directed to role-appropriate home page.
 
 Scenario: Registered User, Failed Login
@@ -21,4 +21,4 @@ Scenario: New User Registration
     And User completes registration form
     Then new User is created
     And a Registration confirmation message is displayed
-    And user is redirected to role-appropriate home page.
+    And User is redirected to role-appropriate home page.

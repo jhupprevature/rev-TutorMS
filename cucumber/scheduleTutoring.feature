@@ -1,7 +1,9 @@
 Feature: Schedule tutoring sessions
 
 Background: 
-    Given User role is student
+    Given User is on "Scheduling" page
+    And User accountType is student
+    
 
 Scenario: Student searches for tutor
     When User clicks "Search for Tutors"
