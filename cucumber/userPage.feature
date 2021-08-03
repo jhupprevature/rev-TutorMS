@@ -17,3 +17,11 @@ Scenario: User saves edits to contact info
     Given User has completed an edit
     When User clicks "Save" button
     Then User contact info is updated
+
+#This is a Planned Goal
+Scenario: Admin has all privilieges of other accounts
+
+	Given: Signed in as an admin
+	And: Viewing the manage Tab
+	When: Clicks on another account's information
+	Then: Can manage the account's information
