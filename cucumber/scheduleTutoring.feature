@@ -18,11 +18,10 @@ Scenario: Student views tutor schedule
 #This is a Planned Goal
 Scenario: Student searches for walk-in availability
 
-	Given: Signed in as a student
-	And: Viewing the courses tab
-	When: Clicks on search bar
-	And: Types walk-in availability
-	Then: Courses with walk-in availability are shown
+	Given User may or maynot be signed in
+	When User clicks on search bar
+	And Types walk-in availability
+	Then Tutors immediately availabile are shown
 
 #Add stretch of denying or requesting a reschedule of a tutoring session?
 Scenario: Student schedules tutoring session
