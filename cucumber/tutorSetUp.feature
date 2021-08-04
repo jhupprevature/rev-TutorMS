@@ -7,23 +7,25 @@ Background:
 
 Scenario: Tutor can set a schedule
 
-	Given: Signed in as a tutor
-	And: Viewing Schedules Tab
-	When: Clicks on create a schedule
-	Then: Schedule is created
+	Given Viewing Schedules Tab
+	When Clicks on create a schedule
+	Then Schedule is created
 
-Scenario: Tutor sets available courses
+Scenario: Tutor edits supported courses
 
-	Given: Signed in as a tutor
-	And: Viewing the tutor's courses
-	When: Clicks on set available
-	Then: Course becomes available
+	Given Viewing the tutor's courses
+	When Clicks on set available
+	Then Tutor can edit supported course list
+
+Scenario: Tutor updates supported courses
+	Given User is viewing course list
+	And User is finished editing course list
+	When User clicks "Save Changes" button
+	Then Tutor's Course list is updated
 
 Scenario: Tutor logs a walk-in session
 
-	Given: Signed in as a tutor
-	And: Viewing the tutor's courses
-	When: Clicks on a walk-in course
-	And: Clicks log hours
-	And: User inputs hours worked
-	Then: Course sets hours worked
+	Given Viewing the tutor's sessions
+	When Clicks on "add walk-in session"
+	And User inputs session information
+	Then new Session is created

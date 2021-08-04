@@ -16,6 +16,6 @@ Scenario: Manager views total hours worked
 
 #This is a Planned Goal
 Scenario: Student views hours spent in tutoring
-	Given: User role is student
-	When: Clicks on "Tutoring Summary" page
-	Then: User sees their hours in tutoring
+	Given User role is student
+	When Clicks on "Tutoring Summary" page
+	Then User sees their hours in tutoring
