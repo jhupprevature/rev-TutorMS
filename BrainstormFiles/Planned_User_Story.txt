@@ -1,0 +1,57 @@
+8. Story: Approve tutor accounts as tutor manager
+
+	Given: Signed in as a tutor manager
+	And: Viewing tutors Tab
+	When: Clicks to approve new tutor account 
+	Then: New tutor account should be activated
+
+9. Story: Admin has all privilieges of other accounts
+
+	Given: Signed in as an admin
+	And: Viewing the manage Tab
+	When: Clicks on another account's information
+	Then: Can manage the account's information
+
+10. Story: Tutor can set a schedule
+
+	Given: Signed in as a tutor
+	And: Viewing Schedules Tab
+	When: Clicks on create a schedule
+	Then: Schedule is created
+
+11. Story: Tutor manager approves tutor schedule
+
+	Given: Signed in as a tutor manager
+	And: Viewing the tutors' schedules
+	When: Clicks on approve schedule
+	Then: Tutor's schedule is approved
+
+12. Story: Tutor sets available courses
+
+	Given: Signed in as a tutor
+	And: Viewing the tutor's courses
+	When: Clicks on set available
+	Then: Course becomes available
+
+13. Story: Student searches for walk-in availability
+
+	Given: Signed in as a student
+	And: Viewing the courses tab
+	When: Clicks on search bar
+	And: Types walk-in availability
+	Then: Courses with walk-in availability are shown
+
+14. Story: Tutor logs a walk-in session
+
+	Given: Signed in as a tutor
+	And: Viewing the tutor's courses
+	When: Clicks on a walk-in course
+	And: Clicks log hours
+	And: User inputs hours worked
+	Then: Course sets hours worked
+
+15. Story: Student views hours spent in tutoring
+
+	Given: Signed in as a student
+	When: Clicks on status tab
+	Then: User sees their hours in tutoring
