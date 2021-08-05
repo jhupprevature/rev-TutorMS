@@ -23,13 +23,13 @@ export class HoursSummaryComponent implements OnInit {
   fakeOut : Date = new Date(0);
 
   fakeHoursList: Array<any> = [
-    { "day": "Sunday",    "inTime": "---",              "outTime": "---"},
+    { "day": "Sunday",    "inTime": "---",       "outTime": "---"},
     { "day": "Monday",    "inTime": this.fakeIn, "outTime": this.fakeOut},
     { "day": "Tuesday",   "inTime": this.fakeIn, "outTime": this.fakeOut},
     { "day": "Wednesday", "inTime": this.fakeIn, "outTime": this.fakeOut},
     { "day": "Thursday",  "inTime": this.fakeIn, "outTime": this.fakeOut},
     { "day": "Friday",    "inTime": this.fakeIn, "outTime": this.fakeOut},
-    { "day": "Saturday",  "inTime": "---",              "outTime": "---"}
+    { "day": "Saturday",  "inTime": "---",       "outTime": "---"}
   ]
 
   // var textTime = new Date(sunriseMills + offsetCityMills + offsetDeviceMills).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });

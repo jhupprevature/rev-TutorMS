@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'TutorManagementSystem'`, () => {
+  it(`should have as title 'TutorMS-NG'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('TutorManagementSystem');
+    expect(app.title).toEqual('TutorMS-NG');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('TutorManagementSystem app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('TutorMS-NG app is running!');
   });
 });
