@@ -9,7 +9,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  title = 'TutorManagementSystem';
+  title = 'TutorMS-NG';
   sideBarOpen = true;
 
   sideBarToggler(){
