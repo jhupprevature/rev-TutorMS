@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.revature</groupId>
-	<artifactId>TutorMS-STS</artifactId>
+	<artifactId>tutor_ms_sts</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>TutorMS-STS</name>
-	<description>Management system for college tutoring </description>
+	<name>tutor_ms_sts</name>
+	<description>redf</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
