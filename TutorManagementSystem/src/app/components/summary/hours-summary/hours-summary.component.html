@@ -3,6 +3,20 @@
     <div class="page__content shadow p-3 position-relative">
       <div class="page__content-data position-absolute">
         Summary Content Goes Here
+        <table>
+          <thead>
+            <th>Day</th>
+            <th>Time In</th>
+            <th>Time Out</th>
+            <th>Total</th>
+          </thead>
+          <tr *ngFor="let workday of fakeHoursList">
+            <td>{{workday.day}}</td>
+            <td>{{this.formatHours(workday.inTime)}}</td>
+            <td>{{this.formatHours(workday.outTime)}}</td>
+            <td>{{this.formatHours(this.subtractHours(workday))}}</td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
