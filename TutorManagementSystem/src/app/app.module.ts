@@ -17,7 +17,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { HoursSummaryComponent } from './components/summary/hours-summary/hours-summary.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ProfileSettingsComponent } from './components/profileSettings/profileSettings.component';
