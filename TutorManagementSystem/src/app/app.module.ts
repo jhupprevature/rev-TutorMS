@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
+import dayGridPlugin from '@fullcalendar/daygrid'; 
+import interactionPlugin from '@fullcalendar/interaction'; 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -16,6 +19,15 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { ProfileComponent } from './profile/profile.component';
 import { HoursSummaryComponent } from './components/summary/hours-summary/hours-summary.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { ProfileSettingsComponent } from './components/profileSettings/profileSettings.component';
+import { SchedulingComponent } from './components/scheduling/scheduling.component';
+import { FormsModule } from '@angular/forms';
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
 
 @NgModule({
   declarations: [
@@ -24,6 +36,9 @@ import { HoursSummaryComponent } from './components/summary/hours-summary/hours-
     HeaderComponent,
     SidenavComponent,
     DashboardComponent,
+    CalendarComponent,
+    ProfileSettingsComponent,
+    SchedulingComponent,
     ProfileComponent,
     HoursSummaryComponent
   ],
@@ -31,6 +46,8 @@ import { HoursSummaryComponent } from './components/summary/hours-summary/hours-
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FullCalendarModule,
+    FormsModule,
     // * MATERIAL IMPORTS
     MatSidenavModule,
     MatToolbarModule,
