@@ -16,6 +16,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { HoursSummaryComponent } from './components/summary/hours-summary/hours-summary.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     SidenavComponent,
     DashboardComponent,
     HoursSummaryComponent,
-    ProfileComponent
+    ProfileComponent,
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     MatMenuModule,
     MatIconModule,
     MatDividerModule,
-    MatListModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
