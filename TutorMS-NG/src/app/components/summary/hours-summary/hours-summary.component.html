@@ -14,7 +14,7 @@
           <td>{{workday.day}}</td>
           <td>{{this.formatHours(workday.inTime)}}</td>
           <td>{{this.formatHours(workday.outTime)}}</td>
-          <td>{{this.formatHours(this.subtractHours(workday))}}</td>
+          <td>{{this.elapsedTime(workday.inTime, workday.outTime)}}</td>
         </tr>
       </table>
     </div>

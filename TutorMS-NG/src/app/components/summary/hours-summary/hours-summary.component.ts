@@ -54,16 +54,14 @@ export class HoursSummaryComponent implements OnInit {
     return `${hh}:${mm}`;
   }
 
-  subtractHours(workday : any) : Date {
-    let start = new Date(workday.inTime);
-    let end = new Date(workday.outTime);
+  elapsedTime(inTime: Date, outTime: Date) : number {
+    let start = new Date(inTime);
+    let end = new Date(outTime);
 
     let elapsedHours = end.getHours() - start.getHours();
-    let elapsedMinutes = end.getMinutes() - start.getMinutes();
+    let elapsedMinutes = (end.getMinutes() - start.getMinutes())/60;
 
-    let result = new Date(0);
-    result.setHours(elapsedHours);
-    result.setMinutes(elapsedMinutes);
+    let result = elapsedHours + elapsedMinutes;
     return result;
   }
 }
