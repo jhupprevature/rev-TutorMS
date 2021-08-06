@@ -23,6 +23,8 @@ import { ProfileSettingsComponent } from './components/profileSettings/profileSe
 import { SchedulingComponent } from './components/scheduling/scheduling.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ProfileComponent} from './components/profile/profile.component'
+import { RegistrationComponent } from './components/registration/registration.component';
+import { LoginComponent } from './components/login/login.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -41,7 +43,9 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ProfileSettingsComponent,
     SchedulingComponent,
     ProfileComponent,
-    HoursSummaryComponent
+    HoursSummaryComponent,
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +60,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     MatMenuModule,
     MatIconModule,
     MatDividerModule,
-    MatListModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
