@@ -13,9 +13,9 @@ export class HoursSummaryComponent implements OnInit {
     // this.displayHours();
     this.fakeIn.setHours(10);
     this.fakeOut.setHours(18);
-    console.log("in:", this.fakeIn);
-    console.log("out:", this.fakeOut);
-    console.log("elapsed:", this.fakeOut.getHours() - this.fakeIn.getHours());
+    // console.log("in:", this.fakeIn);
+    // console.log("out:", this.fakeOut);
+    // console.log("elapsed:", this.fakeOut.getHours() - this.fakeIn.getHours());
   }
 
   fakeIn : Date = new Date(0);
@@ -62,6 +62,8 @@ export class HoursSummaryComponent implements OnInit {
     let elapsedMinutes = (end.getMinutes() - start.getMinutes())/60;
 
     let result = elapsedHours + elapsedMinutes;
+
+    if(isNaN(result)) {return 0;}
     return result;
   }
 }
