@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CalendarOptions } from '@fullcalendar/angular';
+import { HttpClient } from '@angular/common/http';
 declare let $: any;
 
 
@@ -38,12 +39,18 @@ export class CalendarComponent implements OnInit {
   if (this.addEventForm.invalid) {
       return;
   }
-  return myFormData;
+
 }
-constructor(private formBuilder: FormBuilder){}
+
+constructor(private formBuilder: FormBuilder, private http:HttpClient){}
   title = 'TutorMS-NG';
+  events = [];
   calendarOptions!: CalendarOptions;
   ngOnInit() {
+
+    return this.http.get('http://localhost:4200/events').subscribe(data => { this.events.push(data);});
+
+
     this.calendarOptions = {
     initialView: 'dayGridMonth',
 
@@ -56,6 +63,7 @@ constructor(private formBuilder: FormBuilder){}
 
     dateClick: this.handleDateClick.bind(this), // bind is important!
     events: [
+      this.events,
       { title: 'event 1', date: '2021-08-01' },
       { title: 'event 2', date: '2021-08-02' },
     ]
