@@ -68,8 +68,8 @@ create table sessions (
 	course_id		integer references courses(id) on delete restrict,
 	start_time		bigint,
 	end_time		bigint,
-	student_notes	varchar(255) null,
-	tutor_notes		varchar(255) null
+	tutor_notes		varchar(255) null,
+	student_notes	varchar(255) null
 );
 
 insert into account_types values (1, 'Tutor Manager');
@@ -91,11 +91,11 @@ insert into users values (12, 'Winnah', 'Lathey', 'wlatheyb', 'suikHr6', '348-53
 insert into users values (13, 'Kym', 'Gowthrop', 'kgowthropc', 'cTGgaE4aQ', '392-318-3644', 3);
 insert into users values (14, 'Vergil', 'Elleray', 'vellerayd', 'HeXJXSqJmz1G', '494-742-0215', 2);
 insert into users values (15, 'Clayborne', 'Lind', 'clinde', 'cJo2yF1hFB', '589-352-9247', 2);
-insert into users values (16, 'Theo', 'Orwell', 'torwellf', 'S2pH0dKe', '478-230-1653', 3);
+insert into users values (16, 'Theo', 'Orwell', 'torwellf', 'S2pH0dKe', '478-230-1653', 2);
 insert into users values (17, 'Alon', 'Treanor', 'atreanorg', 'HlWbj1GMmpIG', '569-637-6480', 3);
 insert into users values (18, 'Arda', 'Gouny', 'agounyh', 'eT22R0jV', '121-611-6851', 3);
 insert into users values (19, 'Germaine', 'Glanz', 'gglanzi', 'vWXAcnkZ6K1O', '283-898-8043', 3);
-insert into users values (20, 'Chen', 'McFetridge', 'cmcfetridgej', 'Myv7xVDs', '221-926-3593', 3);
+insert into users values (20, 'Chen', 'McFetridge', 'cmcfetridgej', 'Myv7xVDs', '221-926-3593', 1);
 
 insert into courses values
 	(1, 'Composition I', 'ENGL', 1101, 3),
@@ -119,3 +119,42 @@ insert into courses values
 	(16, 'Principles of Physics I', 'PHYS', 2211, 4),
 	(17, 'Principles of Physics II', 'PHYS', 2212, 4);
 	
+-- The course listed means that the tutor knows that course and any levels below
+insert into tutors_courses values 
+	(3, 17),
+	(4, 13),
+	(5, 10),
+	(6, 2),
+	(7, 7),
+	(14, 15),
+	(15, 10),
+	(15, 13),
+	(15, 17),
+	(16, 10),
+	(1, 10),
+	(1, 13),
+	(1, 17),
+	(2, 10),
+	(2, 13),
+	(20, 8),
+	(20, 2),
+	(20, 15);
+
+insert into schedules values
+	(1, null, null, '07:00', '15:00', '07:00', '15:00', '07:00', '15:00', '07:00', '15:00', '07:00', '15:00', null, null, null), --weekday morning manager
+	(2, '10:00', '22:00', null, null, null, null, null, null, null, null, null, null, '10:00', '22:00', null), --weekend manager
+	(20, null, null, '15:00', '23:00', '15:00', '23:00', '15:00', '23:00', '15:00', '23:00', '15:00', '23:00', null, null, null), --weekday evening manager
+	(3, null, null, '07:00', '11:00', '11:00', '15:00', '07:00', '11:00', '11:00', '15:00', '07:00', '11:00', null, null, null),
+	(4, null, null, '11:00', '15:00', '07:00', '11:00', '11:00', '15:00', '07:00', '11:00', '11:00', '15:00', null, null, null),
+	(5, null, null, '15:00', '19:00', '19:00', '23:00', '15:00', '19:00', '19:00', '23:00', '15:00', '19:00', null, null, null),
+	(6, null, null, '19:00', '23:00', '15:00', '19:00', '19:00', '23:00', '15:00', '19:00', '19:00', '23:00', null, null, null),
+	(7, '12:00', '20:00', null, null, null, null, null, null, null, null, null, null, '12:00', '20:00', null),
+	(14, null, null, '19:00', '23:00', '19:00', '23:00', '19:00', '23:00', '19:00', '23:00', '19:00', '23:00', null, null, null),
+	(15, null, null, '15:00', '19:00', '15:00', '19:00', '15:00', '19:00', '15:00', '19:00', '15:00', '19:00', null, null, 1628187125123), --awaiting approval
+	(16, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null); --no longer working
+
+insert into sessions values
+	(1, 3, 8, 16, 1612890000000, 1612893600000, 'Tutored in STEM Physics 1. Kid did good.', 'Law is the best tutor!'),
+	(2, 4, 9, 2, 1614694980000, 1614700800000, 'Byrom walked in today to get some help with his paper. Since I was free, I helped out until my shift was over.', null),
+	(3, 7, 10, 7, 1617472800000, 1617476400000, 'Tanitansy needed some precalculus help.', 'Please fire this tutor!');
+
