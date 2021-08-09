@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
+import dayGridPlugin from '@fullcalendar/daygrid'; 
+import interactionPlugin from '@fullcalendar/interaction'; 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -15,9 +18,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { HoursSummaryComponent } from './components/summary/hours-summary/hours-summary.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { ProfileSettingsComponent } from './components/profileSettings/profileSettings.component';
+import { SchedulingComponent } from './components/scheduling/scheduling.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {ProfileComponent} from './components/profile/profile.component'
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
+
 
 @NgModule({
   declarations: [
@@ -26,8 +39,11 @@ import { LoginComponent } from './components/login/login.component';
     HeaderComponent,
     SidenavComponent,
     DashboardComponent,
-    HoursSummaryComponent,
+    CalendarComponent,
+    ProfileSettingsComponent,
+    SchedulingComponent,
     ProfileComponent,
+    HoursSummaryComponent,
     LoginComponent,
     RegistrationComponent
   ],
@@ -35,6 +51,9 @@ import { LoginComponent } from './components/login/login.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FullCalendarModule,
+    ReactiveFormsModule,
+    FormsModule,
     // * MATERIAL IMPORTS
     MatSidenavModule,
     MatToolbarModule,
