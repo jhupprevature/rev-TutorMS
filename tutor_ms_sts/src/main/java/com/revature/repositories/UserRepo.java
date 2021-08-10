@@ -10,9 +10,9 @@ import com.revature.beans.User;
 @Repository
 public interface UserRepo extends CrudRepository<User, Integer> {
 
-	List<User> findByName(String name);
+	List<User> findByFirstName(String name);
 
-	List<User> findByNameAndEmail(String name, String email);
+	List<User> findByFirstNameAndAccountTypeId(String name, int accountTypeId);
 
-	List<User> findByEmail(String email);
+	List<User> findByAccountTypeId(int accountTypeId);
 }

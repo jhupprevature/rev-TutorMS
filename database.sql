@@ -6,6 +6,7 @@ alter table if exists sessions drop constraint sessions_course_id_fkey;
 alter table if exists tutors_courses drop constraint tutors_courses_tutor_id_fkey;
 alter table if exists tutors_courses drop constraint tutors_courses_course_id_fkey;
 
+drop table if exists date_events;
 drop table if exists schedules;
 drop table if exists account_types;
 drop table if exists courses;
@@ -22,7 +23,7 @@ create table users (
 	id				serial primary key,
 	first_name		varchar(255),
 	last_name		varchar(255),
-	username		varchar(255) unique,
+	school_email	varchar(255) unique,
 	password		varchar(255),
 	phone_number	varchar(255) null,
 	account_type_id	integer references account_types(id) on delete restrict
@@ -72,11 +73,21 @@ create table sessions (
 	student_notes	varchar(255) null
 );
 
+create table date_events (
+	date_id serial primary key,
+	title varchar(150),
+	date varchar(50)
+);
+
+insert into date_events values (default, 'pancake making', '2021/08/08');
+insert into date_events values (default, 'meteor shower', '2021/08/12');
+insert into date_events values (default, 'blue moon', '2021/08/22');
+
 insert into account_types values (1, 'Tutor Manager');
 insert into account_types values (2, 'Tutor');
 insert into account_types values (3, 'Student');
 
-insert into users values (1, 'Archibold', 'Moorhouse', 'amoorhouse0', 'AvF4qVJ', '455-764-2236', 1);
+insert into users values (1, 'Archibold', 'Moorhouse','amoorhouse0', 'AvF4qVJ', '455-764-2236', 1);
 insert into users values (2, 'Murielle', 'Arrundale', 'marrundale1', 'XANVv5IOWC0', '687-838-8250', 1);
 insert into users values (3, 'Law', 'Overel', 'loverel2', 'kLTq8k', '999-160-5044', 2);
 insert into users values (4, 'Addie', 'Hurst', 'ahurst3', 'yQvDuW', '190-408-9564', 2);
