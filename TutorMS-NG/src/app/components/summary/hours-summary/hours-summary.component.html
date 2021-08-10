@@ -11,7 +11,7 @@
           <th scope="col" class="col-2">Total</th>
         </thead>
         <tbody>
-          <tr *ngFor="let workday of fakeHoursList">
+          <tr *ngFor="let workday of this.workedHours">
             <td>{{workday.day}}</td>
             <td>{{this.formatHours(workday.inTime)}}</td>
             <td>{{this.formatHours(workday.outTime)}}</td>

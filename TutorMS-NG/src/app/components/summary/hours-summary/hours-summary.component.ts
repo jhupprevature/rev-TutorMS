@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { workedHours } from 'src/app/test-data';
 
 @Component({
   selector: 'app-hours-summary',
@@ -6,31 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hours-summary.component.css']
 })
 export class HoursSummaryComponent implements OnInit {
+  workedHours: any[];
 
-  constructor() { }
+  constructor() {
+    this.workedHours = workedHours;
+   }
 
   ngOnInit(): void {
     // this.displayHours();
-    this.fakeIn.setHours(10);
-    this.fakeOut.setHours(18);
     // console.log("in:", this.fakeIn);
     // console.log("out:", this.fakeOut);
     // console.log("elapsed:", this.fakeOut.getHours() - this.fakeIn.getHours());
   }
-
-  fakeIn : Date = new Date(0);
-  
-  fakeOut : Date = new Date(0);
-
-  fakeHoursList: Array<any> = [
-    { "day": "Sunday",    "inTime": "---",       "outTime": "---"},
-    { "day": "Monday",    "inTime": this.fakeIn, "outTime": this.fakeOut},
-    { "day": "Tuesday",   "inTime": this.fakeIn, "outTime": this.fakeOut},
-    { "day": "Wednesday", "inTime": this.fakeIn, "outTime": this.fakeOut},
-    { "day": "Thursday",  "inTime": this.fakeIn, "outTime": this.fakeOut},
-    { "day": "Friday",    "inTime": this.fakeIn, "outTime": this.fakeOut},
-    { "day": "Saturday",  "inTime": "---",       "outTime": "---"}
-  ]
 
   // var textTime = new Date(sunriseMills + offsetCityMills + offsetDeviceMills).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
 
