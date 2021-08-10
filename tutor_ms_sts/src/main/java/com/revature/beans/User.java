@@ -19,8 +19,6 @@ public class User {
 	private String firstName;
 	@Column(name = "last_name")
 	private String lastName;
-	@Column(name = "user_name")
-	private String userName;
 	@Column(name = "school_email")
 	private String schoolEmail;
 	private String password;
@@ -34,12 +32,11 @@ public class User {
 	}
 
 	public User(int id, String firstName, String lastName, String schoolEmail, String password, String phoneNumber,
-			int accountTypeId, String userName) {
+			int accountTypeId) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.userName = userName;
 		this.schoolEmail = schoolEmail;
 		this.password = password;
 		this.phoneNumber = phoneNumber;
@@ -47,11 +44,10 @@ public class User {
 	}
 
 	public User(String firstName, String lastName, String schoolEmail, String password, String phoneNumber,
-			int accountTypeId, String userName) {
+			int accountTypeId) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.userName = userName;
 		this.schoolEmail = schoolEmail;
 		this.password = password;
 		this.phoneNumber = phoneNumber;
@@ -80,14 +76,6 @@ public class User {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
 	}
 
 	public String getSchoolEmail() {
@@ -125,8 +113,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", schoolEmail=" + schoolEmail
-				+ ", password=" + password + ", phoneNumber=" + phoneNumber + ", accountTypeId=" + accountTypeId
-				+ ", userName=" + userName + "]";
+				+ ", password=" + password + ", phoneNumber=" + phoneNumber + ", accountTypeId=" + accountTypeId + "]";
 	}
 
 }
