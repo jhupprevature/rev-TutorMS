@@ -13,7 +13,7 @@ public class DateEvents {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "date_id", updatable = false)
+	@Column(updatable = false)
 	private int id;
 	private String title;
 	private String date;

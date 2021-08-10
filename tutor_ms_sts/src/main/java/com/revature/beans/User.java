@@ -15,12 +15,18 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", updatable = false)
 	private int id;
+	@Column(name = "first_name")
 	private String firstName;
+	@Column(name = "last_name")
 	private String lastName;
+	@Column(name = "user_name")
 	private String userName;
+	@Column(name = "school_email")
 	private String schoolEmail;
 	private String password;
+	@Column(name = "phone_number")
 	private String phoneNumber;
+	@Column(name = "account_type_id")
 	private int accountTypeId;
 
 	public User() {
