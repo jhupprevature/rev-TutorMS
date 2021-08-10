@@ -9,14 +9,16 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@SpringBootApplication // (scanBasePackages = "com.revature") //alternative to @ComponentScan
-@ComponentScan("com.revature")
-@EntityScan("com.revature.beans")
-@EnableJpaRepositories("com.revature.repositories")
+@SpringBootApplication(scanBasePackages="com.revature") //alternative to @ComponentScan
+//@ComponentScan("com.revature")
+//@EntityScan("com.revature.beans")
+//@EnableJpaRepositories("com.revature.repositories")
 public class TutorMsStsApplication {
+	
 
 	public static void main(String[] args) {
 		SpringApplication.run(TutorMsStsApplication.class, args);
+
 	}
 
 	@Bean
