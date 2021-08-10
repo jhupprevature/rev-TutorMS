@@ -13,7 +13,7 @@ export class TutorsService {
   //private postHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   getAllTutors(): Observable<any> {
-    return this.http.get<Tutor[]>('http://localhost:8080/users/search?accountTypeId=1');
+    return this.http.get<Tutor[]>('http://localhost:8080/users/search?accountTypeId=2');
   }
 /*
   addTutor(tutor: Tutor): Observable<Tutor> {

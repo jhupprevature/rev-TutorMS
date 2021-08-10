@@ -72,6 +72,17 @@ create table sessions (
 	tutor_notes		varchar(255) null
 );
 
+drop table date_events cascade;
+create table date_events (
+	date_id serial primary key,
+	title varchar(150),
+	date varchar(50)
+);
+
+insert into date_events values (default, 'pancake making', '2021/08/08');
+insert into date_events values (default, 'meteor shower', '2021/08/12');
+insert into date_events values (default, 'blue moon', '2021/08/22');
+
 insert into account_types values (1, 'Tutor Manager');
 insert into account_types values (2, 'Tutor');
 insert into account_types values (3, 'Student');
