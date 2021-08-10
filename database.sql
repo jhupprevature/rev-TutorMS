@@ -22,7 +22,8 @@ create table users (
 	id				serial primary key,
 	first_name		varchar(255),
 	last_name		varchar(255),
-	username		varchar(255) unique,
+	user_name		varchar(255),
+	school_email	varchar(255) unique,
 	password		varchar(255),
 	phone_number	varchar(255) null,
 	account_type_id	integer references account_types(id) on delete restrict
@@ -87,26 +88,26 @@ insert into account_types values (1, 'Tutor Manager');
 insert into account_types values (2, 'Tutor');
 insert into account_types values (3, 'Student');
 
-insert into users values (1, 'Archibold', 'Moorhouse', 'amoorhouse0', 'AvF4qVJ', '455-764-2236', 1);
-insert into users values (2, 'Murielle', 'Arrundale', 'marrundale1', 'XANVv5IOWC0', '687-838-8250', 1);
-insert into users values (3, 'Law', 'Overel', 'loverel2', 'kLTq8k', '999-160-5044', 2);
-insert into users values (4, 'Addie', 'Hurst', 'ahurst3', 'yQvDuW', '190-408-9564', 2);
-insert into users values (5, 'Ax', 'McOrkill', 'amcorkill4', 'Y4nj627QP', '462-854-5968', 2);
-insert into users values (6, 'Meade', 'Springall', 'mspringall5', 'NAnFQOzvR', '851-422-5573', 2);
-insert into users values (7, 'Cynthy', 'Fullom', 'cfullom6', 'bP0WFUQ6g', '570-380-1292', 2);
-insert into users values (8, 'Tina', 'Dymick', 'tdymick7', 'bqm4f4', '560-285-5415', 3);
-insert into users values (9, 'Byrom', 'Parmeter', 'bparmeter8', 'ZRPbuOPy9k', '559-528-9800', 3);
-insert into users values (10, 'Tanitansy', 'Kleuer', 'tkleuer9', 'YeBlSsv0YoER', '671-981-4339', 3);
-insert into users values (11, 'Lenore', 'Purple', 'lpurplea', 'UfqSYAJvx', '129-422-9435', 3);
-insert into users values (12, 'Winnah', 'Lathey', 'wlatheyb', 'suikHr6', '348-535-8149', 3);
-insert into users values (13, 'Kym', 'Gowthrop', 'kgowthropc', 'cTGgaE4aQ', '392-318-3644', 3);
-insert into users values (14, 'Vergil', 'Elleray', 'vellerayd', 'HeXJXSqJmz1G', '494-742-0215', 2);
-insert into users values (15, 'Clayborne', 'Lind', 'clinde', 'cJo2yF1hFB', '589-352-9247', 2);
-insert into users values (16, 'Theo', 'Orwell', 'torwellf', 'S2pH0dKe', '478-230-1653', 2);
-insert into users values (17, 'Alon', 'Treanor', 'atreanorg', 'HlWbj1GMmpIG', '569-637-6480', 3);
-insert into users values (18, 'Arda', 'Gouny', 'agounyh', 'eT22R0jV', '121-611-6851', 3);
-insert into users values (19, 'Germaine', 'Glanz', 'gglanzi', 'vWXAcnkZ6K1O', '283-898-8043', 3);
-insert into users values (20, 'Chen', 'McFetridge', 'cmcfetridgej', 'Myv7xVDs', '221-926-3593', 1);
+insert into users values (1, 'Archibold', 'Moorhouse', 'ahouse','amoorhouse0', 'AvF4qVJ', '455-764-2236', 1);
+insert into users values (2, 'Murielle', 'Arrundale',  'marrundale','marrundale1', 'XANVv5IOWC0', '687-838-8250', 1);
+insert into users values (3, 'Law', 'Overel',  'loverel','loverel2', 'kLTq8k', '999-160-5044', 2);
+insert into users values (4, 'Addie', 'Hurst',  'ahurst','ahurst3', 'yQvDuW', '190-408-9564', 2);
+insert into users values (5, 'Ax', 'McOrkill',  'amcorkill','amcorkill4', 'Y4nj627QP', '462-854-5968', 2);
+insert into users values (6, 'Meade', 'Springall',  'mspringall','mspringall5', 'NAnFQOzvR', '851-422-5573', 2);
+insert into users values (7, 'Cynthy', 'Fullom',  'cfullom','cfullom6', 'bP0WFUQ6g', '570-380-1292', 2);
+insert into users values (8, 'Tina', 'Dymick',  'tdymick','tdymick7', 'bqm4f4', '560-285-5415', 3);
+insert into users values (9, 'Byrom', 'Parmeter',  'bparmeter','bparmeter8', 'ZRPbuOPy9k', '559-528-9800', 3);
+insert into users values (10, 'Tanitansy', 'Kleuer',  'tkleuer','tkleuer9', 'YeBlSsv0YoER', '671-981-4339', 3);
+insert into users values (11, 'Lenore', 'Purple',  'lpurple','lpurplea', 'UfqSYAJvx', '129-422-9435', 3);
+insert into users values (12, 'Winnah', 'Lathey',  'wlathey','wlatheyb', 'suikHr6', '348-535-8149', 3);
+insert into users values (13, 'Kym', 'Gowthrop',  'kgowthrop','kgowthropc', 'cTGgaE4aQ', '392-318-3644', 3);
+insert into users values (14, 'Vergil', 'Elleray',  'velleray','vellerayd', 'HeXJXSqJmz1G', '494-742-0215', 2);
+insert into users values (15, 'Clayborne', 'Lind',  'clind','clinde', 'cJo2yF1hFB', '589-352-9247', 2);
+insert into users values (16, 'Theo', 'Orwell',  'torwell','torwellf', 'S2pH0dKe', '478-230-1653', 2);
+insert into users values (17, 'Alon', 'Treanor',  'atreanor','atreanorg', 'HlWbj1GMmpIG', '569-637-6480', 3);
+insert into users values (18, 'Arda', 'Gouny',  'agouny','agounyh', 'eT22R0jV', '121-611-6851', 3);
+insert into users values (19, 'Germaine', 'Glanz',  'gglanz','gglanzi', 'vWXAcnkZ6K1O', '283-898-8043', 3);
+insert into users values (20, 'Chen', 'McFetridge',  'cmcfetridge','cmcfetridgej', 'Myv7xVDs', '221-926-3593', 1);
 
 insert into courses values
 	(1, 'Composition I', 'ENGL', 1101, 3),
