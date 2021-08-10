@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -14,53 +17,56 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false)
+    @Column(updatable = false)
+    @PrimaryKeyJoinColumn
     private int id;
+
     @Column(name = "first_name")
     private String firstName;
+
     @Column(name = "last_name")
     private String lastName;
-    @Column(name = "user_name")
-    private String userName;
+
     @Column(name = "school_email")
     private String schoolEmail;
+
     private String password;
+
     @Column(name = "phone_number")
     private String phoneNumber;
-    @JoinColumn(name = "")
+
+    @ManyToOne
+    @JoinColumn(name = "account_type_id")
     private AccountType accountType;
+
+    @OneToOne(targetEntity = Schedule.class)
     private Schedule schedule;
-    @Column
 
     public User() {
         super();
     }
 
     public User(int id, String firstName, String lastName, String schoolEmail,
-            String password, String phoneNumber, int accountTypeId,
-            String userName) {
+            String password, String phoneNumber, AccountType accountType) {
         super();
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userName = userName;
         this.schoolEmail = schoolEmail;
         this.password = password;
         this.phoneNumber = phoneNumber;
-        this.accountTypeId = accountTypeId;
+        this.accountType = accountType;
     }
 
     public User(String firstName, String lastName, String schoolEmail,
-            String password, String phoneNumber, int accountTypeId,
-            String userName) {
+            String password, String phoneNumber, AccountType accountType) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userName = userName;
         this.schoolEmail = schoolEmail;
         this.password = password;
         this.phoneNumber = phoneNumber;
-        this.accountTypeId = accountTypeId;
+        this.accountType = accountType;
     }
 
     public int getId() {
@@ -87,14 +93,6 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
     public String getSchoolEmail() {
         return schoolEmail;
     }
@@ -119,20 +117,28 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getAccountTypeId() {
-        return accountTypeId;
+    public AccountType getAccountType() {
+        return accountType;
     }
 
-    public void setAccountTypeId(int accountTypeId) {
-        this.accountTypeId = accountTypeId;
+    public void setAccountTypeId(AccountType accountType) {
+        this.accountType = accountType;
+    }
+
+    public Schedule getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
     }
 
     @Override
     public String toString() {
         return "User [id=" + id + ", firstName=" + firstName + ", lastName="
                 + lastName + ", schoolEmail=" + schoolEmail + ", password="
-                + password + ", phoneNumber=" + phoneNumber + ", accountTypeId="
-                + accountTypeId + ", userName=" + userName + "]";
+                + password + ", phoneNumber=" + phoneNumber + ", accountType="
+                + accountType + "]";
     }
 
 }
