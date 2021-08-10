@@ -26,6 +26,9 @@ import {ProfileComponent} from './components/profile/profile.component'
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SearchfilterPipe } from './Pipes/searchfilter.pipe';
+import { Tutor } from './Models/tutor';
+import { TutorsService } from './Services/tutors.service';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -46,7 +49,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ProfileComponent,
     HoursSummaryComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    SearchfilterPipe
   ],
   imports: [
     BrowserModule,
@@ -64,7 +68,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     MatDividerModule,
     MatListModule
   ],
-  providers: [],
+  providers: [TutorsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

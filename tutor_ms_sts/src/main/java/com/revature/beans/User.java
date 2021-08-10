@@ -13,43 +13,43 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "u_id", updatable = false)
+	@Column(name = "id", updatable = false)
 	private int id;
 	private String firstName;
 	private String lastName;
+	private String userName;
 	private String schoolEmail;
 	private String password;
 	private String phoneNumber;
 	private int accountTypeId;
-	private int managerId;
 
 	public User() {
 		super();
 	}
 
 	public User(int id, String firstName, String lastName, String schoolEmail, String password, String phoneNumber,
-			int accountTypeId, int managerId) {
+			int accountTypeId, String userName) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.userName = userName;
 		this.schoolEmail = schoolEmail;
 		this.password = password;
 		this.phoneNumber = phoneNumber;
 		this.accountTypeId = accountTypeId;
-		this.managerId = managerId;
 	}
 
 	public User(String firstName, String lastName, String schoolEmail, String password, String phoneNumber,
-			int accountTypeId, int managerId) {
+			int accountTypeId, String userName) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.userName = userName;
 		this.schoolEmail = schoolEmail;
 		this.password = password;
 		this.phoneNumber = phoneNumber;
 		this.accountTypeId = accountTypeId;
-		this.managerId = managerId;
 	}
 
 	public int getId() {
@@ -74,6 +74,14 @@ public class User {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getSchoolEmail() {
@@ -108,19 +116,11 @@ public class User {
 		this.accountTypeId = accountTypeId;
 	}
 
-	public int getManagerId() {
-		return managerId;
-	}
-
-	public void setManagerId(int managerId) {
-		this.managerId = managerId;
-	}
-
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", schoolEmail=" + schoolEmail
 				+ ", password=" + password + ", phoneNumber=" + phoneNumber + ", accountTypeId=" + accountTypeId
-				+ ", managerId=" + managerId + "]";
+				+ ", userName=" + userName + "]";
 	}
 
 }

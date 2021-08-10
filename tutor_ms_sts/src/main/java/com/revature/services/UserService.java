@@ -16,9 +16,9 @@ public interface UserService {
 
 	public boolean deleteUser(int id);
 
-	public List<User> getUser(String name, String email);
+	public List<User> getUserbyFirstNameAndAccountTypeId(String name, int accountTypeId);
 
-	public List<User> getUser(String name);
+	public List<User> getUserbyAccountTypeId(int accountTypeId);
 
-	public List<User> getActorByEmail(String email);
+	public List<User> getUserbyName(String name);
 }

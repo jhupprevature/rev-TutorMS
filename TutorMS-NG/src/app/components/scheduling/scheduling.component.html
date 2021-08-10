@@ -1,18 +1,15 @@
 <div class="container-fluid page">
     <div class="d-flex page__box p-3 mt-2">Scheduling</div>
     <div class="page__content shadow p-3 position-relative">
-      <div class="col-sm-3" style="float:left; margin-bottom: 20px;">
+      <div class="col-sm-2" style="float:left; margin-bottom: 20px;">
           <label for="inputCriteria2" class="visually-hidden">Criteria</label>
-          <input type="text" class="form-control" id="inputCriteria2" placeholder="Enter Criteria">
+          <input type="text" class="form-control" id="inputCriteria" placeholder="Enter text to Search" [(ngModel)]="searchBox">
       </div>
-      <div style="float: left;">
-        <button type="button" class="btn btn-primary sm-3">Search for Tutors</button>
-        </div>
 
         <div *ngIf="selectedTutor" style="float:left; margin-left: 50px;">
-          <h4>{{selectedTutor.name | uppercase}} Details</h4>
-          <div><button style="font-size: medium;">Schedule Tutoring Session</button><br>
-            <span>id: </span>{{selectedTutor.id}} 
+          <h4>{{selectedTutor.firstName | uppercase}} Details</h4>
+          <div><button style="font-size: medium;" (click)="addSession()">Schedule Tutoring Session</button><br>
+            <span>Phone Number: </span>{{selectedTutor.phoneNumber}} 
           </div>
         </div>
 
@@ -22,18 +19,17 @@
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Course</th>
+                <th>First Name</th>
+                <th>School Email</th>
                 
               </tr>
             </thead>
             <tbody>
            
-                  <tr *ngFor="let tutor of tutors" [class.selected]="tutor === selectedTutor" (click)="onSelect(tutor)">
+                  <tr *ngFor="let tutor of tutorsData | searchfilter : searchBox" [class.selected]="tutor === selectedTutor" (click)="onSelect(tutor)">
                     <td>{{tutor.id}}</td>
-                    <td>{{tutor.name}}</td>
-                    <td>{{tutor.course}}</td>
-    
+                    <td>{{tutor.firstName}}</td>
+                    <td>{{tutor.schoolEmail}}</td>
                   </tr>
                
             </tbody>
