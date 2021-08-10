@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -26,8 +27,10 @@ public class User {
     private String password;
     @Column(name = "phone_number")
     private String phoneNumber;
-    @Column(name = "account_type_id")
-    private int accountTypeId;
+    @JoinColumn(name = "")
+    private AccountType accountType;
+    private Schedule schedule;
+    @Column
 
     public User() {
         super();
