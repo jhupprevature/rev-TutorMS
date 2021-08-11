@@ -17,18 +17,18 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-import { HoursSummaryComponent } from './components/summary/hours-summary/hours-summary.component';
+import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
-import { ProfileSettingsComponent } from './components/profileSettings/profileSettings.component';
+//import { ProfileSettingsComponent } from './components/profileSettings/profileSettings.component';
 import { SchedulingComponent } from './components/scheduling/scheduling.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './components/profile/profile.component'
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SearchfilterPipe } from './Pipes/searchfilter.pipe';
-import { Tutor } from './Models/tutor';
-import { TutorsService } from './Services/tutors.service';
+import { SearchfilterPipe } from './pipes/searchfilter.pipe';
+import { Tutor } from './models/tutor';
+import { TutorsService } from './services/tutors.service';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -44,10 +44,10 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     SidenavComponent,
     DashboardComponent,
     CalendarComponent,
-    ProfileSettingsComponent,
+    //ProfileSettingsComponent, //Stretch goal.
     SchedulingComponent,
     ProfileComponent,
-    HoursSummaryComponent,
+    AnalyticsComponent,
     LoginComponent,
     RegistrationComponent,
     SearchfilterPipe

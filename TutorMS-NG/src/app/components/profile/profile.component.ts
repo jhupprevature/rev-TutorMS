@@ -1,6 +1,6 @@
 import { isNull } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-import { workedHours, tutorUser, User, studentUser } from 'src/app/test-data';
+import { workedHours, tutorUser, User, studentUser } from 'src/app/models/test-data';
 
 @Component({
   selector: 'app-profile',

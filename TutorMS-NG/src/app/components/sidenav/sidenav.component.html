@@ -17,7 +17,8 @@
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/scheduling">
       <mat-icon>schedule</mat-icon> Scheduling
     </a>
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/summary"> 
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/summary"
+        *ngIf={{}}> 
       <mat-icon>access_time</mat-icon> Summary 
     </a>
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/login"> 

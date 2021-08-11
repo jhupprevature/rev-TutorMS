@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Tutor } from 'src/app/Models/tutor';
-import { TutorsService } from 'src/app/Services/tutors.service';
+import { Tutor } from 'src/app/models/tutor';
+import { TutorsService } from 'src/app/services/tutors.service';
 
 @Component({
   selector: 'app-scheduling',
