@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.revature.beans.DateEvents;
+import com.revature.beans.DateEvent;
 import com.revature.repositories.DateEventsRepo;
 
 @Service
@@ -15,22 +15,22 @@ public class DateEventsServiceImpl implements DateEventsService {
 	DateEventsRepo der;
 
 	@Override
-	public DateEvents addDateEvents(DateEvents de) {
+	public DateEvent addDateEvents(DateEvent de) {
 		return der.save(de);
 	}
 
 	@Override
-	public DateEvents getDateEvents(int id) {
+	public DateEvent getDateEvents(int id) {
 		return der.findById(id).get();
 	}
 
 	@Override
-	public List<DateEvents> getAllDateEvents() {
-		return (List<DateEvents>) der.findAll();
+	public List<DateEvent> getAllDateEvents() {
+		return (List<DateEvent>) der.findAll();
 	}
 
 	@Override
-	public DateEvents updateDateEvents(DateEvents change) {
+	public DateEvent updateDateEvents(DateEvent change) {
 		return der.save(change);
 	}
 
