@@ -22,7 +22,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { ProfileSettingsComponent } from './components/profileSettings/profileSettings.component';
 import { SchedulingComponent } from './components/scheduling/scheduling.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {ProfileComponent} from './components/profile/profile.component'
+import { ProfileComponent } from './components/profile/profile.component'
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';

@@ -1,17 +1,65 @@
 <div class="container-fluid page">
     <div class="d-flex page__box p-3 mt-2">Tutoring Summary</div>
-    <div class="page__content shadow p-3 position-relative">
+    <div class="page__content shadow p-3 position-relative" style="font-size: 1rem;">
       <div class="page__content-data position-absolute">
         <!-- TODO: Add variable for the profile's owner -->
-        <h2>(Kevin Leader's Tutor) Profile</h2>
+        <h2>{{this.user.firstName + ' ' + this.user.lastName + "'s " + this.user.accountType.type}}  Profile</h2>
         <!-- TODO: Check for account type to determine what to show on profile -->
-        <h3>First Name</h3>
-        <p id="first_name">Kevin</p>
+        
+        <div class="row">
+          <div class="col-sm-3">
+            <label class="form-label" for="first_name">First Name</label>
+            <input type="text" class="form-control" aria-label="First Name" 
+              value={{this.user.firstName}} id="first_name">
+          </div>
+          <div class="col-sm-3">
+            <label class="form-label" for="last_name">Last Name</label>
+            <input type="text" class="form-control" aria-label="Last Name" 
+              value={{this.user.lastName}} id="last_name">
+          </div>
+          <div class="col-sm-3">
+            <label class="form-label" for="account-type">Role</label>
+            <input type="text" class="form-control" aria-label="Role" 
+              value={{this.user.accountType.type}} id="account-type">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <label class="form-label" for="email">Email</label>
+            <input type="text" class="form-control" aria-label="Username" 
+              value={{this.user.username}}@paperu.edu id="email">
+          </div>
+          <div class="col-sm-4">
+            <label class="form-label" for="phone_number">Phone Number</label>
+            <input type="text" class="form-control" aria-label="Phone Number" 
+              value={{this.user.phoneNumber}} id="phone_number">
+          </div>
+          
+        </div>
 
-        <h3>Last Name</h3>
-        <p id="last_name">Leader</p>
+        <div *ngIf="isEmployee()" class="row my-5">
+          <!-- TODO: Control for pending and editing schedules. Planned goal. -->
+          <h2 class="u">Schedule</h2>
+          <table class="table table-border text-center">
+            <thead class="thead">
+              <th scope="col" class="col-2">-</th>
+              <th scope="col"
+                  *ngFor="let workday of this.schedule">{{workday.day}}</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>In:</td>
+                <td *ngFor="let workday of this.schedule">{{workday.inTime}}</td>
+              </tr>
+              <tr>
+                <td>Out:</td>
+                <td *ngFor="let workday of this.schedule">{{workday.outTime}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-        <h3>School Email</h3>
+        <!-- <h3>School Email</h3>
         <p id="school_email">kileader@bestcollege.edu</p>
 
         <h3>Phone Number</h3>
@@ -20,14 +68,14 @@
         <h3>Weekly Schedule</h3>
 
         <h4>Sunday</h4>
-        <p id="sunday">Unavailable</p>
+        <p id="sunday">Unavailable</p> -->
         <!-- p id="sunday" gets its innerHTML set to unavailable if start and end are null -->
 
-        <h4>Monday</h4>
+        <!-- <h4>Monday</h4>
         <p id="monday"><span id="monday_start">8:00 AM</span> to <span id="monday_end">2:00 PM</span></p>
 
         <h4>Tuesday</h4>
-        <p id="tuesday"><span id="tuesday_start">8:00 AM</span> to <span id="tuesday_end">11:30 AM</span></p>
+        <p id="tuesday"><span id="tuesday_start">8:00 AM</span> to <span id="tuesday_end">11:30 AM</span></p> -->
       </div>
     </div>
   </div>
