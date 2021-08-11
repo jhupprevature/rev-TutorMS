@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.revature.beans.AccountType;
 import com.revature.beans.User;
 import com.revature.repositories.UserRepo;
 
@@ -56,8 +57,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> getUserbyAccountTypeId(int accountTypeId) {
-		return ur.findByAccountTypeId(accountTypeId);
+	public AccountType getUserAccountType(User u) {
+		return u.getAccountType();
 	}
 
 }
