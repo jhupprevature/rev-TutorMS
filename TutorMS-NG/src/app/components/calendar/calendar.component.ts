@@ -51,14 +51,6 @@ export class CalendarComponent implements OnInit {
   calendarOptions!: CalendarOptions;
   ngOnInit() {
 
-<<<<<<< HEAD
-    //this was a return?
-    this.http.get('http://localhost:4200/events').subscribe(
-      data => { this.events.push();}); //data passed to push
-
-
-=======
->>>>>>> origin/main
     this.calendarOptions = {
     initialView: 'dayGridMonth',
 
