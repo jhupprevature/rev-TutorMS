@@ -1,11 +1,16 @@
 package com.revature.beans;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -41,6 +46,12 @@ public class User {
 
     @OneToOne(targetEntity = Schedule.class)
     private Schedule schedule;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "tutors_courses",
+            joinColumns = { @JoinColumn(name = "tutor_id") },
+            inverseJoinColumns = { @JoinColumn(name = "course_id") })
+    private Set<Course> coursesToTutor;
 
     public User() {
         super();
@@ -121,7 +132,7 @@ public class User {
         return accountType;
     }
 
-    public void setAccountTypeId(AccountType accountType) {
+    public void setAccountType(AccountType accountType) {
         this.accountType = accountType;
     }
 
@@ -131,6 +142,14 @@ public class User {
 
     public void setSchedule(Schedule schedule) {
         this.schedule = schedule;
+    }
+
+    public Set<Course> getCoursesToTutor() {
+        return coursesToTutor;
+    }
+
+    public void setCoursesToTutor(Set<Course> coursesToTutor) {
+        this.coursesToTutor = coursesToTutor;
     }
 
     @Override
