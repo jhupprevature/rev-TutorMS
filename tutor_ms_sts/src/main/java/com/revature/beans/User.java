@@ -13,7 +13,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -23,7 +22,6 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false)
-    @PrimaryKeyJoinColumn
     private int id;
 
     @Column(name = "first_name")
@@ -45,6 +43,7 @@ public class User {
     private AccountType accountType;
 
     @OneToOne(targetEntity = Schedule.class)
+    @JoinColumn(name = "schedule_id")
     private Schedule schedule;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -58,7 +57,7 @@ public class User {
     }
 
     public User(int id, String firstName, String lastName, String schoolEmail,
-            String password, String phoneNumber, AccountType accountType) {
+            String password, String phoneNumber, AccountType accountType, Schedule schedule) {
         super();
         this.id = id;
         this.firstName = firstName;
@@ -67,10 +66,11 @@ public class User {
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.accountType = accountType;
+        this.schedule = schedule;
     }
 
     public User(String firstName, String lastName, String schoolEmail,
-            String password, String phoneNumber, AccountType accountType) {
+            String password, String phoneNumber, AccountType accountType, Schedule schedule) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -78,6 +78,7 @@ public class User {
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.accountType = accountType;
+        this.schedule = schedule;
     }
 
     public int getId() {
@@ -157,7 +158,7 @@ public class User {
         return "User [id=" + id + ", firstName=" + firstName + ", lastName="
                 + lastName + ", schoolEmail=" + schoolEmail + ", password="
                 + password + ", phoneNumber=" + phoneNumber + ", accountType="
-                + accountType + "]";
+                + accountType + ", schedule=" + schedule + "]";
     }
 
 }
