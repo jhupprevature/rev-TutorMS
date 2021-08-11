@@ -27,7 +27,7 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              
               "src/styles.css",
               "@angular/cdk/overlay-prebuilt.css"
             ],
