@@ -61,7 +61,7 @@ public class DateEvent {
 
 	@Override
 	public String toString() {
-		return "DateEvents [id=" + id + ", title=" + title + ", date=" + date + "]";
+		return "DateEvent [id=" + id + ", title=" + title + ", date=" + date + "]";
 	}
 
 }
