@@ -2,6 +2,7 @@ package com.revature.services;
 
 import java.util.List;
 
+import com.revature.beans.AccountType;
 import com.revature.beans.User;
 
 public interface UserService {
@@ -18,7 +19,7 @@ public interface UserService {
 
 	public List<User> getUserbyFirstNameAndAccountTypeId(String name, int accountTypeId);
 
-	public List<User> getUserbyAccountTypeId(int accountTypeId);
+	public AccountType getUserAccountType(User u);
 
 	public List<User> getUserbyName(String name);
 }

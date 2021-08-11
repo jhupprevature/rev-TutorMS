@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.beans.AccountType;
 import com.revature.beans.User;
 import com.revature.services.UserService;
 
@@ -43,8 +44,9 @@ public class UserController {
 			return us.getUserbyFirstNameAndAccountTypeId(name, accountTypeId);
 		} else if (name != null) {
 			return us.getUserbyName(name);
-		} else if (accountTypeId > 0) {
-			return us.getUserbyAccountTypeId(accountTypeId);
+		// Not sure if this is needed anymore
+//		} else if (accountTypeId > 0) {
+//			return us.getUserAccountType();
 		} else {
 			return new ArrayList<User>();
 		}

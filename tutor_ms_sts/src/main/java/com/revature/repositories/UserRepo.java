@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import com.revature.beans.AccountType;
 import com.revature.beans.User;
 
 @Repository
@@ -14,5 +15,5 @@ public interface UserRepo extends CrudRepository<User, Integer> {
 
 	List<User> findByFirstNameAndAccountTypeId(String name, int accountTypeId);
 
-	List<User> findByAccountTypeId(int accountTypeId);
+//	List<User> findByAccountType(AccountType at);
 }
