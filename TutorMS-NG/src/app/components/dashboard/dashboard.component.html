@@ -16,7 +16,7 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <div>
+          <div *ngIf='"Upcoming Schedule"==this.card.title'>
             <table>
               <thead>
                 <th>Day</th>
@@ -24,12 +24,14 @@
                 <th>Time Out</th>
                 <th>Total</th>
               </thead>
-            <tr *ngFor="let workday of fakeHoursList">
-              <td>{{workday.day}}</td>
-              <td>{{this.formatHours(workday.inTime)}}</td>
-              <td>{{this.formatHours(workday.outTime)}}</td>
-              <td>{{this.formatHours(this.subtractHours(workday))}}</td>
-            </tr>
+              <tbody>
+                <tr *ngFor="let workday of fakeHoursList">
+                  <td>{{workday.day}}</td>
+                  <td>{{this.formatHours(workday.inTime)}}</td>
+                  <td>{{this.formatHours(workday.outTime)}}</td>
+                  <td>{{this.formatHours(this.subtractHours(workday))}}</td>
+                </tr>
+              </tbody>
           </table>
           </div>
         </mat-card-content>
