@@ -2,17 +2,17 @@ package com.revature.services;
 
 import java.util.List;
 
-import com.revature.beans.DateEvents;
+import com.revature.beans.DateEvent;
 
 public interface DateEventsService {
 
-	public DateEvents addDateEvents(DateEvents de);
+	public DateEvent addDateEvents(DateEvent de);
 
-	public DateEvents getDateEvents(int id);
+	public DateEvent getDateEvents(int id);
 
-	public List<DateEvents> getAllDateEvents();
+	public List<DateEvent> getAllDateEvents();
 
-	public DateEvents updateDateEvents(DateEvents change);
+	public DateEvent updateDateEvents(DateEvent change);
 
 	public boolean deleteDateEvents(int id);
 

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.beans.DateEvents;
+import com.revature.beans.DateEvent;
 import com.revature.services.DateEventsService;
 
 @RestController
@@ -24,25 +24,25 @@ public class DateEventsController {
 
 	@CrossOrigin
 	@GetMapping(value = "/dateEvents", produces = "application/json")
-	public List<DateEvents> getAllDateEvents() {
+	public List<DateEvent> getAllDateEvents() {
 		return des.getAllDateEvents();
 	}
 
 	@CrossOrigin
 	@GetMapping("dateEvents/{id}")
-	public DateEvents getDateEvents(@PathVariable("id") String id) {
+	public DateEvent getDateEvents(@PathVariable("id") String id) {
 		return des.getDateEvents(Integer.parseInt(id));
 	}
 
 	@CrossOrigin
 	@PostMapping(value = "/dateEvents", consumes = "application/json", produces = "application/json")
-	public DateEvents addDateEvents(@RequestBody DateEvents de) {
+	public DateEvent addDateEvents(@RequestBody DateEvent de) {
 		return des.addDateEvents(de);
 	}
 
 	@CrossOrigin
 	@PutMapping(value = "/dateEvents/{id}", consumes = "application/json", produces = "application/json")
-	public DateEvents updateDateEvents(@PathVariable int id, @RequestBody DateEvents change) {
+	public DateEvent updateDateEvents(@PathVariable int id, @RequestBody DateEvent change) {
 		change.setId(id);
 		return des.updateDateEvents(change);
 	}
