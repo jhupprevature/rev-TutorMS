@@ -1,22 +1,24 @@
 <div class="container-fluid page">
-    <div class="d-flex page__box p-3 mt-2">Tutoring Summary</div>
-    <div class="page__content shadow p-3 position-relative">
-      <div class="page__content-data position-absolute">
-        Summary Content Goes Here
-        <table>
-          <thead>
-            <th>Day</th>
-            <th>Time In</th>
-            <th>Time Out</th>
-            <th>Total</th>
-          </thead>
-          <tr *ngFor="let workday of fakeHoursList">
+  <div class="d-flex page__box p-3 mt-2">Tutoring Summary</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data position-absolute container-fluid col-10">
+      Summary Content Goes Here
+      <table class="table table-hover table-md">
+        <thead class="thead">
+          <th scope="col" class="col-2">Day</th>
+          <th scope="col" class="col-2">Time In</th>
+          <th scope="col" class="col-2">Time Out</th>
+          <th scope="col" class="col-2">Total</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let workday of this.workedHours">
             <td>{{workday.day}}</td>
             <td>{{this.formatHours(workday.inTime)}}</td>
             <td>{{this.formatHours(workday.outTime)}}</td>
-            <td>{{this.formatHours(this.subtractHours(workday))}}</td>
+            <td>{{this.elapsedTime(workday.inTime, workday.outTime)}}</td>
           </tr>
-        </table>
-      </div>
+        </tbody>
+      </table>
     </div>
   </div>
+</div>

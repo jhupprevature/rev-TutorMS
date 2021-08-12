@@ -1,0 +1,39 @@
+<div class="container-fluid page">
+    <div class="d-flex page__box p-3 mt-2">Scheduling</div>
+    <div class="page__content shadow p-3 position-relative">
+      <div class="col-sm-2" style="float:left; margin-bottom: 20px;">
+          <label for="inputCriteria2" class="visually-hidden">Criteria</label>
+          <input type="text" class="form-control" id="inputCriteria" placeholder="Enter text to Search" [(ngModel)]="searchBox">
+      </div>
+
+        <div *ngIf="selectedTutor" style="float:left; margin-left: 50px;">
+          <h4>{{selectedTutor.firstName | uppercase}} Details</h4>
+          <div><button style="font-size: medium;" (click)="addSession()">Schedule Tutoring Session</button><br>
+            <span>Phone Number: </span>{{selectedTutor.phoneNumber}} 
+          </div>
+        </div>
+
+          <h2 style="clear:both;">Tutors List</h2>
+        <div class="col-md-auto" style="text-align: center;">
+          <table class="table table-hover table-bordered" id="datatableexample">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>School Email</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+           
+                  <tr *ngFor="let tutor of tutorsData | searchfilter : searchBox" [class.selected]="tutor === selectedTutor" (click)="onSelect(tutor)">
+                    <td>{{tutor.id}}</td>
+                    <td>{{tutor.firstName}}</td>
+                    <td>{{tutor.schoolEmail}}</td>
+                  </tr>
+               
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
