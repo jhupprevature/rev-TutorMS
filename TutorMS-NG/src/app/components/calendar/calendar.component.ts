@@ -1,7 +1,9 @@
+import { AriaDescriber } from '@angular/cdk/a11y';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CalendarOptions } from '@fullcalendar/angular';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { dateEvent } from 'src/app/Models/dateEvent';
+import { DateEventsService } from 'src/app/Services/date-events.service';
 declare let $: any;
 
 
@@ -12,13 +14,10 @@ declare let $: any;
 })
 export class CalendarComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient){}
+  constructor(private formBuilder: FormBuilder, private dateEventData:DateEventsService){}
 
-  dateEvent = ["title", "date"];
-
-  //addTutor(dateEvent: dateEvent): Observable<dateEvent> {
-   // return this.http.post('http://localhost:8080/dateEvents', myFormData, { headers: new HttpHeaders({'Content-Type': 'application/json'}) }).subscribe((data: Object) => { this.events = data; $("#myModal").modal("hide");});
-  //}
+  clickedDate: any
+  dateEvents: dateEvent[] = [];
 
   addEventForm!: FormGroup;
   submitted = false;
@@ -38,18 +37,18 @@ export class CalendarComponent implements OnInit {
   }
 
   if(this.submitted){
-    var myFormData = new FormData();
 
-    myFormData.append('title', this.addEventForm.value.title);
-    myFormData.append('startdate', this.eventdate);
+    this.addDateEvent();
 
   }
 }
 
-  title = 'TutorMS-NG';
+  title = '';
   events = [];
   calendarOptions!: CalendarOptions;
   ngOnInit() {
+
+    this.displayAlldateEvents();
 
     this.calendarOptions = {
     initialView: 'dayGridMonth',
@@ -62,11 +61,8 @@ export class CalendarComponent implements OnInit {
     dayMaxEvents: true,
 
     dateClick: this.handleDateClick.bind(this), // bind is important!
-    events: [
-      this.events,
-      { title: 'event 1', date: '2021-08-01' },
-      { title: 'event 2', date: '2021-08-02' },
-    ]
+    events: this.dateEvents
+    
   };
 
     this.addEventForm = this.formBuilder.group({
@@ -80,8 +76,29 @@ export class CalendarComponent implements OnInit {
   $(".modal-title, .eventstarttitle").text("");
   $(".modal-title").text("Add Event at : "+arg.dateStr);
   $(".eventstarttitle").text(arg.dateStr);
-  if($("#myModal").modal("show")){
-    $('.modal-backdrop').remove();
+  $('.modal-backdrop').remove();
+
+  this.clickedDate = arg.dateStr;
   }
+
+  displayAlldateEvents(){
+    this.dateEventData.getAllDateEvent().subscribe(
+      (response) => {
+        console.log(response);
+        this.dateEvents = response;
+      }
+    );
+  }
+
+  addDateEvent(){
+    this.dateEventData.addDateEvent(new dateEvent(this.addEventForm.value.title, this.clickedDate)).subscribe(
+      (data) => {
+        console.log(data);
+        this.dateEvents.push(data);
+      },
+      (data) => {
+        console.log(data);
+        console.log("Failed to add date event.");
+      });
   }
 }

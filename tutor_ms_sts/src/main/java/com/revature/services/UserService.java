@@ -17,11 +17,12 @@ public interface UserService {
 
 	public boolean deleteUser(int id);
 
-	public List<User> getUserbyFirstNameAndAccountTypeId(String name, int accountTypeId);
-
-	public AccountType getUserAccountType(User u);
+	public List<User> getUserbyFirstNameAndAccountTypeId(String name, AccountType accountTypeId);
 
 	public List<User> getUserbyName(String name);
 	
 	public User loginUser(String username, String password);
+
+	public List<User> getUserByAccountType(AccountType id);
+
 }
