@@ -16,7 +16,7 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <div>
+          <div *ngIf='"Upcoming Schedule"==this.card.title'>
             <table>
               <thead>
                 <th>Day</th>
@@ -24,19 +24,89 @@
                 <th>Time Out</th>
                 <th>Total</th>
               </thead>
-            <tr *ngFor="let workday of fakeHoursList">
-              <td>{{workday.day}}</td>
-              <td>{{this.formatHours(workday.inTime)}}</td>
-              <td>{{this.formatHours(workday.outTime)}}</td>
-              <td>{{this.formatHours(this.subtractHours(workday))}}</td>
-            </tr>
-          </table>
+              <tr *ngFor="let workday of fakeHoursList">
+                <td>{{workday.day}}</td>
+                <td>{{this.formatHours(workday.inTime)}}</td>
+                <td>{{this.formatHours(workday.outTime)}}</td>
+                <td>{{this.formatHours(this.subtractHours(workday))}}</td>
+              </tr>
+
+            </table>
           </div>
-        </mat-card-content>
-      </mat-card>
+
+          <div *ngIf='"Add/Delete Hours"==this.card.title'>
+            <form #hoursForm="ngForm" class="container mt-3" (ngSubmit)="logValue()">
+              <div class="row justify-content-center">
+                <div class="col-6">
+                  <button type="button" class="btn btn-primary mb-2" (click)="addHours()">Add hours</button>
+                  <section *ngFor="let hours of hours; let i = index;">
+                    <div class="row">
+                      <div class="col-6">
+                        <h4>Hours {{i + 1}}</h4>
+                      </div>
+                      <div class="col-6 text-right">
+                        <button type="button" class="btn btn-danger btn-sm" (click)="removeHours(i)">Remove</button>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label>Hours</label>
+                          <input type="text" [(ngModel)]="hours.hours" name="hours_{{hours.id}}" />
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div class="row">
+
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label>Day</label>
+                          <select class="form-control" [(ngModel)]="hours.day" name="day_{{hours.id}}"
+                            placeholder="Monday">
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+
+                  <div class="text-right">
+                    <input type="submit" class="btn btn-success" value="Submit" />
+                  </div>
+
+                </div>
+              </div>
+
+
+
+        
+   
+    
     </mat-grid-tile>
   </mat-grid-list>
+
 </div>
+<!-- 
+    <mat-grid-tile *ngFor="let i of [1, 2, 3, 4]" [colspan]="( cardLayout | async )?.miniCard.cols"
+      [rowspan]="( cardLayout | async )?.miniCard.rows">
+      <app-card title="Card {{i}}"><div>Mini Card Content Here</div></app-card>
+    </mat-grid-tile>
+  
+    <mat-grid-tile *ngFor="let i of [5, 6, 7, 8]" [colspan]="( cardLayout | async )?.chart.cols"
+      [rowspan]="( cardLayout | async )?.chart.rows">
+      <app-card title="Card {{i}}"><div>Chart Content Here</div></app-card>
+    </mat-grid-tile>
+  
+    <mat-grid-tile [colspan]="( cardLayout | async )?.table.cols" [rowspan]="( cardLayout | async )?.table.rows">
+      <app-card title="Card 9"><div>Table Content Here</div></app-card>
+    </mat-grid-tile> -->
+
 <!-- 
   card.component.html
 <mat-card class="dashboard-card">

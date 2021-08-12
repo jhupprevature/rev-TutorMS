@@ -9,6 +9,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 })
 export class DashboardComponent implements OnInit {
   /** Based on the screen size, switch from standard to one column per row */
+  
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
       if (matches) {
@@ -38,6 +39,14 @@ export class DashboardComponent implements OnInit {
     console.log("elapsed:", this.fakeOut.getHours() - this.fakeIn.getHours());
   }
 
+
+ // dashboard.component.js
+
+
+
+
+
+
   fakeIn : Date = new Date(0);
   
   fakeOut : Date = new Date(0);
@@ -51,7 +60,28 @@ export class DashboardComponent implements OnInit {
     { "day": "Friday",    "inTime": this.fakeIn, "outTime": this.fakeOut},
     { "day": "Saturday",  "inTime": "---",       "outTime": "---"}
   ]
+  public hours: any[] = [{
+    hours: '',
+    day: ''
+  
+  }];
 
+  addHours() {
+    this.hours.push({
+      id: this.hours.length + 1,
+      hours: '',
+      day: ''
+    });
+  }
+
+  removeHours(i: number) {
+    this.hours.splice(i, 1);
+  }
+
+
+  logValue() {
+    console.log(this.hours);
+  }
   // var textTime = new Date(sunriseMills + offsetCityMills + offsetDeviceMills).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
 
   // displayHours() {

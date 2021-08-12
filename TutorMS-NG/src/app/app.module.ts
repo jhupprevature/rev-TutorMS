@@ -22,6 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { CardComponent } from './card/card.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { CardComponent } from './card/card.component';
     DashboardComponent,
     HoursSummaryComponent,
     ProfileComponent,
-    CardComponent
+    CardComponent,
+  
   ],
   imports: [
     BrowserModule,

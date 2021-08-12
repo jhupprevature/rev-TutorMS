@@ -19,3 +19,11 @@
 .dashboard-card-content {
   text-align: center;
 }
+
+.btn-main {
+  background: color-primary;
+}
+
+.btn-main-outline {
+  border: 1px solid color-primary
+}
