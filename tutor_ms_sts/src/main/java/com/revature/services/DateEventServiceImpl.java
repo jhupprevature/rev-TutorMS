@@ -6,21 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.beans.DateEvent;
-import com.revature.repositories.DateEventsRepo;
+import com.revature.repositories.DateEventRepo;
 
 @Service
-public class DateEventsServiceImpl implements DateEventsService {
+public class DateEventServiceImpl implements DateEventService {
 
 	@Autowired
-	DateEventsRepo der;
+	DateEventRepo der;
 
 	@Override
-	public DateEvent addDateEvents(DateEvent de) {
+	public DateEvent addDateEvent(DateEvent de) {
 		return der.save(de);
 	}
 
 	@Override
-	public DateEvent getDateEvents(int id) {
+	public DateEvent getDateEvent(int id) {
 		return der.findById(id).get();
 	}
 
@@ -30,12 +30,12 @@ public class DateEventsServiceImpl implements DateEventsService {
 	}
 
 	@Override
-	public DateEvent updateDateEvents(DateEvent change) {
+	public DateEvent updateDateEvent(DateEvent change) {
 		return der.save(change);
 	}
 
 	@Override
-	public boolean deleteDateEvents(int id) {
+	public boolean deleteDateEvent(int id) {
 		try {
 			der.deleteById(id);
 			return true;
