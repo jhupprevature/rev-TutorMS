@@ -10,6 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "account_types")
 public class AccountType {
@@ -22,6 +26,8 @@ public class AccountType {
     private String type;
     
     @OneToMany(mappedBy = "accountType")
+    @JsonIgnore
+    @Transient
     private Set<User> usersWithType;
 
     public AccountType() {

@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.Transient;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -50,6 +52,7 @@ public class User {
     @JoinTable(name = "tutors_courses",
             joinColumns = { @JoinColumn(name = "tutor_id") },
             inverseJoinColumns = { @JoinColumn(name = "course_id") })
+    @Transient
     private Set<Course> coursesToTutor;
 
     public User() {
