@@ -1,3 +1,4 @@
+import { AriaDescriber } from '@angular/cdk/a11y';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CalendarOptions } from '@fullcalendar/angular';
@@ -42,7 +43,7 @@ export class CalendarComponent implements OnInit {
   }
 }
 
-  title = 'TutorMS-NG';
+  title = '';
   events = [];
   calendarOptions!: CalendarOptions;
   ngOnInit() {
@@ -60,14 +61,9 @@ export class CalendarComponent implements OnInit {
     dayMaxEvents: true,
 
     dateClick: this.handleDateClick.bind(this), // bind is important!
-    events: [
-      { title: 'event 1', date: '2021-08-01' },
-      { title: 'event 2', date: '2021-08-02' },
-      this.dateEvents
-    ]
+    events: this.dateEvents
+    
   };
-
-    this.clickedDate = this.getDateByClick.bind(this);
 
     this.addEventForm = this.formBuilder.group({
     title: ['', [Validators.required]]
@@ -80,13 +76,9 @@ export class CalendarComponent implements OnInit {
   $(".modal-title, .eventstarttitle").text("");
   $(".modal-title").text("Add Event at : "+arg.dateStr);
   $(".eventstarttitle").text(arg.dateStr);
-    if($("#myModal").modal("show")){
-      $('.modal-backdrop').remove();
-    }
-  }
+  $('.modal-backdrop').remove();
 
-  getDateByClick(arg: { dateStr: string; }){
-    return arg.dateStr;
+  this.clickedDate = arg.dateStr;
   }
 
   displayAlldateEvents(){
