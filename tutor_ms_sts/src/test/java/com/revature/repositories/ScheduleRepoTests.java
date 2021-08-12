@@ -30,7 +30,7 @@ public class ScheduleRepoTests {
         
         theoSchedule = sr.save(theoSchedule);
         
-        System.out.println("theoSchedule ID: " + theoSchedule.getId());
+        System.out.println("theoSchedule id: " + theoSchedule.getId());
         assertNotEquals(0, theoSchedule.getId());
     }
     
