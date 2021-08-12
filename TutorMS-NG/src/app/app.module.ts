@@ -29,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchfilterPipe } from './Pipes/searchfilter.pipe';
 import { Tutor } from './Models/tutor';
 import { TutorsService } from './Services/tutors.service';
+import { DateEventsService } from './Services/date-events.service';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -68,7 +69,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     MatDividerModule,
     MatListModule
   ],
-  providers: [TutorsService],
+  providers: [TutorsService, DateEventsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

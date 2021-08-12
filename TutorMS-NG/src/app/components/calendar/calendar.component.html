@@ -18,7 +18,7 @@
                    <div class="col-sm-12">
                       <div class="form-group">
                             <label>Event Title</label>
-                            <input placeholder="Add Event Title" type="text" formControlName="title" class="titleinp form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
+                            <input placeholder="Add Event Title" type="text" formControlName="title" class="titleinp form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" [(ngModel)]="title" />
                             <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
                                   <div *ngIf="f.title.errors.required">Title is required</div>
                             </div>

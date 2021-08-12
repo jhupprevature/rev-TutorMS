@@ -10,62 +10,65 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "account_types")
 public class AccountType {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(updatable = false)
-    private int id;
-    
-    private String type;
-    
-    @OneToMany(mappedBy = "accountType")
-    private Set<User> usersWithType;
 
-    public AccountType() {
-        super();
-    }
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(updatable = false)
+	private int id;
 
-    public AccountType(int id, String type) {
-        super();
-        this.id = id;
-        this.type = type;
-    }
+	private String type;
 
-    public AccountType(String type) {
-        super();
-        this.type = type;
-    }
+	@JsonIgnore
+	@OneToMany(mappedBy = "accountType")
+	private Set<User> usersWithType;
 
-    public int getId() {
-        return id;
-    }
+	public AccountType() {
+		super();
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public AccountType(int id, String type) {
+		super();
+		this.id = id;
+		this.type = type;
+	}
 
-    public String getType() {
-        return type;
-    }
+	public AccountType(String type) {
+		super();
+		this.type = type;
+	}
 
-    public void setType(String type) {
-        this.type = type;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public Set<User> getUsersWithType() {
-        return usersWithType;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setUsersWithType(Set<User> usersWithType) {
-        this.usersWithType = usersWithType;
-    }
+	public String getType() {
+		return type;
+	}
 
-    @Override
-    public String toString() {
-        return "AccountType [id=" + id + ", type=" + type + "]";
-    }
-    
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public Set<User> getUsersWithType() {
+		return usersWithType;
+	}
+
+	public void setUsersWithType(Set<User> usersWithType) {
+		this.usersWithType = usersWithType;
+	}
+
+	@Override
+	public String toString() {
+		return "AccountType [id=" + id + ", type=" + type + "]";
+	}
+
 }
