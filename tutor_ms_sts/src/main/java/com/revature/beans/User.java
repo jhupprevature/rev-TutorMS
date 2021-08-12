@@ -84,7 +84,13 @@ public class User {
         this.schedule = schedule;
     }
 
-    public int getId() {
+    public User(String schoolEmail, String password) {
+		super();
+		this.schoolEmail = schoolEmail;
+		this.password = password;
+	}
+
+	public int getId() {
         return id;
     }
 

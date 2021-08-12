@@ -22,4 +22,6 @@ public interface UserService {
 	public AccountType getUserAccountType(User u);
 
 	public List<User> getUserbyName(String name);
+	
+	public User loginUser(String username, String password);
 }

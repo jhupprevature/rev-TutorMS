@@ -61,4 +61,10 @@ public class UserServiceImpl implements UserService {
 		return u.getAccountType();
 	}
 
+	@Override
+	public User loginUser(String username, String password) {
+		
+		return ur.findBySchoolEmailAndPassword(username, password);
+	}
+
 }
