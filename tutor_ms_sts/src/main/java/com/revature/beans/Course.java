@@ -4,7 +4,6 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,111 +18,111 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "courses")
 public class Course {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(updatable = false)
-    private int id;
-    
-    private String name;
-    
-    private String subject;
-    
-    private int level;
-    
-    private int hours;
-    
-    @JsonIgnore
-    @OneToMany(mappedBy = "course")
-    @Transient
-    private Set<Session> sessions;
-    
-    @JsonIgnore
-    @ManyToMany(mappedBy = "coursesToTutor")
-    @Transient
-    private Set<User> users;
-    
-    public Course() {
-        super();
-    }
 
-    public Course(int id, String name, String subject, int level, int hours) {
-        super();
-        this.id = id;
-        this.name = name;
-        this.subject = subject;
-        this.level = level;
-        this.hours = hours;
-    }
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(updatable = false)
+	private int id;
 
-    public Course(String name, String subject, int level, int hours) {
-        super();
-        this.name = name;
-        this.subject = subject;
-        this.level = level;
-        this.hours = hours;
-    }
+	private String name;
 
-    public int getId() {
-        return id;
-    }
+	private String subject;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	private int level;
 
-    public String getName() {
-        return name;
-    }
+	private int hours;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	@JsonIgnore
+	@OneToMany(mappedBy = "course")
+	@Transient
+	private Set<Session> sessions;
 
-    public String getSubject() {
-        return subject;
-    }
+	@JsonIgnore
+	@ManyToMany(mappedBy = "coursesToTutor")
+	@Transient
+	private Set<User> users;
 
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
+	public Course() {
+		super();
+	}
 
-    public int getLevel() {
-        return level;
-    }
+	public Course(int id, String name, String subject, int level, int hours) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.subject = subject;
+		this.level = level;
+		this.hours = hours;
+	}
 
-    public void setLevel(int level) {
-        this.level = level;
-    }
+	public Course(String name, String subject, int level, int hours) {
+		super();
+		this.name = name;
+		this.subject = subject;
+		this.level = level;
+		this.hours = hours;
+	}
 
-    public int getHours() {
-        return hours;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setHours(int hours) {
-        this.hours = hours;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public Set<Session> getSessions() {
-        return sessions;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setSessions(Set<Session> sessions) {
-        this.sessions = sessions;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public Set<User> getUsers() {
-        return users;
-    }
+	public String getSubject() {
+		return subject;
+	}
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
 
-    @Override
-    public String toString() {
-        return "Course [id=" + id + ", name=" + name + ", subject=" + subject
-                + ", level=" + level + ", hours=" + hours + "]";
-    }
-    
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public int getHours() {
+		return hours;
+	}
+
+	public void setHours(int hours) {
+		this.hours = hours;
+	}
+
+	public Set<Session> getSessions() {
+		return sessions;
+	}
+
+	public void setSessions(Set<Session> sessions) {
+		this.sessions = sessions;
+	}
+
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
+
+	@Override
+	public String toString() {
+		return "Course [id=" + id + ", name=" + name + ", subject=" + subject + ", level=" + level + ", hours=" + hours
+				+ "]";
+	}
+
 }

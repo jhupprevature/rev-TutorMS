@@ -14,8 +14,7 @@ export class SearchfilterPipe implements PipeTransform {
     return tutors.filter(tutor => 
       tutor.id.toString().toLocaleLowerCase().includes(searchBox.toLocaleLowerCase()) ||
       tutor.firstName.toLocaleLowerCase().includes(searchBox.toLocaleLowerCase()) ||
-      tutor.schoolEmail.toLocaleLowerCase().includes(searchBox.toLocaleLowerCase()) ||
-      tutor.phoneNumber.toLocaleLowerCase().includes(searchBox.toLocaleLowerCase())
+      tutor.schoolEmail.toLocaleLowerCase().includes(searchBox.toLocaleLowerCase())
       );
   }
 

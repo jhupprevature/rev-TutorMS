@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Session } from 'src/app/Models/session';
 import { Tutor } from 'src/app/Models/tutor';
+import { SessionService } from 'src/app/Services/session.service';
 import { TutorsService } from 'src/app/Services/tutors.service';
 
 @Component({
@@ -11,11 +13,13 @@ export class SchedulingComponent implements OnInit {
 
   searchBox!: string;
 
+  sessionList: Session[] = [];
+
   tutorsData: Tutor[] = [];
 
   selectedTutor?: Tutor;
 
-  constructor(private database: TutorsService) { }
+  constructor(private database: TutorsService, private sessionData: SessionService) { }
 
   ngOnInit(){
     this.database.getAllTutors().subscribe(data => {console.warn(data); this.tutorsData = data;});
@@ -27,13 +31,16 @@ export class SchedulingComponent implements OnInit {
 
   addSession(){
 
-      var sessionData = new FormData();
-  
-     // sessionData.append('title', this.addEventForm.value.title);
-      //sessionData.append('startdate', this.eventdate);
-  
-      //return this.http.post('http://localhost:8080/dateEvents', sessionData).subscribe((data: Object) => { this.events.push(data); $("#myModal").modal("hide");});
-    }
+    this.sessionData.addSession(new Session(1,1,1,0, 12, "", "")).subscribe(
+      (data) => {
+        console.log(data);
+        this.sessionList.push(data);
+      },
+      (data) => {
+        console.log(data);
+        console.log("Failed to add session.");
+      });
+  }
 }
 
 

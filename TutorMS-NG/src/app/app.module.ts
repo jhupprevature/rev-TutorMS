@@ -32,8 +32,9 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchfilterPipe } from './Pipes/searchfilter.pipe';
-import { Tutor } from './Models/tutor';
 import { TutorsService } from './Services/tutors.service';
+import { DateEventsService } from './Services/date-events.service';
+import { SessionService } from './Services/session.service';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -79,7 +80,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     MatButtonModule,
     LayoutModule,
   ],
-  providers: [TutorsService],
+  providers: [TutorsService, DateEventsService, SessionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

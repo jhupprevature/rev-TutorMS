@@ -61,188 +61,181 @@ public class Schedule {
     @Column(name = "pending_approval_since", nullable = true)
     private Long pendingApprovalSince;
 
-    public Schedule() {
-        super();
-    }
+	public Schedule() {
+		super();
+	}
 
-    public Schedule(int id, String sundayStart, String sundayEnd,
-            String mondayStart, String mondayEnd, String tuesdayStart,
-            String tuesdayEnd, String wednesdayStart,
-            String wednesdayEnd, String thursdayStart,
-            String thursdayEnd, String fridayStart, String fridayEnd,
-            String saturdayStart, String saturdayEnd,
-            Long pendingApprovalSince) {
-        super();
-        this.id = id;
-        this.sundayStart = sundayStart;
-        this.sundayEnd = sundayEnd;
-        this.mondayStart = mondayStart;
-        this.mondayEnd = mondayEnd;
-        this.tuesdayStart = tuesdayStart;
-        this.tuesdayEnd = tuesdayEnd;
-        this.wednesdayStart = wednesdayStart;
-        this.wednesdayEnd = wednesdayEnd;
-        this.thursdayStart = thursdayStart;
-        this.thursdayEnd = thursdayEnd;
-        this.fridayStart = fridayStart;
-        this.fridayEnd = fridayEnd;
-        this.saturdayStart = saturdayStart;
-        this.saturdayEnd = saturdayEnd;
-        this.pendingApprovalSince = pendingApprovalSince;
-    }
+	public Schedule(int id, String sundayStart, String sundayEnd, String mondayStart, String mondayEnd,
+			String tuesdayStart, String tuesdayEnd, String wednesdayStart, String wednesdayEnd, String thursdayStart,
+			String thursdayEnd, String fridayStart, String fridayEnd, String saturdayStart, String saturdayEnd,
+			Long pendingApprovalSince) {
+		super();
+		this.id = id;
+		this.sundayStart = sundayStart;
+		this.sundayEnd = sundayEnd;
+		this.mondayStart = mondayStart;
+		this.mondayEnd = mondayEnd;
+		this.tuesdayStart = tuesdayStart;
+		this.tuesdayEnd = tuesdayEnd;
+		this.wednesdayStart = wednesdayStart;
+		this.wednesdayEnd = wednesdayEnd;
+		this.thursdayStart = thursdayStart;
+		this.thursdayEnd = thursdayEnd;
+		this.fridayStart = fridayStart;
+		this.fridayEnd = fridayEnd;
+		this.saturdayStart = saturdayStart;
+		this.saturdayEnd = saturdayEnd;
+		this.pendingApprovalSince = pendingApprovalSince;
+	}
 
-    public Schedule(String sundayStart, String sundayEnd,
-            String mondayStart, String mondayEnd, String tuesdayStart,
-            String tuesdayEnd, String wednesdayStart,
-            String wednesdayEnd, String thursdayStart,
-            String thursdayEnd, String fridayStart, String fridayEnd,
-            String saturdayStart, String saturdayEnd,
-            Long pendingApprovalSince) {
-        super();
-        this.sundayStart = sundayStart;
-        this.sundayEnd = sundayEnd;
-        this.mondayStart = mondayStart;
-        this.mondayEnd = mondayEnd;
-        this.tuesdayStart = tuesdayStart;
-        this.tuesdayEnd = tuesdayEnd;
-        this.wednesdayStart = wednesdayStart;
-        this.wednesdayEnd = wednesdayEnd;
-        this.thursdayStart = thursdayStart;
-        this.thursdayEnd = thursdayEnd;
-        this.fridayStart = fridayStart;
-        this.fridayEnd = fridayEnd;
-        this.saturdayStart = saturdayStart;
-        this.saturdayEnd = saturdayEnd;
-        this.pendingApprovalSince = pendingApprovalSince;
-    }
+	public Schedule(String sundayStart, String sundayEnd, String mondayStart, String mondayEnd, String tuesdayStart,
+			String tuesdayEnd, String wednesdayStart, String wednesdayEnd, String thursdayStart, String thursdayEnd,
+			String fridayStart, String fridayEnd, String saturdayStart, String saturdayEnd, Long pendingApprovalSince) {
+		super();
+		this.sundayStart = sundayStart;
+		this.sundayEnd = sundayEnd;
+		this.mondayStart = mondayStart;
+		this.mondayEnd = mondayEnd;
+		this.tuesdayStart = tuesdayStart;
+		this.tuesdayEnd = tuesdayEnd;
+		this.wednesdayStart = wednesdayStart;
+		this.wednesdayEnd = wednesdayEnd;
+		this.thursdayStart = thursdayStart;
+		this.thursdayEnd = thursdayEnd;
+		this.fridayStart = fridayStart;
+		this.fridayEnd = fridayEnd;
+		this.saturdayStart = saturdayStart;
+		this.saturdayEnd = saturdayEnd;
+		this.pendingApprovalSince = pendingApprovalSince;
+	}
 
-    public int getId() {
-        return id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public String getSundayStart() {
-        return sundayStart;
-    }
+	public String getSundayStart() {
+		return sundayStart;
+	}
 
-    public void setSundayStart(String sundayStart) {
-        this.sundayStart = sundayStart;
-    }
+	public void setSundayStart(String sundayStart) {
+		this.sundayStart = sundayStart;
+	}
 
-    public String getSundayEnd() {
-        return sundayEnd;
-    }
+	public String getSundayEnd() {
+		return sundayEnd;
+	}
 
-    public void setSundayEnd(String sundayEnd) {
-        this.sundayEnd = sundayEnd;
-    }
+	public void setSundayEnd(String sundayEnd) {
+		this.sundayEnd = sundayEnd;
+	}
 
-    public String getMondayStart() {
-        return mondayStart;
-    }
+	public String getMondayStart() {
+		return mondayStart;
+	}
 
-    public void setMondayStart(String mondayStart) {
-        this.mondayStart = mondayStart;
-    }
+	public void setMondayStart(String mondayStart) {
+		this.mondayStart = mondayStart;
+	}
 
-    public String getMondayEnd() {
-        return mondayEnd;
-    }
+	public String getMondayEnd() {
+		return mondayEnd;
+	}
 
-    public void setMondayEnd(String mondayEnd) {
-        this.mondayEnd = mondayEnd;
-    }
+	public void setMondayEnd(String mondayEnd) {
+		this.mondayEnd = mondayEnd;
+	}
 
-    public String getTuesdayStart() {
-        return tuesdayStart;
-    }
+	public String getTuesdayStart() {
+		return tuesdayStart;
+	}
 
-    public void setTuesdayStart(String tuesdayStart) {
-        this.tuesdayStart = tuesdayStart;
-    }
+	public void setTuesdayStart(String tuesdayStart) {
+		this.tuesdayStart = tuesdayStart;
+	}
 
-    public String getTuesdayEnd() {
-        return tuesdayEnd;
-    }
+	public String getTuesdayEnd() {
+		return tuesdayEnd;
+	}
 
-    public void setTuesdayEnd(String tuesdayEnd) {
-        this.tuesdayEnd = tuesdayEnd;
-    }
+	public void setTuesdayEnd(String tuesdayEnd) {
+		this.tuesdayEnd = tuesdayEnd;
+	}
 
-    public String getWednesdayStart() {
-        return wednesdayStart;
-    }
+	public String getWednesdayStart() {
+		return wednesdayStart;
+	}
 
-    public void setWednesdayStart(String wednesdayStart) {
-        this.wednesdayStart = wednesdayStart;
-    }
+	public void setWednesdayStart(String wednesdayStart) {
+		this.wednesdayStart = wednesdayStart;
+	}
 
-    public String getWednesdayEnd() {
-        return wednesdayEnd;
-    }
+	public String getWednesdayEnd() {
+		return wednesdayEnd;
+	}
 
-    public void setWednesdayEnd(String wednesdayEnd) {
-        this.wednesdayEnd = wednesdayEnd;
-    }
+	public void setWednesdayEnd(String wednesdayEnd) {
+		this.wednesdayEnd = wednesdayEnd;
+	}
 
-    public String getThursdayStart() {
-        return thursdayStart;
-    }
+	public String getThursdayStart() {
+		return thursdayStart;
+	}
 
-    public void setThursdayStart(String thursdayStart) {
-        this.thursdayStart = thursdayStart;
-    }
+	public void setThursdayStart(String thursdayStart) {
+		this.thursdayStart = thursdayStart;
+	}
 
-    public String getThursdayEnd() {
-        return thursdayEnd;
-    }
+	public String getThursdayEnd() {
+		return thursdayEnd;
+	}
 
-    public void setThursdayEnd(String thursdayEnd) {
-        this.thursdayEnd = thursdayEnd;
-    }
+	public void setThursdayEnd(String thursdayEnd) {
+		this.thursdayEnd = thursdayEnd;
+	}
 
-    public String getFridayStart() {
-        return fridayStart;
-    }
+	public String getFridayStart() {
+		return fridayStart;
+	}
 
-    public void setFridayStart(String fridayStart) {
-        this.fridayStart = fridayStart;
-    }
+	public void setFridayStart(String fridayStart) {
+		this.fridayStart = fridayStart;
+	}
 
-    public String getFridayEnd() {
-        return fridayEnd;
-    }
+	public String getFridayEnd() {
+		return fridayEnd;
+	}
 
-    public void setFridayEnd(String fridayEnd) {
-        this.fridayEnd = fridayEnd;
-    }
+	public void setFridayEnd(String fridayEnd) {
+		this.fridayEnd = fridayEnd;
+	}
 
-    public String getSaturdayStart() {
-        return saturdayStart;
-    }
+	public String getSaturdayStart() {
+		return saturdayStart;
+	}
 
-    public void setSaturdayStart(String saturdayStart) {
-        this.saturdayStart = saturdayStart;
-    }
+	public void setSaturdayStart(String saturdayStart) {
+		this.saturdayStart = saturdayStart;
+	}
 
-    public String getSaturdayEnd() {
-        return saturdayEnd;
-    }
+	public String getSaturdayEnd() {
+		return saturdayEnd;
+	}
 
-    public void setSaturdayEnd(String saturdayEnd) {
-        this.saturdayEnd = saturdayEnd;
-    }
+	public void setSaturdayEnd(String saturdayEnd) {
+		this.saturdayEnd = saturdayEnd;
+	}
 
-    public Long getPendingApprovalSince() {
-        return pendingApprovalSince;
-    }
+	public Long getPendingApprovalSince() {
+		return pendingApprovalSince;
+	}
 
-    public void setPendingApprovalSince(Long pendingApprovalSince) {
-        this.pendingApprovalSince = pendingApprovalSince;
-    }
+	public void setPendingApprovalSince(Long pendingApprovalSince) {
+		this.pendingApprovalSince = pendingApprovalSince;
+	}
 
     @Override
     public String toString() {

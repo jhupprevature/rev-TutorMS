@@ -7,5 +7,5 @@ import com.revature.beans.Schedule;
 
 @Repository
 public interface ScheduleRepo extends CrudRepository<Schedule, Integer> {
-    
+
 }
