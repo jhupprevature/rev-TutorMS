@@ -26,4 +26,9 @@ export class HeaderComponent implements OnInit {
     }
     return this.loginServ.currentUser?.schoolEmail ?? "Guest"
   }
+
+  logout() {
+    this.loginServ.currentUser = undefined;
+    this.loggedIn = false;
+  }
 }
