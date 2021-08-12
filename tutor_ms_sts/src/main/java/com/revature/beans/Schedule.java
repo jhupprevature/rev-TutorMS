@@ -7,65 +7,59 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-//import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "schedules")
 public class Schedule {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
+    private int id;
+    
+    @Column(name = "sunday_start")
+    private String sundayStart;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(updatable = false)
-	private int id;
+    @Column(name = "sunday_end")
+    private String sundayEnd;
+    
+    @Column(name = "monday_start")
+    private String mondayStart;
+    
+    @Column(name = "monday_end")
+    private String mondayEnd;
+    
+    @Column(name = "tuesday_start")
+    private String tuesdayStart;
 
-	@Column(name = "sunday_start")
-	private String sundayStart;
+    @Column(name = "tuesday_end")
+    private String tuesdayEnd;
+    
+    @Column(name = "wednesday_start")
+    private String wednesdayStart;
 
-	@Column(name = "sunday_end")
-	private String sundayEnd;
+    @Column(name = "wednesday_end")
+    private String wednesdayEnd;
+    
+    @Column(name = "thursday_start")
+    private String thursdayStart;
 
-	@Column(name = "monday_start")
-	private String mondayStart;
+    @Column(name = "thursday_end")
+    private String thursdayEnd;
+    
+    @Column(name = "friday_start")
+    private String fridayStart;
 
-	@Column(name = "monday_end")
-	private String mondayEnd;
+    @Column(name = "friday_end")
+    private String fridayEnd;
+    
+    @Column(name = "saturday_start")
+    private String saturdayStart;
 
-	@Column(name = "tuesday_start")
-	private String tuesdayStart;
-
-	@Column(name = "tuesday_end")
-	private String tuesdayEnd;
-
-	@Column(name = "wednesday_start")
-	private String wednesdayStart;
-
-	@Column(name = "wednesday_end")
-	private String wednesdayEnd;
-
-	@Column(name = "thursday_start")
-	private String thursdayStart;
-
-	@Column(name = "thursday_end")
-	private String thursdayEnd;
-
-	@Column(name = "friday_start")
-	private String fridayStart;
-
-	@Column(name = "friday_end")
-	private String fridayEnd;
-
-	@Column(name = "saturday_start")
-	private String saturdayStart;
-
-	@Column(name = "saturday_end")
-	private String saturdayEnd;
-
-	@Column(name = "pending_approval_since", nullable = true)
-	private Long pendingApprovalSince;
-
-//    @OneToOne(targetEntity = User.class, fetch = FetchType.LAZY)
-//    @Transient
-//    private User user;
+    @Column(name = "saturday_end")
+    private String saturdayEnd;
+    
+    @Column(name = "pending_approval_since", nullable = true)
+    private Long pendingApprovalSince;
 
 	public Schedule() {
 		super();
@@ -243,22 +237,18 @@ public class Schedule {
 		this.pendingApprovalSince = pendingApprovalSince;
 	}
 
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
-
-	@Override
-	public String toString() {
-		return "Schedule [id=" + id + ", sundayStart=" + sundayStart + ", sundayEnd=" + sundayEnd + ", mondayStart="
-				+ mondayStart + ", mondayEnd=" + mondayEnd + ", tuesdayStart=" + tuesdayStart + ", tuesdayEnd="
-				+ tuesdayEnd + ", wednesdayStart=" + wednesdayStart + ", wednesdayEnd=" + wednesdayEnd
-				+ ", thursdayStart=" + thursdayStart + ", thursdayEnd=" + thursdayEnd + ", fridayStart=" + fridayStart
-				+ ", fridayEnd=" + fridayEnd + ", saturdayStart=" + saturdayStart + ", saturdayEnd=" + saturdayEnd
-				+ ", pendingApprovalSince=" + pendingApprovalSince + "]";
-	}
-
+    @Override
+    public String toString() {
+        return "Schedule [id=" + id + ", sundayStart=" + sundayStart
+                + ", sundayEnd=" + sundayEnd + ", mondayStart=" + mondayStart
+                + ", mondayEnd=" + mondayEnd + ", tuesdayStart=" + tuesdayStart
+                + ", tuesdayEnd=" + tuesdayEnd + ", wednesdayStart="
+                + wednesdayStart + ", wednesdayEnd=" + wednesdayEnd
+                + ", thursdayStart=" + thursdayStart + ", thursdayEnd="
+                + thursdayEnd + ", fridayStart=" + fridayStart + ", fridayEnd="
+                + fridayEnd + ", saturdayStart=" + saturdayStart
+                + ", saturdayEnd=" + saturdayEnd + ", pendingApprovalSince="
+                + pendingApprovalSince + "]";
+    }
+    
 }
