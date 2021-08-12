@@ -30,13 +30,15 @@ export class DashboardComponent implements OnInit {
     })
   );
 
+  constructor(private breakpointObserver: BreakpointObserver) {}
+
   ngOnInit(): void {
     // this.displayHours();
     this.fakeIn.setHours(10);
     this.fakeOut.setHours(18);
-    console.log("in:", this.fakeIn);
-    console.log("out:", this.fakeOut);
-    console.log("elapsed:", this.fakeOut.getHours() - this.fakeIn.getHours());
+    // console.log("in:", this.fakeIn);
+    // console.log("out:", this.fakeOut);
+    // console.log("elapsed:", this.fakeOut.getHours() - this.fakeIn.getHours());
   }
 
 
@@ -117,6 +119,6 @@ export class DashboardComponent implements OnInit {
     return result;
   }
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+
 
 }
