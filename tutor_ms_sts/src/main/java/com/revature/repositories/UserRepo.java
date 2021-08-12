@@ -15,5 +15,8 @@ public interface UserRepo extends CrudRepository<User, Integer> {
 
 	List<User> findByFirstNameAndAccountTypeId(String name, AccountType accountTypeId);
 
+//	List<User> findByAccountType(AccountType at);
+	
+	User findBySchoolEmailAndPassword(String schoolEmail, String password);
 	List<User> findByAccountType(AccountType at);
 }

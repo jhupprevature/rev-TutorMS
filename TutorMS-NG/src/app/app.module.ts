@@ -31,6 +31,7 @@ import { TutorsService } from './Services/tutors.service';
 import { DateEventsService } from './Services/date-events.service';
 import { SessionService } from './Services/session.service';
 
+
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
   interactionPlugin

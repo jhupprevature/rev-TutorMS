@@ -20,6 +20,8 @@ public interface UserService {
 	public List<User> getUserbyFirstNameAndAccountTypeId(String name, AccountType accountTypeId);
 
 	public List<User> getUserbyName(String name);
+	
+	public User loginUser(String username, String password);
 
 	public List<User> getUserByAccountType(AccountType id);
 

@@ -9,12 +9,12 @@
           <button mat-button [matMenuTriggerFor]="menu" class="user mt-2 d-flex align-items-center">
             <!-- <img src="./assets/User.png" alt="" class="user-image mr-1 p-2" /> -->
             <mat-icon>account_circle</mat-icon>
-            User Name
+              {{ getUsername() }}
             <!-- class="user-image-icon ml-1" -->
             <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
           </button>
-          <mat-menu #menu="matMenu">
-            
+          <mat-menu #menu="matMenu" >
+            <div *ngIf="loggedIn">
             <button mat-menu-item routerLinkActive="list-item-active" routerLink="/profile">
               <mat-icon>account_circle</mat-icon>
               Profile
@@ -23,10 +23,19 @@
               <mat-icon>settings</mat-icon>
               Settings
             </button>
-            <button mat-menu-item routerLink="/login">
+            <button (click)="logout()" mat-menu-item routerLink="/login">
               <mat-icon>exit_to_app</mat-icon>
               Logout
             </button>
+          </div>
+
+          <div *ngIf="!loggedIn">
+            <button mat-menu-item routerLinkActive="list-item-active" routerLink="/registration">
+              <mat-icon>mode_edit</mat-icon>
+              Register
+            </button>
+          </div>
+
           </mat-menu>
         </li>
       </ul>
