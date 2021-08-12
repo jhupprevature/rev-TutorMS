@@ -3,6 +3,7 @@ package com.revature.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.revature.beans.AccountType;
@@ -10,6 +11,7 @@ import com.revature.beans.User;
 import com.revature.repositories.UserRepo;
 
 @Service
+@Qualifier("UserService")
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -47,7 +49,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> getUserbyFirstNameAndAccountTypeId(String name, int accountTypeId) {
+	public List<User> getUserbyFirstNameAndAccountTypeId(String name, AccountType accountTypeId) {
 		return ur.findByFirstNameAndAccountTypeId(name, accountTypeId);
 	}
 
@@ -57,8 +59,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public AccountType getUserAccountType(User u) {
-		return u.getAccountType();
+	public List<User> getUserByAccountType(AccountType at) {
+		return ur.findByAccountType(at);
 	}
 
 }

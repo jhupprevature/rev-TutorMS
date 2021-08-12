@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.AccountType;
 import com.revature.beans.User;
+import com.revature.services.AccountTypeService;
 import com.revature.services.UserService;
 
 @RestController
@@ -23,6 +24,9 @@ public class UserController {
 
 	@Autowired
 	UserService us;
+
+	@Autowired
+	AccountTypeService ats;
 
 	@CrossOrigin
 	@GetMapping(value = "/users", produces = "application/json")
@@ -39,14 +43,14 @@ public class UserController {
 	@CrossOrigin
 	@GetMapping("users/search")
 	public List<User> searchUser(@RequestParam(required = false) String name,
-			@RequestParam(required = false) int accountTypeId) {
-		if (accountTypeId > 0 && name != null) {
-			return us.getUserbyFirstNameAndAccountTypeId(name, accountTypeId);
-		} else if (name != null) {
-			return us.getUserbyName(name);
-		// Not sure if this is needed anymore
-//		} else if (accountTypeId > 0) {
-//			return us.getUserAccountType();
+			@RequestParam(required = false) Integer accountTypeId) {
+
+		AccountType accountType = ats.getAccountTypes(accountTypeId);
+
+		if (accountType != null && name != null) {
+			return us.getUserbyFirstNameAndAccountTypeId(name, accountType);
+		} else if (accountType != null) {
+			return us.getUserByAccountType(accountType);
 		} else {
 			return new ArrayList<User>();
 		}
