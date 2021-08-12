@@ -1,79 +1,84 @@
 package com.revature.beans;
 
-import java.time.LocalTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.data.annotation.Transient;
 
 @Entity
 @Table(name = "schedules")
 public class Schedule {
     
     @Id
-    @Column(name = "tutor_id", updatable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
     private int id;
     
     @Column(name = "sunday_start")
-    private LocalTime sundayStart;
+    private String sundayStart;
 
     @Column(name = "sunday_end")
-    private LocalTime sundayEnd;
+    private String sundayEnd;
     
     @Column(name = "monday_start")
-    private LocalTime mondayStart;
+    private String mondayStart;
     
     @Column(name = "monday_end")
-    private LocalTime mondayEnd;
+    private String mondayEnd;
     
     @Column(name = "tuesday_start")
-    private LocalTime tuesdayStart;
+    private String tuesdayStart;
 
     @Column(name = "tuesday_end")
-    private LocalTime tuesdayEnd;
+    private String tuesdayEnd;
     
     @Column(name = "wednesday_start")
-    private LocalTime wednesdayStart;
+    private String wednesdayStart;
 
     @Column(name = "wednesday_end")
-    private LocalTime wednesdayEnd;
+    private String wednesdayEnd;
     
     @Column(name = "thursday_start")
-    private LocalTime thursdayStart;
+    private String thursdayStart;
 
     @Column(name = "thursday_end")
-    private LocalTime thursdayEnd;
+    private String thursdayEnd;
     
     @Column(name = "friday_start")
-    private LocalTime fridayStart;
+    private String fridayStart;
 
     @Column(name = "friday_end")
-    private LocalTime fridayEnd;
+    private String fridayEnd;
     
     @Column(name = "saturday_start")
-    private LocalTime saturdayStart;
+    private String saturdayStart;
 
     @Column(name = "saturday_end")
-    private LocalTime saturdayEnd;
+    private String saturdayEnd;
     
     @Column(name = "pending_approval_since")
     private long pendingApprovalSince;
     
-    @OneToOne(targetEntity = User.class)
+    @OneToOne(targetEntity = User.class, fetch = FetchType.LAZY)
+    @Transient
     private User user;
 
     public Schedule() {
         super();
     }
 
-    public Schedule(int id, LocalTime sundayStart, LocalTime sundayEnd,
-            LocalTime mondayStart, LocalTime mondayEnd, LocalTime tuesdayStart,
-            LocalTime tuesdayEnd, LocalTime wednesdayStart,
-            LocalTime wednesdayEnd, LocalTime thursdayStart,
-            LocalTime thursdayEnd, LocalTime fridayStart, LocalTime fridayEnd,
-            LocalTime saturdayStart, LocalTime saturdayEnd,
+    public Schedule(int id, String sundayStart, String sundayEnd,
+            String mondayStart, String mondayEnd, String tuesdayStart,
+            String tuesdayEnd, String wednesdayStart,
+            String wednesdayEnd, String thursdayStart,
+            String thursdayEnd, String fridayStart, String fridayEnd,
+            String saturdayStart, String saturdayEnd,
             long pendingApprovalSince) {
         super();
         this.id = id;
@@ -94,12 +99,12 @@ public class Schedule {
         this.pendingApprovalSince = pendingApprovalSince;
     }
 
-    public Schedule(LocalTime sundayStart, LocalTime sundayEnd,
-            LocalTime mondayStart, LocalTime mondayEnd, LocalTime tuesdayStart,
-            LocalTime tuesdayEnd, LocalTime wednesdayStart,
-            LocalTime wednesdayEnd, LocalTime thursdayStart,
-            LocalTime thursdayEnd, LocalTime fridayStart, LocalTime fridayEnd,
-            LocalTime saturdayStart, LocalTime saturdayEnd,
+    public Schedule(String sundayStart, String sundayEnd,
+            String mondayStart, String mondayEnd, String tuesdayStart,
+            String tuesdayEnd, String wednesdayStart,
+            String wednesdayEnd, String thursdayStart,
+            String thursdayEnd, String fridayStart, String fridayEnd,
+            String saturdayStart, String saturdayEnd,
             long pendingApprovalSince) {
         super();
         this.sundayStart = sundayStart;
@@ -127,115 +132,115 @@ public class Schedule {
         this.id = id;
     }
 
-    public LocalTime getSundayStart() {
+    public String getSundayStart() {
         return sundayStart;
     }
 
-    public void setSundayStart(LocalTime sundayStart) {
+    public void setSundayStart(String sundayStart) {
         this.sundayStart = sundayStart;
     }
 
-    public LocalTime getSundayEnd() {
+    public String getSundayEnd() {
         return sundayEnd;
     }
 
-    public void setSundayEnd(LocalTime sundayEnd) {
+    public void setSundayEnd(String sundayEnd) {
         this.sundayEnd = sundayEnd;
     }
 
-    public LocalTime getMondayStart() {
+    public String getMondayStart() {
         return mondayStart;
     }
 
-    public void setMondayStart(LocalTime mondayStart) {
+    public void setMondayStart(String mondayStart) {
         this.mondayStart = mondayStart;
     }
 
-    public LocalTime getMondayEnd() {
+    public String getMondayEnd() {
         return mondayEnd;
     }
 
-    public void setMondayEnd(LocalTime mondayEnd) {
+    public void setMondayEnd(String mondayEnd) {
         this.mondayEnd = mondayEnd;
     }
 
-    public LocalTime getTuesdayStart() {
+    public String getTuesdayStart() {
         return tuesdayStart;
     }
 
-    public void setTuesdayStart(LocalTime tuesdayStart) {
+    public void setTuesdayStart(String tuesdayStart) {
         this.tuesdayStart = tuesdayStart;
     }
 
-    public LocalTime getTuesdayEnd() {
+    public String getTuesdayEnd() {
         return tuesdayEnd;
     }
 
-    public void setTuesdayEnd(LocalTime tuesdayEnd) {
+    public void setTuesdayEnd(String tuesdayEnd) {
         this.tuesdayEnd = tuesdayEnd;
     }
 
-    public LocalTime getWednesdayStart() {
+    public String getWednesdayStart() {
         return wednesdayStart;
     }
 
-    public void setWednesdayStart(LocalTime wednesdayStart) {
+    public void setWednesdayStart(String wednesdayStart) {
         this.wednesdayStart = wednesdayStart;
     }
 
-    public LocalTime getWednesdayEnd() {
+    public String getWednesdayEnd() {
         return wednesdayEnd;
     }
 
-    public void setWednesdayEnd(LocalTime wednesdayEnd) {
+    public void setWednesdayEnd(String wednesdayEnd) {
         this.wednesdayEnd = wednesdayEnd;
     }
 
-    public LocalTime getThursdayStart() {
+    public String getThursdayStart() {
         return thursdayStart;
     }
 
-    public void setThursdayStart(LocalTime thursdayStart) {
+    public void setThursdayStart(String thursdayStart) {
         this.thursdayStart = thursdayStart;
     }
 
-    public LocalTime getThursdayEnd() {
+    public String getThursdayEnd() {
         return thursdayEnd;
     }
 
-    public void setThursdayEnd(LocalTime thursdayEnd) {
+    public void setThursdayEnd(String thursdayEnd) {
         this.thursdayEnd = thursdayEnd;
     }
 
-    public LocalTime getFridayStart() {
+    public String getFridayStart() {
         return fridayStart;
     }
 
-    public void setFridayStart(LocalTime fridayStart) {
+    public void setFridayStart(String fridayStart) {
         this.fridayStart = fridayStart;
     }
 
-    public LocalTime getFridayEnd() {
+    public String getFridayEnd() {
         return fridayEnd;
     }
 
-    public void setFridayEnd(LocalTime fridayEnd) {
+    public void setFridayEnd(String fridayEnd) {
         this.fridayEnd = fridayEnd;
     }
 
-    public LocalTime getSaturdayStart() {
+    public String getSaturdayStart() {
         return saturdayStart;
     }
 
-    public void setSaturdayStart(LocalTime saturdayStart) {
+    public void setSaturdayStart(String saturdayStart) {
         this.saturdayStart = saturdayStart;
     }
 
-    public LocalTime getSaturdayEnd() {
+    public String getSaturdayEnd() {
         return saturdayEnd;
     }
 
-    public void setSaturdayEnd(LocalTime saturdayEnd) {
+    public void setSaturdayEnd(String saturdayEnd) {
         this.saturdayEnd = saturdayEnd;
     }
 

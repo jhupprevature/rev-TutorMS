@@ -11,6 +11,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.Transient;
+
 @Entity
 @Table(name = "courses")
 public class Course {
@@ -29,9 +31,11 @@ public class Course {
     private int hours;
     
     @OneToMany(mappedBy = "course")
+    @Transient
     private Set<Session> sessions;
     
     @ManyToMany(mappedBy = "coursesToTutor")
+    @Transient
     private Set<User> users;
     
     public Course() {
