@@ -3,7 +3,6 @@ package com.revature.repositories;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.Date;
 import java.util.List;
@@ -68,7 +67,7 @@ public class ScheduleRepoTests {
     void deleteSchedule() {
         Schedule schedule = sr.findById(3).get();
         sr.delete(schedule);
-        assertNull(sr.findById(3).get());
+        assertFalse(sr.findById(3).isPresent());
     }
     
 }
