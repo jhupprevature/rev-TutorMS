@@ -2,14 +2,12 @@ package com.revature.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.springframework.data.annotation.Transient;
+//import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "schedules")
@@ -62,12 +60,12 @@ public class Schedule {
     @Column(name = "saturday_end")
     private String saturdayEnd;
     
-    @Column(name = "pending_approval_since")
-    private long pendingApprovalSince;
+    @Column(name = "pending_approval_since", nullable = true)
+    private Long pendingApprovalSince;
     
-    @OneToOne(targetEntity = User.class, fetch = FetchType.LAZY)
-    @Transient
-    private User user;
+//    @OneToOne(targetEntity = User.class, fetch = FetchType.LAZY)
+//    @Transient
+//    private User user;
 
     public Schedule() {
         super();
@@ -79,7 +77,7 @@ public class Schedule {
             String wednesdayEnd, String thursdayStart,
             String thursdayEnd, String fridayStart, String fridayEnd,
             String saturdayStart, String saturdayEnd,
-            long pendingApprovalSince) {
+            Long pendingApprovalSince) {
         super();
         this.id = id;
         this.sundayStart = sundayStart;
@@ -105,7 +103,7 @@ public class Schedule {
             String wednesdayEnd, String thursdayStart,
             String thursdayEnd, String fridayStart, String fridayEnd,
             String saturdayStart, String saturdayEnd,
-            long pendingApprovalSince) {
+            Long pendingApprovalSince) {
         super();
         this.sundayStart = sundayStart;
         this.sundayEnd = sundayEnd;
@@ -244,21 +242,21 @@ public class Schedule {
         this.saturdayEnd = saturdayEnd;
     }
 
-    public long getPendingApprovalSince() {
+    public Long getPendingApprovalSince() {
         return pendingApprovalSince;
     }
 
-    public void setPendingApprovalSince(long pendingApprovalSince) {
+    public void setPendingApprovalSince(Long pendingApprovalSince) {
         this.pendingApprovalSince = pendingApprovalSince;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     @Override
     public String toString() {
