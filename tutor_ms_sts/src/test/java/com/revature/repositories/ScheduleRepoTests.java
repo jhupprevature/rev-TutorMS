@@ -1,7 +1,9 @@
 package com.revature.repositories;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.Date;
 import java.util.List;
@@ -23,7 +25,7 @@ public class ScheduleRepoTests {
     @Test
     void addSchedule() {
         Date dateTime = new Date();
-        long currentTime = dateTime.getTime();
+        Long currentTime = dateTime.getTime();
         
         Schedule theoSchedule = new Schedule(null, null, "08:00", "12:00", "08:00", "12:00", "08:00", "12:00", "08:00", "12:00", "08:00", "12:00", null, null, currentTime);
         
@@ -38,6 +40,35 @@ public class ScheduleRepoTests {
         List<Schedule> allSchedules = (List<Schedule>) sr.findAll();
         System.out.println(allSchedules);
         assertFalse(allSchedules.isEmpty());
+    }
+    
+    @Test
+    void getScheduleById() {
+        Schedule expectedSchedule = new Schedule(1, null, null, "07:00", "15:00", "07:00", "15:00", "07:00", "15:00", "07:00", "15:00", "07:00", "15:00", null, null, null);
+        Schedule actualSchedule = sr.findById(1).get();
+        assertEquals(expectedSchedule.toString(), actualSchedule.toString());
+    }
+    
+    @Test
+    void updateSchedule() {
+        Schedule schedule = sr.findById(2).get();
+        String scheduleToUpdateString = schedule.toString();
+        int scheduleToUpdateId = schedule.getId();
+        
+        schedule.setMondayStart("10:00");
+        schedule.setMondayEnd("14:00");
+        
+        schedule = sr.save(schedule);
+
+        assertEquals(scheduleToUpdateId, schedule.getId());
+        assertNotEquals(scheduleToUpdateString, schedule.toString());
+    }
+    
+    @Test
+    void deleteSchedule() {
+        Schedule schedule = sr.findById(3).get();
+        sr.delete(schedule);
+        assertNull(sr.findById(3).get());
     }
     
 }

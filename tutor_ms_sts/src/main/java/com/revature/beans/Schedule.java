@@ -7,8 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-//import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "schedules")
 public class Schedule {
@@ -62,10 +60,6 @@ public class Schedule {
     
     @Column(name = "pending_approval_since", nullable = true)
     private Long pendingApprovalSince;
-    
-//    @OneToOne(targetEntity = User.class, fetch = FetchType.LAZY)
-//    @Transient
-//    private User user;
 
     public Schedule() {
         super();
@@ -249,14 +243,6 @@ public class Schedule {
     public void setPendingApprovalSince(Long pendingApprovalSince) {
         this.pendingApprovalSince = pendingApprovalSince;
     }
-
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
 
     @Override
     public String toString() {
