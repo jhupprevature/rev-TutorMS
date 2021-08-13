@@ -74,5 +74,12 @@ public class UserController {
 	public boolean deleteUser(@PathVariable int id) {
 		return us.deleteUser(id);
 	}
+	
+	@CrossOrigin
+	@PostMapping(value = "/login", consumes = "application/json", produces = "application/json")
+	public User loginUser(@RequestBody User u) {
+		System.out.println(u);
+		return us.loginUser(u.getSchoolEmail(), u.getPassword());
+	}
 
 }
