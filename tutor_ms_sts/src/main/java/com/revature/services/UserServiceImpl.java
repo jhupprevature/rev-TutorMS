@@ -49,16 +49,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> getUserbyFirstNameAndAccountTypeId(String name, AccountType accountTypeId) {
-		return ur.findByFirstNameAndAccountTypeId(name, accountTypeId);
-	}
-
-	@Override
-	public List<User> getUserbyName(String name) {
-		return ur.findByFirstName(name);
-	}
-
-	@Override
 	public List<User> getUserByAccountType(AccountType at) {
 		return ur.findByAccountType(at);
 	}
