@@ -22,7 +22,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
-import { CardComponent } from './card/card.component';
+import { CardComponent } from './components/card/card.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ProfileSettingsComponent } from './components/profileSettings/profileSettings.component';
 import { SchedulingComponent } from './components/scheduling/scheduling.component';
