@@ -12,7 +12,7 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/java/TutorManagerApproves.feature", glue = { "com.revature.steps",
+@CucumberOptions(features = "src/test/resources/TutorManagerApproves.feature", glue = { "com.revature.steps",
 		"TutorManagerApprovesSteps" })
 public class TutorManagerApprovesRunner {
 

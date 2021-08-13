@@ -12,7 +12,7 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/java/ScheduleTutoring.feature", glue = { "com.revature.steps",
+@CucumberOptions(features = "src/test/resources/ScheduleTutoring.feature", glue = { "com.revature.steps",
 		"ScheduleTutoringSteps" })
 public class ScheduleTutoringRunner {
 
