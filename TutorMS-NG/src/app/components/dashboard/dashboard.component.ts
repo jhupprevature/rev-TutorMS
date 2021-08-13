@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+ // dashboard.component.js
+ import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { FormControl } from '@angular/forms';
+import { FormArray } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
+
 export class DashboardComponent implements OnInit {
   /** Based on the screen size, switch from standard to one column per row */
-  
+  hours = new FormControl('');
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
       if (matches) {
@@ -30,8 +37,71 @@ export class DashboardComponent implements OnInit {
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
 
+  updateHoursForm = this.fb.group({
+    ID: ['', Validators.required],
+    change: this.fb.group({
+      day: [''],
+      numberofhours: [''],
+    }),
+
+   
+    
+  });
+  constructor(private breakpointObserver: BreakpointObserver,private fb: FormBuilder) {}
+  updateHours() {
+    this.updateHoursForm.patchValue({
+      ID: '23244',
+      change: {
+        day: 'Monday',
+      numberofhours: '20'
+        
+      }
+    });
+  }
+
+  profileForm = this.fb.group({
+    firstName: ['', Validators.required],
+    lastName: [''],
+    address: this.fb.group({
+      street: [''],
+      city: [''],
+      state: [''],
+      zip: ['']
+    }),
+    aliases: this.fb.array([
+      this.fb.control('')
+    ])
+  });
+
+  get aliases() {
+    return this.profileForm.get('aliases') as FormArray;
+  }
+
+ 
+
+  updateProfile() {
+    this.profileForm.patchValue({
+      firstName: 'Nancy',
+      address: {
+        street: '123 Drew Street'
+      }
+    });
+  }
+
+  addAlias() {
+    this.aliases.push(this.fb.control(''));
+  }
+
+  onSubmit1() {
+    // TODO: Use EventEmitter with form value
+    console.warn(this.profileForm.value);
+  }
+
+  onSubmit() {
+    // TODO: Use EventEmitter with form value
+    console.warn(this.updateHoursForm.value);
+  }
   ngOnInit(): void {
     // this.displayHours();
     this.fakeIn.setHours(10);
@@ -40,12 +110,7 @@ export class DashboardComponent implements OnInit {
     // console.log("out:", this.fakeOut);
     // console.log("elapsed:", this.fakeOut.getHours() - this.fakeIn.getHours());
   }
-
-
- // dashboard.component.js
-
-
-
+ 
 
 
 
@@ -62,37 +127,21 @@ export class DashboardComponent implements OnInit {
     { "day": "Friday",    "inTime": this.fakeIn, "outTime": this.fakeOut},
     { "day": "Saturday",  "inTime": "---",       "outTime": "---"}
   ]
-  public hours: any[] = [{
-    hours: '',
-    day: ''
-  
-  }];
 
-  addHours() {
-    this.hours.push({
-      id: this.hours.length + 1,
-      hours: '',
-      day: ''
-    });
-  }
-
-  removeHours(i: number) {
-    this.hours.splice(i, 1);
-  }
+ 
+Schedule : Array<any> = [
+    { "day": "Sunday"},
+    { "day": "Monday"},
+    { "day": "Tuesday" },
+    { "day": "Wednesday" },
+    { "day": "Thursday" },
+    { "day": "Friday"},
+    { "day": "Saturday"}
+  ]
 
 
-  logValue() {
-    console.log(this.hours);
-  }
-  // var textTime = new Date(sunriseMills + offsetCityMills + offsetDeviceMills).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
 
-  // displayHours() {
-  //   this.fakeHoursList.forEach(
-  //     function (value) {
-  //       console.log(value.day, "In:", value.inTime, "Out:", value.outTime);
-  //     }
-  //   )
-  // }
+ 
   formatHours(time: Date) : string {
     time = new Date(time);
     if (isNaN(time.getTime())) {
@@ -118,7 +167,37 @@ export class DashboardComponent implements OnInit {
     result.setMinutes(elapsedMinutes);
     return result;
   }
+/*  public hours: any[] = [{
+    hours: '',
+    day: ''
+  
+  }];
+ */
+/*   addHours() {
+    this.hours.push({
+      id: this.hours.length + 1,
+      hours: '',
+      day: ''
+    });
+  }
 
+  removeHours(i: number) {
+    this.hours.splice(i, 1);
+  }
+
+
+  logValue() {
+    console.log(this.hours);
+  } */
+  // var textTime = new Date(sunriseMills + offsetCityMills + offsetDeviceMills).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
+
+ displayHours() {
+ this.fakeHoursList.forEach(
+  function (value) {
+  //   console.log(value.day, "In:", value.inTime, "Out:", value.outTime);
+     }
+    )
+  } 
 
 
 }
