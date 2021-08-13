@@ -10,6 +10,7 @@
           
             <div class="modal-header">
               <h4 class="modal-title align-center"></h4>
+              <button type="button" class="close" (click)="hideForm()" data-dismiss="modal">&times;</button>
             </div>
             
             <div class="modal-body">
@@ -18,7 +19,7 @@
                    <div class="col-sm-12">
                       <div class="form-group">
                             <label>Event Title</label>
-                            <input placeholder="Add Event Title" type="text" formControlName="title" class="titleinp form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" [(ngModel)]="title" />
+                            <input placeholder="Add Event Title" type="text" class="titleinp form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" [(ngModel)]="title" [ngModelOptions]="{standalone: true}"/>
                             <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
                                   <div *ngIf="f.title.errors.required">Title is required</div>
                             </div>
@@ -26,12 +27,14 @@
                    </div> 
                    <div class="col-sm-12">
                     <div class="form-group">
-                          <label>Event Date:</label>
+                          <label>Event Start Date:</label>
                           <div class="form-control eventstarttitle"></div>
                        </div>
                  </div> 
                 </div>
-                <button type="button" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+                <button type="button" class="btn btn-primary" (click)="onSubmit()" style="margin-right: 15px;">Submit</button>
+                <button type="button" class="btn btn-primary" (click)="onDelete()">Delete</button>
+                <input placeholder="Event Title to Delete" type="text" [(ngModel)]="deleteTitle" [ngModelOptions]="{standalone: true}">
               </div>
              </div>
            </div>
