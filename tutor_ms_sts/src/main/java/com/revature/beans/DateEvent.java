@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "date_events")
-public class DateEvents {
+public class DateEvent {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,18 +18,18 @@ public class DateEvents {
 	private String title;
 	private String date;
 
-	public DateEvents() {
+	public DateEvent() {
 		super();
 	}
 
-	public DateEvents(int id, String title, String date) {
+	public DateEvent(int id, String title, String date) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.date = date;
 	}
 
-	public DateEvents(String title, String date) {
+	public DateEvent(String title, String date) {
 		super();
 		this.title = title;
 		this.date = date;
@@ -61,7 +61,7 @@ public class DateEvents {
 
 	@Override
 	public String toString() {
-		return "DateEvents [id=" + id + ", title=" + title + ", date=" + date + "]";
+		return "DateEvent [id=" + id + ", title=" + title + ", date=" + date + "]";
 	}
 
 }

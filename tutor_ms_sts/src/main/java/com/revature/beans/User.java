@@ -1,11 +1,21 @@
 package com.revature.beans;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.data.annotation.Transient;
 
 @Entity
 @Table(name = "users")
@@ -13,26 +23,43 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", updatable = false)
+	@Column(updatable = false)
 	private int id;
+
 	@Column(name = "first_name")
 	private String firstName;
+
 	@Column(name = "last_name")
 	private String lastName;
+
 	@Column(name = "school_email")
 	private String schoolEmail;
+
 	private String password;
+
 	@Column(name = "phone_number")
 	private String phoneNumber;
-	@Column(name = "account_type_id")
-	private int accountTypeId;
+
+	@ManyToOne
+	@JoinColumn(name = "account_type_id", insertable = false, updatable = false)
+	private AccountType accountType;
+
+	@OneToOne(targetEntity = Schedule.class)
+	@JoinColumn(name = "schedule_id")
+	private Schedule schedule;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "tutors_courses", joinColumns = { @JoinColumn(name = "tutor_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "course_id") })
+	@Transient
+	private Set<Course> coursesToTutor;
 
 	public User() {
 		super();
 	}
 
 	public User(int id, String firstName, String lastName, String schoolEmail, String password, String phoneNumber,
-			int accountTypeId) {
+			AccountType accountType, Schedule schedule) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -40,18 +67,26 @@ public class User {
 		this.schoolEmail = schoolEmail;
 		this.password = password;
 		this.phoneNumber = phoneNumber;
-		this.accountTypeId = accountTypeId;
+		this.accountType = accountType;
+		this.schedule = schedule;
 	}
 
 	public User(String firstName, String lastName, String schoolEmail, String password, String phoneNumber,
-			int accountTypeId) {
+			AccountType accountType, Schedule schedule) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.schoolEmail = schoolEmail;
 		this.password = password;
 		this.phoneNumber = phoneNumber;
-		this.accountTypeId = accountTypeId;
+		this.accountType = accountType;
+		this.schedule = schedule;
+	}
+
+	public User(String schoolEmail, String password) {
+		super();
+		this.schoolEmail = schoolEmail;
+		this.password = password;
 	}
 
 	public int getId() {
@@ -102,18 +137,35 @@ public class User {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public int getAccountTypeId() {
-		return accountTypeId;
+	public AccountType getAccountType() {
+		return accountType;
 	}
 
-	public void setAccountTypeId(int accountTypeId) {
-		this.accountTypeId = accountTypeId;
+	public void setAccountType(AccountType accountType) {
+		this.accountType = accountType;
+	}
+
+	public Schedule getSchedule() {
+		return schedule;
+	}
+
+	public void setSchedule(Schedule schedule) {
+		this.schedule = schedule;
+	}
+
+	public Set<Course> getCoursesToTutor() {
+		return coursesToTutor;
+	}
+
+	public void setCoursesToTutor(Set<Course> coursesToTutor) {
+		this.coursesToTutor = coursesToTutor;
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", schoolEmail=" + schoolEmail
-				+ ", password=" + password + ", phoneNumber=" + phoneNumber + ", accountTypeId=" + accountTypeId + "]";
+				+ ", password=" + password + ", phoneNumber=" + phoneNumber + ", accountType=" + accountType
+				+ ", schedule=" + schedule + "]";
 	}
 
 }

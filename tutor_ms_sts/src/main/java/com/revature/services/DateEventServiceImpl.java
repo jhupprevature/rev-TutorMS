@@ -5,37 +5,37 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.revature.beans.DateEvents;
-import com.revature.repositories.DateEventsRepo;
+import com.revature.beans.DateEvent;
+import com.revature.repositories.DateEventRepo;
 
 @Service
-public class DateEventsServiceImpl implements DateEventsService {
+public class DateEventServiceImpl implements DateEventService {
 
 	@Autowired
-	DateEventsRepo der;
+	DateEventRepo der;
 
 	@Override
-	public DateEvents addDateEvents(DateEvents de) {
+	public DateEvent addDateEvent(DateEvent de) {
 		return der.save(de);
 	}
 
 	@Override
-	public DateEvents getDateEvents(int id) {
+	public DateEvent getDateEvent(int id) {
 		return der.findById(id).get();
 	}
 
 	@Override
-	public List<DateEvents> getAllDateEvents() {
-		return (List<DateEvents>) der.findAll();
+	public List<DateEvent> getAllDateEvents() {
+		return (List<DateEvent>) der.findAll();
 	}
 
 	@Override
-	public DateEvents updateDateEvents(DateEvents change) {
+	public DateEvent updateDateEvent(DateEvent change) {
 		return der.save(change);
 	}
 
 	@Override
-	public boolean deleteDateEvents(int id) {
+	public boolean deleteDateEvent(int id) {
 		try {
 			der.deleteById(id);
 			return true;

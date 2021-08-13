@@ -12,44 +12,44 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.beans.DateEvents;
-import com.revature.services.DateEventsService;
+import com.revature.beans.DateEvent;
+import com.revature.services.DateEventService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class DateEventsController {
 
 	@Autowired
-	DateEventsService des;
+	DateEventService des;
 
 	@CrossOrigin
 	@GetMapping(value = "/dateEvents", produces = "application/json")
-	public List<DateEvents> getAllDateEvents() {
+	public List<DateEvent> getAllDateEvents() {
 		return des.getAllDateEvents();
 	}
 
 	@CrossOrigin
 	@GetMapping("dateEvents/{id}")
-	public DateEvents getDateEvents(@PathVariable("id") String id) {
-		return des.getDateEvents(Integer.parseInt(id));
+	public DateEvent getDateEvent(@PathVariable("id") String id) {
+		return des.getDateEvent(Integer.parseInt(id));
 	}
 
 	@CrossOrigin
 	@PostMapping(value = "/dateEvents", consumes = "application/json", produces = "application/json")
-	public DateEvents addDateEvents(@RequestBody DateEvents de) {
-		return des.addDateEvents(de);
+	public DateEvent addDateEvent(@RequestBody DateEvent de) {
+		return des.addDateEvent(de);
 	}
 
 	@CrossOrigin
 	@PutMapping(value = "/dateEvents/{id}", consumes = "application/json", produces = "application/json")
-	public DateEvents updateDateEvents(@PathVariable int id, @RequestBody DateEvents change) {
+	public DateEvent updateDateEvent(@PathVariable int id, @RequestBody DateEvent change) {
 		change.setId(id);
-		return des.updateDateEvents(change);
+		return des.updateDateEvent(change);
 	}
 
 	@CrossOrigin
 	@DeleteMapping("dateEvents/{id}")
-	public boolean deleteDateEvents(@PathVariable("id") String id) {
-		return des.deleteDateEvents(Integer.parseInt(id));
+	public boolean deleteDateEvent(@PathVariable("id") String id) {
+		return des.deleteDateEvent(Integer.parseInt(id));
 	}
 }

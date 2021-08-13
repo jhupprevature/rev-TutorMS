@@ -3,9 +3,9 @@ package com.revature.repositories;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.revature.beans.DateEvents;
+import com.revature.beans.Schedule;
 
 @Repository
-public interface DateEventsRepo extends CrudRepository<DateEvents, Integer> {
+public interface ScheduleRepo extends CrudRepository<Schedule, Integer> {
 
 }

@@ -2,6 +2,7 @@ package com.revature.services;
 
 import java.util.List;
 
+import com.revature.beans.AccountType;
 import com.revature.beans.User;
 
 public interface UserService {
@@ -16,9 +17,12 @@ public interface UserService {
 
 	public boolean deleteUser(int id);
 
-	public List<User> getUserbyFirstNameAndAccountTypeId(String name, int accountTypeId);
-
-	public List<User> getUserbyAccountTypeId(int accountTypeId);
+	public List<User> getUserbyFirstNameAndAccountTypeId(String name, AccountType accountTypeId);
 
 	public List<User> getUserbyName(String name);
+	
+	public User loginUser(String username, String password);
+
+	public List<User> getUserByAccountType(AccountType id);
+
 }
