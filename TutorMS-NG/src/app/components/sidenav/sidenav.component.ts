@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy} from '@angular/core';
+import { User } from 'src/app/models/User';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -6,20 +7,16 @@ import { LoginService } from 'src/app/services/login.service';
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.css']
 })
-export class SidenavComponent implements OnInit {
+export class SidenavComponent {
+  user: User;
 
-  constructor(private loginServ: LoginService) { }
-
-  ngOnInit(): void {
+  constructor(private loginServ: LoginService) { 
+    this.user = loginServ.currentUser;
   }
 
-  isManager() : boolean {
-    // console.log(this.loginServ.currentUser);
-    let userType = this.loginServ.currentUser.accountType?.type;
-
-    if (userType == 'Manager') {
+  isManager() :boolean {
+    if (this.loginServ.currentUser.accountType.type == 'Tutor Manager') {
       return true;
-    } else {return false;}
+    } else return false;
   }
-
 }

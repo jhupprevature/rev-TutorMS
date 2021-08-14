@@ -22,10 +22,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getUsername() {
-    if (this.loginServ.currentUser?.schoolEmail) {
-        this.loggedIn = true;
-    }
-    return this.loginServ.currentUser?.schoolEmail ?? "Guest"
+    return this.loginServ.currentUser.schoolEmail;
   }
 
   logout() {

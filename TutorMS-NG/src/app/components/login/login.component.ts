@@ -15,20 +15,20 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  username: String = "";
-  password: String = "";
+  username: string = "";
+  password: string = "";
   invalidLogin: boolean = false;
 
   login() {
-    console.log(this.username)
-    console.log(this.password)
+    console.log(this.username);
+    console.log(this.password);
 
     this.invalidLogin = false;
-    let user = new User(0, this.username, this.password);
+    let user = new User(-1, 'Guest', this.username, this.password);
     this.loginServ.login(user).subscribe(
       (r) => {
         if (r) {
-          console.log("going in here!")
+          console.log("going in here!");
           console.log(r);
           this.loginServ.currentUser = r;
           console.log(this.loginServ.currentUser);
