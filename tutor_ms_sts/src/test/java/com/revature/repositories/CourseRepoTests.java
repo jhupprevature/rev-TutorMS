@@ -24,14 +24,12 @@ public class CourseRepoTests {
     void addCourse() {
         Course newCourse = new Course("Introduction to Biology: The Evolution and Diversity of Life", "BIOL", 1010, 3);
         newCourse = cr.save(newCourse);
-        System.out.println("newCourse id: " + newCourse.getId());
         assertNotEquals(0, newCourse.getId());
     }
     
     @Test
     void getAllCourses() {
         List<Course> allCourses = (List<Course>) cr.findAll();
-        System.out.println(allCourses);
         assertFalse(allCourses.isEmpty());
     }
     

@@ -23,17 +23,13 @@ public class AccountTypeTests {
     @Test
     void addAccountType() {
         AccountType parent = new AccountType("Parent");
-
         parent = atr.save(parent);
-
-        System.out.println("parent id: " + parent.getId());
         assertNotEquals(0, parent.getId());
     }
 
     @Test
     void getAllAccountTypes() {
         List<AccountType> allAccountTypes = (List<AccountType>) atr.findAll();
-        System.out.println(allAccountTypes);
         assertFalse(allAccountTypes.isEmpty());
     }
 

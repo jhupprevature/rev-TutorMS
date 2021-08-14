@@ -55,7 +55,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User loginUser(String username, String password) {
-		
 		return ur.findBySchoolEmailAndPassword(username, password);
 	}
 

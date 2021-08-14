@@ -25,21 +25,16 @@ public class ScheduleRepoTests {
     void addSchedule() {
         Date dateTime = new Date();
         Long currentTime = dateTime.getTime();
-
         Schedule theoSchedule = new Schedule(null, null, "08:00", "12:00",
                 "08:00", "12:00", "08:00", "12:00", "08:00", "12:00", "08:00",
                 "12:00", null, null, currentTime);
-
         theoSchedule = sr.save(theoSchedule);
-
-        System.out.println("theoSchedule id: " + theoSchedule.getId());
         assertNotEquals(0, theoSchedule.getId());
     }
 
     @Test
     void getAllSchedules() {
         List<Schedule> allSchedules = (List<Schedule>) sr.findAll();
-        System.out.println(allSchedules);
         assertFalse(allSchedules.isEmpty());
     }
 

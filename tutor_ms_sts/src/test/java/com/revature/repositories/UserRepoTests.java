@@ -27,23 +27,19 @@ public class UserRepoTests {
 
     @Autowired
     public ScheduleRepo sr;
-    
+
     @Test
     void addUser() {
         AccountType studentType = atr.findById(3).get();
         User newUser = new User("Bob", "McGee", "bmcgee", "Af2io!jfA3",
                 "229-531-5483", studentType, null);
-
         newUser = ur.save(newUser);
-
-        System.out.println("newUser id: " + newUser.getId());
         assertNotEquals(0, newUser.getId());
     }
 
     @Test
     void getAllUsers() {
         List<User> allUsers = (List<User>) ur.findAll();
-        System.out.println(allUsers);
         assertFalse(allUsers.isEmpty());
     }
 
@@ -84,6 +80,17 @@ public class UserRepoTests {
         List<User> tutors = ur.findByAccountType(tutorType);
         System.out.println(tutors);
         assertFalse(tutors.isEmpty());
+    }
+
+    @Test
+    void findBySchoolEmailAndPasswordTest() {
+        AccountType student = atr.findById(3).get();
+        User expectedTina = new User(8, "Tina", "Dymick", "tdymick7",
+                "bqm4f4", "560-285-5415", student, null);
+        String schoolEmail = "tdymick7";
+        String password = "bqm4f4";
+        User actualTina = ur.findBySchoolEmailAndPassword(schoolEmail, password);
+        assertEquals(expectedTina.toString(), actualTina.toString());
     }
 
 }
