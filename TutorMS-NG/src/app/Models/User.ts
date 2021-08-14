@@ -21,3 +21,7 @@ class AccountType {
         this.type = type;
     }
 }
+
+export const guestUser = new User(-1, 'Guest', '');
+guestUser.firstName = 'Guest';
+guestUser.accountType = new AccountType(3, 'Student');

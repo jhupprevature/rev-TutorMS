@@ -7,7 +7,6 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
@@ -24,17 +23,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { CardComponent } from './components/card/card.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
-//import { ProfileSettingsComponent } from './components/profileSettings/profileSettings.component';
+//import { ProfileSettingsComponent } from './components/profile-settings/profile-settings.component';
 import { SchedulingComponent } from './components/scheduling/scheduling.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './components/profile/profile.component'
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SearchfilterPipe } from './Pipes/searchfilter.pipe';
-import { TutorsService } from './Services/tutors.service';
-import { DateEventsService } from './Services/date-events.service';
-import { SessionService } from './Services/session.service';
+import { SearchfilterPipe } from './pipes/searchfilter.pipe';
+import { TutorsService } from './services/tutors.service';
+import { DateEventsService } from './services/date-events.service';
+import { SessionService } from './services/session.service';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -45,7 +44,6 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     HeaderComponent,
     SidenavComponent,
     DashboardComponent,

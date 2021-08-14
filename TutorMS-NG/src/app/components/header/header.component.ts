@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { LoginService } from 'src/app/Services/login.service';
+import { guestUser } from 'src/app/models/User';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-header',
@@ -28,7 +29,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.loginServ.currentUser = undefined;
+    this.loginServ.currentUser = guestUser;
     this.loggedIn = false;
   }
 }

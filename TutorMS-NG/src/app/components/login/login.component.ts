@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/app/Models/User';
-import { LoginService } from 'src/app/Services/login.service';
+import { User } from 'src/app/models/User';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
           console.log(r);
           this.loginServ.currentUser = r;
           console.log(this.loginServ.currentUser);
-          this.router.navigateByUrl("/home");
+          this.router.navigateByUrl("/dashboard");
         } else {
           this.invalidLogin = true;
         }
