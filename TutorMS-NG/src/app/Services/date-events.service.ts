@@ -19,6 +19,10 @@ export class DateEventsService {
   addDateEvent(dateEvent: dateEvent): Observable<dateEvent> {
     return this.http.post<dateEvent>('http://localhost:8080/dateEvents', dateEvent, { headers: this.postHeaders });
   }
+
+  deleteDateEvent(id: string): Observable<dateEvent>{
+    return this.http.delete<dateEvent>('http://localhost:8080/dateEvents/' + id);
+  }
 /*
   getDateEvent(id): Observable<dateEvent> {
     return this.http.get<dateEvent>('http://localhost:8080/dateEvents/' + id);

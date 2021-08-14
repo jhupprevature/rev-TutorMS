@@ -1,1 +1,38 @@
-@import "../home/home.component.css"
+.grid-container {
+  margin: 20px;
+}
+form {
+  padding-top: 1rem;
+}
+
+label {
+  display: block;
+  margin: .5em 0;
+  font-weight: bold;
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}
+
+.btn-main {
+  background: color-primary;
+}
+
+.btn-main-outline {
+  border: 1px solid color-primary
+}

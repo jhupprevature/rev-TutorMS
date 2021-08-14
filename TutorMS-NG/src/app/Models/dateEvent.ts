@@ -1,10 +1,9 @@
 export class dateEvent {
     title: string;
-    date: string;
+    start: string;
   
-    constructor(title: string, date: string){
+    constructor(title: string, start: string){
       this.title = title;
-      this.date = date;
-  
+      this.start = start;
     }
   }

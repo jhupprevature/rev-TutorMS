@@ -70,7 +70,7 @@ create table sessions (
 create table date_events (
 	date_id serial primary key,
 	title varchar(150),
-	date varchar(50)
+	start varchar(50)
 );
 
 insert into date_events values (default, 'pancake making', '2021/08/08');	--1

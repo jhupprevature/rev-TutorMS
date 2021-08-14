@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
-import dayGridPlugin from '@fullcalendar/daygrid'; 
-import interactionPlugin from '@fullcalendar/interaction'; 
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -18,6 +18,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { AnalyticsComponent } from './components/analytics/analytics.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { LayoutModule } from '@angular/cdk/layout';
+import { CardComponent } from './components/card/card.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 //import { ProfileSettingsComponent } from './components/profileSettings/profileSettings.component';
 import { SchedulingComponent } from './components/scheduling/scheduling.component';
@@ -49,6 +54,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     SchedulingComponent,
     ProfileComponent,
     AnalyticsComponent,
+    ProfileComponent,
+    CardComponent,
     LoginComponent,
     RegistrationComponent,
     SearchfilterPipe
@@ -67,7 +74,11 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     MatMenuModule,
     MatIconModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatButtonModule,
+    LayoutModule,
   ],
   providers: [TutorsService, DateEventsService, SessionService],
   bootstrap: [AppComponent]
