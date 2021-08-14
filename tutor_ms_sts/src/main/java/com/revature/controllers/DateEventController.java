@@ -17,7 +17,7 @@ import com.revature.services.DateEventService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-public class DateEventsController {
+public class DateEventController {
 
 	@Autowired
 	DateEventService des;

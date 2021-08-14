@@ -52,4 +52,5 @@ public class SessionController {
 	public boolean deleteSession(@PathVariable("id") String id) {
 		return ss.deleteSession(Integer.parseInt(id));
 	}
+	
 }

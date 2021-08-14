@@ -6,14 +6,14 @@ import com.revature.beans.AccountType;
 
 public interface AccountTypeService {
 
-	public AccountType addAccountTypes(AccountType at);
+	public AccountType addAccountType(AccountType at);
 
-	public AccountType getAccountTypes(int id);
+	public AccountType getAccountType(int id);
 
 	public List<AccountType> getAllAccountTypes();
 
-	public AccountType updateAccountTypes(AccountType change);
+	public AccountType updateAccountType(AccountType change);
 
-	public boolean deleteAccountTypes(int id);
+	public boolean deleteAccountType(int id);
 
 }
