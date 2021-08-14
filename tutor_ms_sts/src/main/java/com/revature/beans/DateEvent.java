@@ -16,6 +16,8 @@ public class DateEvent {
 	@Column(name = "date_id", updatable = false)
 	private int id;
 	private String title;
+	// Just using this because the db colmn name doesn't match
+	@Column(name = "start")
 	private String date;
 
 	public DateEvent() {

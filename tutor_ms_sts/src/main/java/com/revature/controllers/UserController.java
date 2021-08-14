@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.AccountType;
+import com.revature.beans.Schedule;
 import com.revature.beans.User;
+import com.revature.repositories.ScheduleRepo;
 import com.revature.services.AccountTypeService;
 import com.revature.services.UserService;
 
@@ -78,7 +80,6 @@ public class UserController {
 	@CrossOrigin
 	@PostMapping(value = "/login", consumes = "application/json", produces = "application/json")
 	public User loginUser(@RequestBody User u) {
-		System.out.println(u);
 		return us.loginUser(u.getSchoolEmail(), u.getPassword());
 	}
 
