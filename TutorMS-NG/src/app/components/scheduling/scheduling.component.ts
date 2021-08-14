@@ -31,7 +31,7 @@ export class SchedulingComponent implements OnInit {
 
   addSession(){
 
-    this.sessionData.addSession(new Session(1,1,1,0, 12, "", "")).subscribe(
+    this.sessionData.addSession(new Session(1 , 1 , 1 , 0 , 12, "", "")).subscribe(
       (data) => {
         console.log(data);
         this.sessionList.push(data);

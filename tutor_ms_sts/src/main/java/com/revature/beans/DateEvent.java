@@ -16,25 +16,23 @@ public class DateEvent {
 	@Column(name = "date_id", updatable = false)
 	private int id;
 	private String title;
-	// Just using this because the db colmn name doesn't match
-	@Column(name = "start")
-	private String date;
+	private String start;
 
 	public DateEvent() {
 		super();
 	}
 
-	public DateEvent(int id, String title, String date) {
+	public DateEvent(int id, String title, String start) {
 		super();
 		this.id = id;
 		this.title = title;
-		this.date = date;
+		this.start = start;
 	}
 
-	public DateEvent(String title, String date) {
+	public DateEvent(String title, String start) {
 		super();
 		this.title = title;
-		this.date = date;
+		this.start = start;
 	}
 
 	public int getId() {
@@ -53,17 +51,17 @@ public class DateEvent {
 		this.title = title;
 	}
 
-	public String getDate() {
-		return date;
+	public String getStart() {
+		return start;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setStart(String start) {
+		this.start = start;
 	}
 
 	@Override
 	public String toString() {
-		return "DateEvent [id=" + id + ", title=" + title + ", date=" + date + "]";
+		return "DateEvent [id=" + id + ", title=" + title + ", start=" + start + "]";
 	}
 
 }

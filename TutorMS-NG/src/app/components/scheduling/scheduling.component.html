@@ -9,7 +9,8 @@
         <div *ngIf="selectedTutor" style="float:left; margin-left: 50px;">
           <h4>{{selectedTutor.firstName | uppercase}} Details</h4>
           <div><button style="font-size: medium;" (click)="addSession()">Schedule Tutoring Session</button><br>
-            <span>Phone Number: </span>{{selectedTutor.phoneNumber}} 
+            <span>Phone Number: </span>{{selectedTutor.phoneNumber}} <br>
+            <span>School Email: </span>{{selectedTutor.schoolEmail}} 
           </div>
         </div>
 
@@ -20,7 +21,7 @@
               <tr>
                 <th>ID</th>
                 <th>First Name</th>
-                <th>School Email</th>
+                <th>Last Name</th>
                 
               </tr>
             </thead>
@@ -29,7 +30,7 @@
                   <tr *ngFor="let tutor of tutorsData | searchfilter : searchBox" [class.selected]="tutor === selectedTutor" (click)="onSelect(tutor)">
                     <td>{{tutor.id}}</td>
                     <td>{{tutor.firstName}}</td>
-                    <td>{{tutor.schoolEmail}}</td>
+                    <td>{{tutor.lastName}}</td>
                   </tr>
                
             </tbody>
