@@ -35,7 +35,7 @@ public class DateEventRepoTests {
     
     @Test
     void getDateEventById() {
-        String expectedString = "DateEvent [id=1, title=pancake making, start=2021-08-08]";
+        String expectedString = "DateEvent [id=1, title=pancake making, start=2021/08/08]";
         DateEvent actualDateEvent = der.findById(1).get();
         assertEquals(expectedString, actualDateEvent.toString());
     }
