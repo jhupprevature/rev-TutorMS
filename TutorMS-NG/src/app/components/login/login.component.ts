@@ -29,9 +29,7 @@ export class LoginComponent implements OnInit {
       (r) => {
         if (r) {
           console.log("going in here!")
-          console.log(r);
           this.loginServ.currentUser = r;
-          console.log(this.loginServ.currentUser);
           this.router.navigateByUrl("/home");
         } else {
           this.invalidLogin = true;
