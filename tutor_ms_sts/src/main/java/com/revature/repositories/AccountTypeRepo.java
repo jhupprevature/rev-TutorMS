@@ -7,5 +7,5 @@ import com.revature.beans.AccountType;
 
 @Repository
 public interface AccountTypeRepo extends CrudRepository<AccountType, Integer> {
-
+    
 }

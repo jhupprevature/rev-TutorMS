@@ -1,8 +1,9 @@
-package com.revature.repositories;
+package com.revature.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Date;
 import java.util.List;
@@ -16,63 +17,56 @@ import com.revature.beans.Schedule;
 
 @SpringBootTest(classes = com.revature.app.TutorMsStsApplication.class)
 @Transactional
-public class ScheduleRepoTests {
-
+public class ScheduleServiceTests {
+    
     @Autowired
-    public ScheduleRepo sr;
-
+    public ScheduleService ss;
+    
     @Test
-    void addSchedule() {
+    void addScheduleTest() {
         Date dateTime = new Date();
         Long currentTime = dateTime.getTime();
         Schedule theoSchedule = new Schedule(null, null, "08:00", "12:00",
                 "08:00", "12:00", "08:00", "12:00", "08:00", "12:00", "08:00",
                 "12:00", null, null, currentTime);
-        theoSchedule = sr.save(theoSchedule);
+        theoSchedule = ss.addSchedule(theoSchedule);
         assertNotEquals(0, theoSchedule.getId());
     }
 
     @Test
-    void getAllSchedules() {
-        List<Schedule> allSchedules = (List<Schedule>) sr.findAll();
+    void getAllSchedulesTest() {
+        List<Schedule> allSchedules = ss.getAllSchedules();
         assertFalse(allSchedules.isEmpty());
     }
 
     @Test
-    void getScheduleById() {
+    void getScheduleTest() {
         Schedule expectedSchedule = new Schedule(1, null, null, "07:00",
                 "15:00", "07:00", "15:00", "07:00", "15:00", "07:00", "15:00",
                 "07:00", "15:00", null, null, null);
-        Schedule actualSchedule = sr.findById(1).get();
+        Schedule actualSchedule = ss.getSchedule(1);
         assertEquals(expectedSchedule.toString(), actualSchedule.toString());
     }
 
     @Test
-    void updateSchedule() {
-        Schedule schedule = sr.findById(2).get();
+    void updateScheduleTest() {
+        Schedule schedule = ss.getSchedule(2);
         String scheduleToUpdateString = schedule.toString();
         int scheduleToUpdateId = schedule.getId();
 
         schedule.setMondayStart("10:00");
         schedule.setMondayEnd("14:00");
 
-        schedule = sr.save(schedule);
+        schedule = ss.updateSchedule(schedule);
 
         assertEquals(scheduleToUpdateId, schedule.getId());
         assertNotEquals(scheduleToUpdateString, schedule.toString());
     }
-//
-//    @Test
-//    void deleteSchedule() {
-//        Schedule schedule = sr.findById(3).get();
-//        sr.delete(schedule);
-//        assertFalse(sr.findById(3).isPresent());
-//    }
-    
-    @Test
-    void deleteScheduleById() {
-        sr.deleteById(3);
-        assertFalse(sr.findById(3).isPresent());
-    }
 
+    @Test
+    void deleteScheduleTest() {
+        boolean sDeleted = ss.deleteSchedule(3);
+        assertTrue(sDeleted);
+    }
+    
 }
