@@ -2,6 +2,7 @@ package com.revature.services;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,9 @@ import com.revature.repositories.UserRepo;
 @Qualifier("UserService")
 public class UserServiceImpl implements UserService {
 
+    private static final Logger log = Logger
+            .getLogger(UserServiceImpl.class);
+    
 	@Autowired
 	UserRepo ur;
 
@@ -43,7 +47,7 @@ public class UserServiceImpl implements UserService {
 			ur.deleteById(id);
 			return true;
 		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
+			log.warn(e);
 			return false;
 		}
 	}

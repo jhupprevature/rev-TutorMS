@@ -67,10 +67,16 @@ public class UserRepoTests {
         assertNotEquals(userToUpdateString, user.toString());
     }
 
+//    @Test
+//    void deleteUser() {
+//        User user = ur.findById(3).get();
+//        ur.delete(user);
+//        assertFalse(ur.findById(3).isPresent());
+//    }
+//    
     @Test
-    void deleteUser() {
-        User user = ur.findById(3).get();
-        ur.delete(user);
+    void deleteUserById() {
+        ur.deleteById(3);
         assertFalse(ur.findById(3).isPresent());
     }
 

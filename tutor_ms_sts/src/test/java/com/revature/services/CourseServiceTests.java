@@ -1,8 +1,9 @@
-package com.revature.repositories;
+package com.revature.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
@@ -15,56 +16,52 @@ import com.revature.beans.Course;
 
 @SpringBootTest(classes = com.revature.app.TutorMsStsApplication.class)
 @Transactional
-public class CourseRepoTests {
-    
+public class CourseServiceTests {
+
     @Autowired
-    public CourseRepo cr;
-    
+    public CourseService cs;
+
     @Test
-    void addCourse() {
-        Course newCourse = new Course("Introduction to Biology: The Evolution and Diversity of Life", "BIOL", 1010, 3);
-        newCourse = cr.save(newCourse);
+    void addCourseTest() {
+        Course newCourse = new Course(
+                "Introduction to Biology: The Evolution and Diversity of Life",
+                "BIOL", 1010, 3);
+        newCourse = cs.addCourse(newCourse);
         assertNotEquals(0, newCourse.getId());
     }
-    
+
     @Test
-    void getAllCourses() {
-        List<Course> allCourses = (List<Course>) cr.findAll();
+    void getAllCoursesTest() {
+        List<Course> allCourses = cs.getAllCourses();
         assertFalse(allCourses.isEmpty());
     }
-    
+
     @Test
-    void getCourseById() {
+    void getCourseTest() {
         Course expectedCourse = new Course(1, "Composition I", "ENGL", 1101, 3);
-        Course actualCourse = cr.findById(1).get();
+        Course actualCourse = cs.getCourse(1);
         assertEquals(expectedCourse.toString(), actualCourse.toString());
     }
-    
+
     @Test
-    void updateCourse() {
-        Course course = cr.findById(2).get();
+    void updateCourseTest() {
+        Course course = cs.getCourse(2);
         String courseToUpdateString = course.toString();
         int courseToUpdateId = course.getId();
-        
+
         course.setName("Poetry");
         course.setLevel(1105);
-        
-        course = cr.save(course);
-        
+
+        course = cs.updateCourse(course);
+
         assertEquals(courseToUpdateId, course.getId());
         assertNotEquals(courseToUpdateString, course.toString());
     }
-    
-//    @Test
-//    void deleteCourse() {
-//        Course course = cr.findById(3).get();
-//        cr.delete(course);
-//        assertFalse(cr.findById(3).isPresent());
-//    }
-    
+
     @Test
-    void deleteCourseById() {
-        cr.deleteById(3);
-        assertFalse(cr.findById(3).isPresent());
+    void deleteCourseTest() {
+        boolean cDeleted = cs.deleteCourse(3);
+        assertTrue(cDeleted);
     }
+
 }

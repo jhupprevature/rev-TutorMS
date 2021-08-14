@@ -78,10 +78,16 @@ public class SessionRepoTests {
         assertNotEquals(sessionToUpdateString, session.toString());
     }
     
+//    @Test
+//    void deleteSession() {
+//        Session session = sr.findById(3).get();
+//        sr.delete(session);
+//        assertFalse(sr.findById(3).isPresent());
+//    }
+    
     @Test
-    void deleteSession() {
-        Session session = sr.findById(3).get();
-        sr.delete(session);
+    void deleteSessionById() {
+        sr.deleteById(3);
         assertFalse(sr.findById(3).isPresent());
     }
 

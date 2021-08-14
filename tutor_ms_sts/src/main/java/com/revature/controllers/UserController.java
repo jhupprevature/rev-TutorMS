@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.User;
-import com.revature.services.AccountTypeService;
 import com.revature.services.UserService;
 
 @RestController
@@ -21,9 +20,6 @@ public class UserController {
 
 	@Autowired
 	UserService us;
-
-	@Autowired
-	AccountTypeService ats;
 
 	@CrossOrigin
 	@GetMapping(value = "/users", produces = "application/json")

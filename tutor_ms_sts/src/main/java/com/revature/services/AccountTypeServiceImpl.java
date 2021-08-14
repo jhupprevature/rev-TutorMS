@@ -2,6 +2,7 @@ package com.revature.services;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -13,16 +14,19 @@ import com.revature.repositories.AccountTypeRepo;
 @Qualifier("AccountTypeService")
 public class AccountTypeServiceImpl implements AccountTypeService {
 
+    private static final Logger log = Logger
+            .getLogger(AccountTypeServiceImpl.class);
+    
 	@Autowired
 	AccountTypeRepo atr;
 
 	@Override
-	public AccountType addAccountTypes(AccountType at) {
+	public AccountType addAccountType(AccountType at) {
 		return atr.save(at);
 	}
 
 	@Override
-	public AccountType getAccountTypes(int id) {
+	public AccountType getAccountType(int id) {
 		return atr.findById(id).get();
 	}
 
@@ -32,17 +36,17 @@ public class AccountTypeServiceImpl implements AccountTypeService {
 	}
 
 	@Override
-	public AccountType updateAccountTypes(AccountType change) {
+	public AccountType updateAccountType(AccountType change) {
 		return atr.save(change);
 	}
 
 	@Override
-	public boolean deleteAccountTypes(int id) {
+	public boolean deleteAccountType(int id) {
 		try {
 			atr.deleteById(id);
 			return true;
 		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
+			log.warn(e);
 			return false;
 		}
 	}

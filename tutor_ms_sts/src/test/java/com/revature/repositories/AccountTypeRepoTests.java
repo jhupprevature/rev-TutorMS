@@ -15,7 +15,7 @@ import com.revature.beans.AccountType;
 
 @SpringBootTest(classes = com.revature.app.TutorMsStsApplication.class)
 @Transactional
-public class AccountTypeTests {
+public class AccountTypeRepoTests {
     
     @Autowired
     public AccountTypeRepo atr;
@@ -54,10 +54,16 @@ public class AccountTypeTests {
         assertNotEquals(accountTypeToUpdateString, accountType.toString());
     }
 
+//    @Test
+//    void deleteAccountType() {
+//        AccountType accountType = atr.findById(3).get();
+//        atr.delete(accountType);
+//        assertFalse(atr.findById(3).isPresent());
+//    }
+    
     @Test
-    void deleteAccountType() {
-        AccountType accountType = atr.findById(3).get();
-        atr.delete(accountType);
+    void deleteAccountTypeById() {
+        atr.deleteById(3);
         assertFalse(atr.findById(3).isPresent());
     }
     
