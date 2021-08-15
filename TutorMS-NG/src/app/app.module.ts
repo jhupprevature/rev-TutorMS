@@ -52,7 +52,6 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     SchedulingComponent,
     ProfileComponent,
     AnalyticsComponent,
-    ProfileComponent,
     CardComponent,
     LoginComponent,
     RegistrationComponent,

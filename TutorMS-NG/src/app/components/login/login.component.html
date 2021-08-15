@@ -21,15 +21,15 @@
                 </div>
                 
                 <div class="form-group">
-                    <button (click)="login()" class="btn btn-primary">
+                    <button (click)="login()" class="btn btn-primary" style="margin-top: 8px;">
                         Login
                     </button>
                     <a routerLink="../registration" class="btn btn-link">Register</a>
                 </div>
 
                 <div class="form-group" *ngIf="invalidLogin">
-                    <div style="text-align: left">
-                      <span style="color: red;">Login invalid</span>
+                    <div style="text-align: left; margin-top: 4px;">
+                      <h4><span style="color: red;">Login invalid</span></h4>
                     </div>
                   </div>
             </div>
