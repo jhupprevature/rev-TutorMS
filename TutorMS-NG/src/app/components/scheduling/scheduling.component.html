@@ -1,37 +1,98 @@
 <div class="container-fluid page">
     <div class="d-flex page__box p-3 mt-2">Scheduling</div>
     <div class="page__content shadow p-3 position-relative">
-      <div class="col-sm-2" style="float:left; margin-bottom: 20px;">
-          <label for="inputCriteria2" class="visually-hidden">Criteria</label>
-          <input type="text" class="form-control" id="inputCriteria" placeholder="Enter text to Search" [(ngModel)]="searchBox">
+
+      <div *ngIf="selectedTutor">
+        <h2>{{selectedTutor.firstName | uppercase}} {{selectedTutor.lastName | uppercase}} Details</h2>
+        <div><button style="font-size: medium;" (click)="addSession()">Schedule Tutoring Session</button><br><br>
+          <span><b>Phone Number: </b></span>{{selectedTutor.phoneNumber}} <br><br>
+          <span><b>School Email: </b></span>{{selectedTutor.schoolEmail}}@tutors4u.edu <br><br>
+          <span><b>Schedule: </b></span>
+          <table class="table table-hover table-bordered" id="scheduleTable">
+            <thead>
+    
+              <tr>
+                <th colspan="2">Sunday <br> Start-End</th>
+                <th colspan="2">Monday <br> Start-End</th>
+                <th colspan="2">Tuesday <br> Start-End</th>
+                <th colspan="2">Wednesday <br> Start-End</th>
+                <th colspan="2">Thursday <br> Start-End</th>
+                <th colspan="2">Friday <br> Start-End</th>
+                <th colspan="2">Saturday <br> Start-End</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+                  <td>{{selectedTutor.schedule.sundayStart}}</td>
+                  <td>{{selectedTutor.schedule.sundayEnd}}</td>
+                  <td>{{selectedTutor.schedule.mondayStart}}</td>
+                  <td>{{selectedTutor.schedule.mondayEnd}}</td>
+                  <td>{{selectedTutor.schedule.tuesdayStart}}</td>
+                  <td>{{selectedTutor.schedule.tuesdayEnd}}</td>
+                  <td>{{selectedTutor.schedule.wednesdayStart}}</td>
+                  <td>{{selectedTutor.schedule.wednesdayEnd}}</td>
+                  <td>{{selectedTutor.schedule.thursdayStart}}</td>
+                  <td>{{selectedTutor.schedule.thursdayEnd}}</td>
+                  <td>{{selectedTutor.schedule.fridayStart}}</td>
+                  <td>{{selectedTutor.schedule.fridayEnd}}</td>
+                  <td>{{selectedTutor.schedule.saturdayStart}}</td>
+                  <td>{{selectedTutor.schedule.saturdayEnd}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
-        <div *ngIf="selectedTutor" style="float:left; margin-left: 50px;">
-          <h4>{{selectedTutor.firstName | uppercase}} Details</h4>
-          <div><button style="font-size: medium;" (click)="addSession()">Schedule Tutoring Session</button><br>
-            <span>Phone Number: </span>{{selectedTutor.phoneNumber}} <br>
-            <span>School Email: </span>{{selectedTutor.schoolEmail}} 
-          </div>
-        </div>
+      <div class="col-sm-3" style="float:left; margin-bottom: 20px;">
+          <label for="inputCriteria2" class="visually-hidden">Criteria</label>
+          <h2><b>Search for Tutor:</b></h2>
+          <input type="text" class="form-control" id="inputCriteria" placeholder="Enter text to Search" [(ngModel)]="searchBox">
+      </div><br><br>
 
-          <h2 style="clear:both;">Tutors List</h2>
+
+          <h2 style="clear:both;">Tutor List</h2>
         <div class="col-md-auto" style="text-align: center;">
           <table class="table table-hover table-bordered" id="datatableexample">
             <thead>
               <tr>
-                <th>ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                
+                <th>School Email</th>
+                <th>Course</th>
+                <th>Subject</th>
+                <th>Level</th>
+                <th>Hours</th>
+                <th>Phone Number</th>
               </tr>
             </thead>
             <tbody>
            
-                  <tr *ngFor="let tutor of tutorsData | searchfilter : searchBox" [class.selected]="tutor === selectedTutor" (click)="onSelect(tutor)">
-                    <td>{{tutor.id}}</td>
+                <tr *ngFor="let tutor of tutorsData | searchfilter : searchBox" [class.selected]="tutor === selectedTutor" (click)="onSelect(tutor)">
                     <td>{{tutor.firstName}}</td>
                     <td>{{tutor.lastName}}</td>
-                  </tr>
+                    <td>{{tutor.schoolEmail}}@tutors4u</td>
+                    <td>
+                      <tr *ngFor ="let set of tutor.coursesToTutor">
+                        <td >{{set.name}}</td>
+                      </tr>
+                    </td>
+                    <td>
+                      <tr *ngFor ="let set of tutor.coursesToTutor" >
+                        <td>{{set.subject}}</td>
+                      </tr>
+                    </td>
+                    <td>
+                      <tr *ngFor ="let set of tutor.coursesToTutor">
+                        <td>{{set.level}}</td>
+                      </tr>
+                    </td>
+                    <td>
+                      <tr *ngFor ="let set of tutor.coursesToTutor">
+                        <td>{{set.hours}}</td>
+                      </tr>
+                    </td>
+                    <td>{{tutor.phoneNumber}}</td>
+                </tr>
                
             </tbody>
           </table>

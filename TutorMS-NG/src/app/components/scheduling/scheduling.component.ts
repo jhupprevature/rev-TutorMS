@@ -12,11 +12,8 @@ import { TutorsService } from 'src/app/Services/tutors.service';
 export class SchedulingComponent implements OnInit {
 
   searchBox!: string;
-
   sessionList: Session[] = [];
-
   tutorsData: Tutor[] = [];
-
   selectedTutor?: Tutor;
 
   constructor(private database: TutorsService, private sessionData: SessionService) { }
@@ -41,6 +38,6 @@ export class SchedulingComponent implements OnInit {
         console.log("Failed to add session.");
       });
   }
-}
 
+}
 

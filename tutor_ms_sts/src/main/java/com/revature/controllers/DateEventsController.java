@@ -42,8 +42,8 @@ public class DateEventsController {
 
 	@CrossOrigin
 	@PutMapping(value = "/dateEvents/{id}", consumes = "application/json", produces = "application/json")
-	public DateEvent updateDateEvent(@PathVariable int id, @RequestBody DateEvent change) {
-		change.setId(id);
+	public DateEvent updateDateEvent(@PathVariable String id, @RequestBody DateEvent change) {
+		change.setId(Integer.parseInt(id));
 		return des.updateDateEvent(change);
 	}
 

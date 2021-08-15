@@ -23,13 +23,14 @@ export class DateEventsService {
   deleteDateEvent(id: string): Observable<dateEvent>{
     return this.http.delete<dateEvent>('http://localhost:8080/dateEvents/' + id);
   }
-/*
-  getDateEvent(id): Observable<dateEvent> {
+  updateDateEvent(dateEvent: dateEvent): Observable<dateEvent> {
+    return this.http.put<dateEvent>('http://localhost:8080/dateEvents/' + dateEvent.id, dateEvent, { headers: this.postHeaders });
+  }
+
+  getDateEvent(id: string): Observable<dateEvent> {
     return this.http.get<dateEvent>('http://localhost:8080/dateEvents/' + id);
   }
 
-  updateDateEvent(dateEvent: dateEvent): Observable<dateEvent> {
-    return this.http.put<dateEvent>('http://localhost:8080/dateEvents/' + dateEvent.id, dateEvent, { headers: this.postHeaders });
-  }*/
+  
 }
 

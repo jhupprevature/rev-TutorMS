@@ -70,12 +70,13 @@ create table sessions (
 create table date_events (
 	date_id serial primary key,
 	title varchar(150),
-	start varchar(50)
+	start varchar(50),
+	color varchar(50)
 );
 
-insert into date_events values (default, 'pancake making', '2021/08/08');	--1
-insert into date_events values (default, 'meteor shower', '2021/08/12');	--2
-insert into date_events values (default, 'blue moon', '2021/08/22');		--3
+insert into date_events values (default, 'pancake making', '2021-08-08', 'blue'); --1
+insert into date_events values (default, 'meteor shower', '2021-08-12', 'red'); ---2
+insert into date_events values (default, 'blue moon', '2021-08-22', 'purple'); ----3
 
 insert into account_types values (default, 'Tutor Manager');--1
 insert into account_types values (default, 'Tutor');		--2
