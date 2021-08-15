@@ -37,7 +37,7 @@ public class DateEventServiceTests {
     
     @Test
     void getDateEventTest() {
-        DateEvent expected = new DateEvent(1, "pancake making", "2021-08-08");
+        DateEvent expected = new DateEvent(1, "pancake making", "2021/08/08");
         DateEvent actual = des.getDateEvent(1);
         assertEquals(expected.toString(), actual.toString());
         DateEvent notADateEvent = des.getDateEvent(100);
