@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { LoginService } from 'src/app/Services/login.service';
+import { guestUser } from 'src/app/models/User';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-header',
@@ -21,14 +22,11 @@ export class HeaderComponent implements OnInit {
   }
 
   getUsername() {
-    if (this.loginServ.currentUser?.schoolEmail) {
-        this.loggedIn = true;
-    }
-    return this.loginServ.currentUser?.schoolEmail ?? "Guest"
+    return this.loginServ.currentUser.schoolEmail;
   }
 
   logout() {
-    this.loginServ.currentUser = undefined;
+    this.loginServ.currentUser = guestUser;
     this.loggedIn = false;
   }
 }

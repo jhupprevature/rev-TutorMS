@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy} from '@angular/core';
+import { User } from 'src/app/models/User';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.css']
 })
-export class SidenavComponent implements OnInit {
+export class SidenavComponent {
+  user: User;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private loginServ: LoginService) { 
+    this.user = loginServ.currentUser;
   }
 
+  isManager() :boolean {
+    if (this.loginServ.currentUser.accountType.type == 'Tutor Manager') {
+      return true;
+    } else return false;
+  }
 }
