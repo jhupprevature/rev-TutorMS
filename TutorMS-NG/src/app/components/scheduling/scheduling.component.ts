@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Session } from 'src/app/Models/session';
-import { Tutor } from 'src/app/Models/tutor';
-import { SessionService } from 'src/app/Services/session.service';
-import { TutorsService } from 'src/app/Services/tutors.service';
+import { Session } from 'src/app/models/session';
+import { Tutor } from 'src/app/models/tutor';
+import { SessionService } from 'src/app/services/session.service';
+import { TutorsService } from 'src/app/services/tutors.service';
 
 @Component({
   selector: 'app-scheduling',
