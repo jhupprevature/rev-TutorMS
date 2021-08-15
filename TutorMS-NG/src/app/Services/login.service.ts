@@ -4,6 +4,7 @@ import { guestUser, User } from '../Models/User';
 import { Observable } from 'rxjs';
 import { UserRegister } from '../Models/UserRegister';
 import { Subject } from 'rxjs';
+import { Session } from '../Models/session';
 
 @Injectable({
   providedIn: 'root'

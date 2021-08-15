@@ -33,7 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchfilterPipe } from 'src/app/Pipes/searchfilter.pipe';
 import { TutorsService } from 'src/app/Services/tutors.service';
 import { DateEventsService } from './Services/date-events.service';
-import { SessionService } from './Services/session.service';
+import { SessionService } from 'src/app/Services/session.service';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,

@@ -1,6 +1,6 @@
-import { Course } from "./Course";
-import { Tutor } from "./tutor";
-import { User } from "./User";
+import { Course } from "../Models/Course";
+import { Tutor } from "../Models/tutor";
+import { User } from "../Models/User";
 
 export class Session {
     id: number;
