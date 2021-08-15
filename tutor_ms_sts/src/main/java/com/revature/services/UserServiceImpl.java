@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import com.revature.beans.AccountType;
 import com.revature.beans.Session;
 import com.revature.beans.User;
-import com.revature.repositories.ScheduleRepo;
 import com.revature.repositories.SessionRepo;
 import com.revature.repositories.UserRepo;
 
@@ -29,9 +28,6 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	SessionRepo sessR;
-	
-	@Autowired
-	ScheduleRepo schedR;
 
 	@Override
 	public User addUser(User u) {

@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.beans.AccountType;
 import com.revature.beans.Schedule;
+import com.revature.beans.Session;
 import com.revature.beans.User;
 
 @SpringBootTest(classes = com.revature.app.TutorMsStsApplication.class)
@@ -95,8 +96,10 @@ public class UserServiceTests {
     
     @Test
     void getFutureSessionsForUserTest() {
-        User user = us.getUser(1);
-        
+        List<Session> sessions = us.getFutureSessionsForUser(5);
+        assertFalse(sessions.isEmpty());
+        List<Session> noSessions = us.getFutureSessionsForUser(1);
+        assertTrue(noSessions.isEmpty());
     }
     
 }
