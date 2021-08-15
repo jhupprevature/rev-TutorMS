@@ -1,3 +1,5 @@
+import { AccountType } from "./AccountType";
+
 export class User {
     id: number;
     firstName: string;
@@ -29,15 +31,15 @@ export class User {
     }
 }
 
-class AccountType {
-    id: number;
-    type: string;
+// class AccountType {
+//     id: number;
+//     type: string;
 
-    constructor(id: number, type: string) {
-        this.id = id;
-        this.type = type;
-    }
-}
+//     constructor(id: number, type: string) {
+//         this.id = id;
+//         this.type = type;
+//     }
+// }
 
 class Schedule {
     id!: number;
