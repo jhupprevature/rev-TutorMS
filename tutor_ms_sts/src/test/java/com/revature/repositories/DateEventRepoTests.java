@@ -22,7 +22,7 @@ public class DateEventRepoTests {
     
     @Test
     void addDateEvent() {
-        DateEvent newDateEvent = new DateEvent("Eat Pie", "2021/08/13");
+        DateEvent newDateEvent = new DateEvent("Eat Pie", "2021-08-13");
         newDateEvent = der.save(newDateEvent);
         assertNotEquals(0, newDateEvent.getId());
     }
@@ -35,7 +35,7 @@ public class DateEventRepoTests {
     
     @Test
     void getDateEventById() {
-        String expectedString = "DateEvent [id=1, title=pancake making, start=2021/08/08]";
+        String expectedString = "DateEvent [id=1, title=pancake making, start=2021-08-08]";
         DateEvent actualDateEvent = der.findById(1).get();
         assertEquals(expectedString, actualDateEvent.toString());
     }
