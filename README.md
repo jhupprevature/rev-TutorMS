@@ -6,5 +6,3 @@ Revature Project 2
 - Tracks student usage hours
 - Tracks tutor work hours
 - Tracks individual course/instructor to flag for difficulty
-- Parent or Admin roles
-- Tutoring 1-1 or group
