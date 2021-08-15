@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -46,6 +47,8 @@ public class ScheduleServiceTests {
                 "07:00", "15:00", null, null, null);
         Schedule actualSchedule = ss.getSchedule(1);
         assertEquals(expectedSchedule.toString(), actualSchedule.toString());
+        Schedule notASchedule = ss.getSchedule(20);
+        assertNull(notASchedule);
     }
 
     @Test
@@ -53,14 +56,14 @@ public class ScheduleServiceTests {
         Schedule schedule = ss.getSchedule(2);
         String scheduleToUpdateString = schedule.toString();
         int scheduleToUpdateId = schedule.getId();
-
         schedule.setMondayStart("10:00");
         schedule.setMondayEnd("14:00");
-
         schedule = ss.updateSchedule(schedule);
-
         assertEquals(scheduleToUpdateId, schedule.getId());
         assertNotEquals(scheduleToUpdateString, schedule.toString());
+        Schedule emptySchedule = new Schedule();
+        Schedule notASchedule = ss.updateSchedule(emptySchedule);
+        assertNull(notASchedule);
     }
 
     @Test

@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -36,9 +37,11 @@ public class DateEventServiceTests {
     
     @Test
     void getDateEventTest() {
-        DateEvent expected = new DateEvent(1, "pancake making", "2021/08/08");
+        DateEvent expected = new DateEvent(1, "pancake making", "2021-08-08");
         DateEvent actual = des.getDateEvent(1);
         assertEquals(expected.toString(), actual.toString());
+        DateEvent notADateEvent = des.getDateEvent(100);
+        assertNull(notADateEvent);
     }
     
     @Test
@@ -46,13 +49,12 @@ public class DateEventServiceTests {
         DateEvent dateEvent = des.getDateEvent(2);
         String deToUpdateString = dateEvent.toString();
         int deToUpdateId = 2;
-        
         dateEvent.setTitle("Eat Pie");
-        
         dateEvent = des.updateDateEvent(dateEvent);
-        
         assertEquals(deToUpdateId, dateEvent.getId());
         assertNotEquals(deToUpdateString, dateEvent.toString());
+        DateEvent fakeDe = new DateEvent();
+        assertNull(des.updateDateEvent(fakeDe));
     }
     
     @Test

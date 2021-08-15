@@ -1,6 +1,7 @@
 package com.revature.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,12 @@ public class DateEventServiceImpl implements DateEventService {
 
 	@Override
 	public DateEvent getDateEvent(int id) {
-		return der.findById(id).get();
+	    Optional<DateEvent> opDe = der.findById(id);
+        if (opDe.isPresent()) {
+            return opDe.get();
+        } else {
+            return null;
+        }
 	}
 
 	@Override
@@ -37,7 +43,11 @@ public class DateEventServiceImpl implements DateEventService {
 
 	@Override
 	public DateEvent updateDateEvent(DateEvent change) {
-		return der.save(change);
+        if (der.existsById(change.getId())) {
+            return der.save(change);
+        } else {
+            return null;
+        }
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package com.revature.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,12 +33,21 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public Schedule getSchedule(int id) {
-        return sr.findById(id).get();
+        Optional<Schedule> opS = sr.findById(id);
+        if (opS.isPresent()) {
+            return opS.get();
+        } else {
+            return null;
+        }
     }
 
     @Override
     public Schedule updateSchedule(Schedule change) {
-        return sr.save(change);
+        if (sr.existsById(change.getId())) {
+            return sr.save(change);
+        } else {
+            return null;
+        }
     }
 
     @Override

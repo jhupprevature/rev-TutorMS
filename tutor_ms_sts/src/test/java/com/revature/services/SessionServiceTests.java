@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -63,6 +64,8 @@ public class SessionServiceTests {
                 "Law is the best tutor!");
         Session actualSession = ss.getSession(1);
         assertEquals(expectedSession.toString(), actualSession.toString());
+        Session notASession = ss.getSession(100);
+        assertNull(notASession);
     }
     
     @Test
@@ -70,13 +73,12 @@ public class SessionServiceTests {
         Session session = ss.getSession(2);
         String sToUpdateString = session.toString();
         int sToUpdateId = 2;
-        
         session.setStudentNotes("Enjoyable.");
-        
         session = ss.updateSession(session);
-        
         assertEquals(sToUpdateId, session.getId());
         assertNotEquals(sToUpdateString, session.toString());
+        Session notASess = new Session();
+        assertNull(ss.updateSession(notASess));
     }
     
     @Test
