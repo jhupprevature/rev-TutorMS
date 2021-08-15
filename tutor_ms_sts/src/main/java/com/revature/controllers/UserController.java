@@ -61,8 +61,9 @@ public class UserController {
 	
     @CrossOrigin
     @GetMapping("/users/{id}/future_sessions")
-    public List<Session> getFutureSessionsForUser(@PathVariable int id) {
-        return us.getFutureSessionsForUser(id);
+    public List<Session> getFutureSessionsForUser(@PathVariable String id) {
+        Integer intId = Integer.parseInt(id);
+        return us.getFutureSessionsForUser(intId);
     }
 
 }
