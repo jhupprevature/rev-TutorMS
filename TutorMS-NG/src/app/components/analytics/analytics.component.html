@@ -1,8 +1,44 @@
 <div class="container-fluid page">
     <div class="d-flex page__box p-3 mt-2">Tutoring Analytics</div>
     <div class="page__content shadow p-3 position-relative">
-      <div class="page__content-data position-absolute container-fluid col-10">
-        Analytics Content Here
+      <div class="container-fluid col-10 my-5">
+        <h3>Analytics</h3>
+        <div class="row">
+          <div class="col">
+            <button>Tutor Demand</button>
+          </div>
+          <div class="col">
+            <button>Course Demand</button>
+          </div>
+          <div class="col">
+            <button>Time Demand</button>
+          </div>
+        </div>
+
+        <div>
+          <h5>Tutor Demand</h5>
+          <table>
+            <thead>
+              <th scope="col" class="col-2"></th>
+              <th scope="col" class="col-2"></th>
+              <th scope="col" class="col-2"></th>
+              <th scope="col" class="col-2"></th>
+              <th scope="col" class="col-2"></th>
+              <th scope="col" class="col-2"></th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let sess of this.sessions"></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div>
+          <h5>Course Demand</h5>
+        </div>
+
+        <div>
+          <h5>Time Demand</h5>
+        </div>
       </div>
     </div>
 </div>  

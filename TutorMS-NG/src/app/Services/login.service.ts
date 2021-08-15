@@ -1,16 +1,15 @@
-import { Injectable, Input, OnChanges } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { guestUser, User } from '../models/User';
+import { User } from '../models/User';
 import { Observable } from 'rxjs';
 import { UserRegister } from '../models/UserRegister';
-import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  currentUser = guestUser;
+  currentUser = new User();
 
   constructor(private http: HttpClient) { }
 

@@ -70,7 +70,7 @@
                 <tr *ngFor="let tutor of tutorsData | searchfilter : searchBox" [class.selected]="tutor === selectedTutor" (click)="onSelect(tutor)">
                     <td>{{tutor.firstName}}</td>
                     <td>{{tutor.lastName}}</td>
-                    <td>{{tutor.schoolEmail}}@tutors4u</td>
+                    <td>{{tutor.schoolEmail}}@tutors4u.edu</td>
                     <td>
                       <tr *ngFor ="let set of tutor.coursesToTutor">
                         <td >{{set.name}}</td>

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Session } from '../models/session';
+import { Session } from '../models/Session';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +11,11 @@ export class SessionService {
   constructor(private http: HttpClient) { }
 
   private postHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-/*
-  getAllSession(): Observable<any> {
+
+  getAllSessions(): Observable<Session[]> {
     return this.http.get<Session[]>('http://localhost:8080/Sessions');
   }
-*/
+
   addSession(session: Session): Observable<Session> {
     return this.http.post<Session>('http://localhost:8080/Sessions', session, { headers: this.postHeaders });
   }
