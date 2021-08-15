@@ -28,4 +28,7 @@ export class LoginService {
     return this.currentUser;
   }
 
+  // getSessions(): 
+
+
 }
