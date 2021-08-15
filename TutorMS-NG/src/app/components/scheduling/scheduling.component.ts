@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/Models/Course';
-import { Session } from 'src/app/Models/session';
 import { Tutor } from 'src/app/Models/tutor';
 import { SessionService } from 'src/app/Services/session.service';
 import { TutorsService } from 'src/app/Services/tutors.service';
 import { LoginService } from 'src/app/Services/login.service';
+import { SessionIDs } from 'src/app/Models/SessionIDs';
 
 @Component({
   selector: 'app-scheduling',
@@ -14,7 +14,7 @@ import { LoginService } from 'src/app/Services/login.service';
 export class SchedulingComponent implements OnInit {
 
   searchBox!: string;
-  sessionList: Session[] = [];
+  sessionList: SessionIDs[] = [];
   tutorsData: Tutor[] = [];
   selectedTutor?: Tutor;
   selectedCourse?: Course;
@@ -35,7 +35,7 @@ export class SchedulingComponent implements OnInit {
 
   addSession(){
 
-    this.sessionData.addSession(new Session(0 , this.selectedTutor! , this.userData.getCurrentUser() , this.selectedCourse!, 1612890000000 ,  1612895200000, "", "")).subscribe(
+    this.sessionData.addSession(new SessionIDs(0 , this.selectedTutor!.id , this.userData.getCurrentUser().id , this.selectedCourse!.id, 1612890000000 ,  1612895200000, "", "")).subscribe(
       (data) => {
         console.log(data);
         this.sessionList.push(data);

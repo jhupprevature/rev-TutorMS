@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Session } from '../Models/session';
+import { SessionIDs } from '../Models/SessionIDs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,8 @@ export class SessionService {
     return this.http.get<Session[]>('http://localhost:8080/Sessions');
   }
 */
-  addSession(session: Session): Observable<Session> {
-    return this.http.post<Session>('http://localhost:8080/Sessions', session, { headers: this.postHeaders });
+  addSession(session: SessionIDs): Observable<SessionIDs> {
+    return this.http.post<SessionIDs>('http://localhost:8080/Sessions', session, { headers: this.postHeaders });
   }
 /*
   getSession(id): Observable<Session> {
