@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "sessions")
 public class Session {
@@ -19,14 +21,17 @@ public class Session {
     private int id;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "tutor_id")
     private User tutor;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "student_id")
     private User student;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "course_id")
     private Course course;
 

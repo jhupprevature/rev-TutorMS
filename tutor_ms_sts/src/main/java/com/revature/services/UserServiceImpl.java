@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.revature.beans.AccountType;
 import com.revature.beans.Course;
 import com.revature.beans.Schedule;
+import com.revature.beans.Session;
 import com.revature.beans.User;
 import com.revature.repositories.ScheduleRepo;
 import com.revature.repositories.SessionRepo;
@@ -94,20 +95,20 @@ public class UserServiceImpl implements UserService {
         return ur.findBySchoolEmailAndPassword(username, password);
     }
 
-//    @Override
-//    public List<Session> getSessionsInOrderForUser(Integer userId) {
-//        List<Session> allSessions = (List<Session>) sessR
-//                .findAllOrderByStartTimeDesc();
-//        List<Session> userSessions = new ArrayList<>();
-//        for (Session session : allSessions) {
-//            int sId = session.getStudent().getId();
-//            int tId = session.getTutor().getId();
-//            if (sId == userId || tId == userId) {
-//                userSessions.add(session);
-//            }
-//        }
-//        return userSessions;
-//    }
+    @Override
+    public List<Session> getSessionsInOrderForUser(Integer userId) {
+        List<Session> allSessions = (List<Session>) sessR
+                .findAllByOrderByStartTimeDesc();
+        List<Session> userSessions = new ArrayList<>();
+        for (Session session : allSessions) {
+            int sId = session.getStudent().getId();
+            int tId = session.getTutor().getId();
+            if (sId == userId || tId == userId) {
+                userSessions.add(session);
+            }
+        }
+        return userSessions;
+    }
 
     @Override
     public Schedule addScheduleToApprove(int userId, Schedule s) {
