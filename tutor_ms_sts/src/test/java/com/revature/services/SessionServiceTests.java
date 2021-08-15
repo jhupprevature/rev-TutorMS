@@ -40,7 +40,7 @@ public class SessionServiceTests {
         String tutorNotes = "Unfortunately, Tina showed little effort"
                 + " in correcting her writing.";
         String studentNotes = "this was lame";
-        Session writingSession = new Session(tutor, student,
+        Session writingSession = new Session(0, tutor, student,
                 course, aug13At1PmEst, aug13At2PmEst, tutorNotes,
                 studentNotes);
         writingSession = ss.addSession(writingSession);

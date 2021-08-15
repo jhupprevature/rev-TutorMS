@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.beans.JsonRequestSession;
 import com.revature.beans.Session;
 import com.revature.services.SessionService;
 
@@ -36,8 +37,8 @@ public class SessionController {
 
 	@CrossOrigin
 	@PostMapping(value = "/Sessions", consumes = "application/json", produces = "application/json")
-	public Session addSession(@RequestBody Session de) {
-		return ss.addSession(de);
+	public Session addSession(@RequestBody JsonRequestSession jrs) {
+		return ss.addSession(jrs);
 	}
 
 	@CrossOrigin

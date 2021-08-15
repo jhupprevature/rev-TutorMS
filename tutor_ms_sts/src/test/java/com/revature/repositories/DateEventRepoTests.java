@@ -22,7 +22,7 @@ public class DateEventRepoTests {
     
     @Test
     void addDateEvent() {
-        DateEvent newDateEvent = new DateEvent("Eat Pie", "2021-08-13");
+        DateEvent newDateEvent = new DateEvent("Eat Pie", "2021-08-13", "Turquoise");
         newDateEvent = der.save(newDateEvent);
         assertNotEquals(0, newDateEvent.getId());
     }
