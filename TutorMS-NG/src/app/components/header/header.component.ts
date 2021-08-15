@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { guestUser } from 'src/app/models/User';
+import { guestUser, User } from 'src/app/models/User';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -10,7 +10,11 @@ import { LoginService } from 'src/app/services/login.service';
 export class HeaderComponent implements OnInit {
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
 
-  constructor(private loginServ: LoginService) { }
+  user: User;
+
+  constructor(private loginServ: LoginService) {
+    this.user = this.loginServ.getCurrentUser();
+   }
 
   ngOnInit(): void {
   }
@@ -34,4 +38,18 @@ export class HeaderComponent implements OnInit {
     this.loginServ.currentUser = guestUser;
     this.loggedIn = false;
   }
+
+  setAccountType() {
+    switch (this.loginServ.currentUser.accountType.type) {
+      case "Tutor Manager":
+        return "Tutor Manager";
+      case "Tutor":
+        return"Tutor";
+      case "Student":
+        return "Student";
+      default:
+        return ""
+    }
+  }
+ 
 }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.revature.beans.AccountType;
+import com.revature.beans.Course;
 import com.revature.beans.Schedule;
 import com.revature.beans.Session;
 import com.revature.beans.User;
@@ -32,6 +33,12 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     ScheduleRepo schedR;
+    
+    @Autowired
+    AccountTypeService ats;
+    
+    @Autowired
+    CourseService cs;
 
     @Override
     public User addUser(User u) {
@@ -62,6 +69,11 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+	@Override
+	public List<User> getUsersbyCourse(Course course) {
+		return ur.findByCoursesToTutor(course);
+	}
+
     @Override
     public boolean deleteUser(int id) {
         try {
@@ -78,10 +90,10 @@ public class UserServiceImpl implements UserService {
         return ur.findByAccountType(at);
     }
 
-    @Override
-    public User loginUser(String username, String password) {
-        return ur.findBySchoolEmailAndPassword(username, password);
-    }
+	@Override
+	public User loginUser(String username, String password) {
+		return ur.findBySchoolEmailAndPassword(username, password);
+	}
 
     @Override
     public List<Session> getFutureSessionsForUser(int userId) {
@@ -135,6 +147,24 @@ public class UserServiceImpl implements UserService {
             }
         }
         return usersPendingApproval;
+    }
+
+    @Override
+    public List<User> searchUser(Integer accountTypeId, String courseType) {
+        
+        AccountType accountType;
+        Course course;
+        
+        accountType = ats.getAccountType(accountTypeId);
+        course = cs.getCourses(courseType);
+
+        if (course != null) {
+            return getUsersbyCourse(course);
+        } else if (accountType != null) {
+            return getUsersByAccountType(accountType);
+        } else {
+            return new ArrayList<User>();
+        }
     }
 
 }

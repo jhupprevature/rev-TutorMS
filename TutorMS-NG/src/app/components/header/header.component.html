@@ -3,6 +3,8 @@
     <button mat-icon-button (click)="toggleSidebar()">
       <mat-icon>menu</mat-icon>
     </button>
+    <span class="flexExpand"></span>
+
     <div class="row mr-2 ml-auto">
       <ul class="row m-0 align-items-center">
         <li>
@@ -34,11 +36,27 @@
               <mat-icon>mode_edit</mat-icon>
               Register
             </button>
+
+            <button mat-menu-item routerLinkActive="list-item-active" routerLink="/login">
+              <mat-icon>login</mat-icon>
+              Login
+            </button>
           </div>
 
           </mat-menu>
         </li>
       </ul>
     </div>
+
+    <div class="row mr-2 ml-auto" *ngIf="loggedIn">
+      <ul class="row m-0 align-items-center">
+        <li>
+          <button mat-icon-button (click)="toggleSidebar()" class="user mt-2 d-flex align-items-center" [disabled]="true" style="color: black;">
+            {{ setAccountType() }}
+          </button>
+        </li>
+      </ul>
+    </div>
+
   </mat-toolbar-row>
 </mat-toolbar>

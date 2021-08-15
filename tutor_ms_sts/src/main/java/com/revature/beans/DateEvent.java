@@ -17,22 +17,25 @@ public class DateEvent {
 	private int id;
 	private String title;
 	private String start;
+	private String color;
 
 	public DateEvent() {
 		super();
 	}
 
-	public DateEvent(int id, String title, String start) {
+	public DateEvent(int id, String title, String start, String color) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.start = start;
+		this.color = color;
 	}
 
-	public DateEvent(String title, String start) {
+	public DateEvent(String title, String start, String color) {
 		super();
 		this.title = title;
 		this.start = start;
+		this.color = color;
 	}
 
 	public int getId() {
@@ -59,9 +62,17 @@ public class DateEvent {
 		this.start = start;
 	}
 
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
 	@Override
 	public String toString() {
-		return "DateEvent [id=" + id + ", title=" + title + ", start=" + start + "]";
+		return "DateEvent [id=" + id + ", title=" + title + ", start=" + start + ", color=" + color + "]";
 	}
 
 }
