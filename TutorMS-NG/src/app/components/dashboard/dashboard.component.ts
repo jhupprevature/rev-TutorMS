@@ -207,7 +207,6 @@ Schedule : Array<any> = [
   getSessions() {
     this.loginServ.getSessions().subscribe (
       (response) => {
-
         this.sessionList = response;
         console.log(this.sessionList);
       }
