@@ -56,7 +56,6 @@ public class UserController {
 	@CrossOrigin
 	@PostMapping(value = "/login", consumes = "application/json", produces = "application/json")
 	public User loginUser(@RequestBody User u) {
-		System.out.println(u);
 		return us.loginUser(u.getSchoolEmail(), u.getPassword());
 	}
 	

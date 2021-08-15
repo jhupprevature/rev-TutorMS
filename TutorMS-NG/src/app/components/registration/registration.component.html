@@ -9,82 +9,63 @@
                 <div class="row g-3">
                     <div class="col-md-6">
                         <h5><label for="inputFirstName" class="form-label">First Name</label></h5>
-                      <input type="text" class="form-control" aria-label="First name">
+                      <input type="text" class="form-control" aria-label="First name" [(ngModel)]="inputFirstName">
                     </div>
 
                     <div class="col-md-6">
                         <h5><label for="inputLastName" class="form-label">Last Name</label></h5>
-                      <input type="text" class="form-control" aria-label="Last name">
+                      <input type="text" class="form-control" aria-label="Last name" [(ngModel)]="inputLastName">
                     </div>
 
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                         <h5><label for="inputUsername" class="form-label">Username</label></h5>
                         <input type="text" class="form-control" id="inputUsername">
+                    </div> -->
+
+                    <!-- <div class="col-md-6">
+                        <h5><label for="inputEmail" class="form-label">School Email</label></h5>
+                        <input type="text" class="form-control" id="inputEmail" >
+                      </div> -->
+
+                      <div class="col-md-6">
+                        <h5><label for="inputUsername" class="form-label">Email</label></h5>
+                      <div class="input-group mb-6">
+                        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" [(ngModel)]="inputEmail">
+                        <div class="input-group-append">
+                          <span class="input-group-text" id="basic-addon2">@school.edu</span>
+                        </div>
+                      </div>
                     </div>
 
                     <div class="col-md-6">
                         <h5><label for="inputTelephone" class="form-label">Telephone</label></h5>
-                        <input type="tel" class="form-control" id="inputTelephone" placeholder="555-555-5555" >
-                    </div>
-
-                    <div class="col-md-6">
-                      <h5><label for="inputEmail" class="form-label">Email</label></h5>
-                      <input type="email" class="form-control" id="inputEmail">
+                        <input type="tel" class="form-control" id="inputTelephone" placeholder="555-555-5555" [(ngModel)]="inputTelephone">
                     </div>
 
                     <div class="col-md-6">
                       <h5><label for="inputPassword" class="form-label">Password</label></h5>
-                      <input type="password" class="form-control" id="inputPassword">
-                    </div>
+                      <input type="password" class="form-control" id="inputPassword" [(ngModel)]="inputPassword">
+                    </div>    
                     
-                    <!-- <div class="form-group">
-                        <label for="firstName">First Name</label>
-                        <input type="text" formControlName="firstName" class="form-control" />
-                        <div  class="invalid-feedback">
-                            <div>First Name is required</div>
-                        </div>
-                    </div>
+                    <div class="col-md-6 selectoring" >
+                        <!-- <h5><label for="inputPassword" class="form-label">hj</label></h5> -->
+                        <br>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <label class="input-group-text" for="inputGroupSelect01">Account Type</label>
+                            </div>
+                            <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="accountTypeId">
+                              <option selected>Choose...</option>
+                              <option value="1">Manager</option>
+                              <option value="2">Tutor</option>
+                              <option value="3">Student</option>
+                            </select>
+                          </div>
+                      </div>
 
                     <div class="form-group">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" formControlName="lastName" class="form-control" />
-                        <div class="invalid-feedback">
-                            <div>Last Name is required</div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" formControlName="email" class="form-control" />
-                        <div class="invalid-feedback">
-                            <div>Email is required</div>
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="form-group">
-                        <label for="telephone">Telephone</label>
-                        <input type="tel" placeholder="555-555-5555" formControlName="telephone" class="form-control"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" formControlName="username" class="form-control" />
-                        <div class="invalid-feedback">
-                            <div >Username is required</div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" formControlName="password" class="form-control"/>
-                        <div class="invalid-feedback">
-                            <div >Password is required</div>
-                            <div >Password must be at least 6 characters</div>
-                        </div>
-                    </div> -->
-
-                    <div class="form-group">
-                        <button class="btn btn-primary">
+                        <button (click)="register()" class="btn btn-primary">
                             <span class=" spinner-border-sm mr-1"></span>
                             Register
                         </button>
