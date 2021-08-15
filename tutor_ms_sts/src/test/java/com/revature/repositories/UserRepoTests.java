@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.beans.AccountType;
+import com.revature.beans.Course;
 import com.revature.beans.Schedule;
 import com.revature.beans.User;
 
@@ -66,14 +67,7 @@ public class UserRepoTests {
         assertEquals(userToUpdateId, user.getId());
         assertNotEquals(userToUpdateString, user.toString());
     }
-
-//    @Test
-//    void deleteUser() {
-//        User user = ur.findById(3).get();
-//        ur.delete(user);
-//        assertFalse(ur.findById(3).isPresent());
-//    }
-//    
+    
     @Test
     void deleteUserById() {
         ur.deleteById(3);
@@ -97,6 +91,12 @@ public class UserRepoTests {
         String password = "bqm4f4";
         User actualTina = ur.findBySchoolEmailAndPassword(schoolEmail, password);
         assertEquals(expectedTina.toString(), actualTina.toString());
+    }
+    
+    @Test
+    void findByCoursesToTutorTest() {
+        Course course = cr.findById(17);
+        ur.findByCoursesToTutor(null);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.revature.repositories;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -78,17 +79,15 @@ public class SessionRepoTests {
         assertNotEquals(sessionToUpdateString, session.toString());
     }
     
-//    @Test
-//    void deleteSession() {
-//        Session session = sr.findById(3).get();
-//        sr.delete(session);
-//        assertFalse(sr.findById(3).isPresent());
-//    }
-    
     @Test
     void deleteSessionById() {
         sr.deleteById(3);
         assertFalse(sr.findById(3).isPresent());
+    }
+    
+    @Test
+    void findAllByOrderByStartTimeDesc() {
+        assertNull(sr.findAllByOrderByStartTimeDesc());
     }
 
 }
