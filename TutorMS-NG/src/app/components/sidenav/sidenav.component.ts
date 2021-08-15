@@ -19,4 +19,11 @@ export class SidenavComponent {
       return true;
     } else return false;
   }
+
+  isGuest() :boolean {
+    if (this.loginServ.currentUser.firstName == 'Guest') {
+      return true;
+    } else return false;
+
+  }
 }
