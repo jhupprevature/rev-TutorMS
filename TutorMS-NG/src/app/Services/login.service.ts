@@ -29,9 +29,4 @@ export class LoginService {
     return this.currentUser;
   }
 
-  getSessions(): Observable<Session[]> {
-    return this.http.get<Session[]>('http://localhost:8080/users/'+this.currentUser.id.toString()+'/sessions')
-  }
-
-
 }

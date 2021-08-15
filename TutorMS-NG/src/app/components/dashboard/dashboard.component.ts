@@ -8,6 +8,7 @@ import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
 import { Session } from 'src/app/models/session';
+import { SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -50,7 +51,7 @@ export class DashboardComponent implements OnInit {
    
     
   });
-  constructor(private breakpointObserver: BreakpointObserver,private fb: FormBuilder, private loginServ: LoginService) {}
+  constructor(private breakpointObserver: BreakpointObserver,private fb: FormBuilder, private sessionServ: SessionService) {}
   updateHours() {
     this.updateHoursForm.patchValue({
       ID: '23244',
@@ -205,7 +206,7 @@ Schedule : Array<any> = [
   sessionList: Array<Session> = [];
 
   getSessions() {
-    this.loginServ.getSessions().subscribe (
+    this.sessionServ.getUserSessions().subscribe (
       (response) => {
         this.sessionList = response;
         console.log(this.sessionList);
@@ -215,11 +216,9 @@ Schedule : Array<any> = [
   }
 
   showSession() {
-    // this.getSessions()
     if (this.sessionList == []) {
       return false
     } else return true;
   }
-
 
 }
