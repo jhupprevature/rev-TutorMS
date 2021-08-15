@@ -14,45 +14,40 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.beans.Course;
+import com.revature.beans.JsonRequestSession;
 import com.revature.beans.Session;
 import com.revature.beans.User;
 
 @SpringBootTest(classes = com.revature.app.TutorMsStsApplication.class)
 @Transactional
 public class SessionServiceTests {
-    
+
     @Autowired
     public SessionService ss;
-    
+
     @Autowired
     public UserService us;
-    
+
     @Autowired
     public CourseService cs;
-    
+
     @Test
     void addSessionTest() {
-        User tutor = us.getUser(4);
-        User student = us.getUser(8);
-        Course course = cs.getCourse(2);
-        long aug13At1PmEst = 1628874000000L;
-        long aug13At2PmEst = 1628877600000L;
         String tutorNotes = "Unfortunately, Tina showed little effort"
                 + " in correcting her writing.";
         String studentNotes = "this was lame";
-        Session writingSession = new Session(0, tutor, student,
-                course, aug13At1PmEst, aug13At2PmEst, tutorNotes,
-                studentNotes);
-        writingSession = ss.addSession(writingSession);
+        JsonRequestSession jrs = new JsonRequestSession(4, 8, 2, 1628874000000L,
+                1628877600000L, tutorNotes, studentNotes);
+        Session writingSession = ss.addSession(jrs);
         assertNotEquals(0, writingSession.getId());
     }
-    
+
     @Test
     void getAllSessionsTest() {
         List<Session> allSessions = ss.getAllSessions();
         assertFalse(allSessions.isEmpty());
     }
-    
+
     @Test
     void getSessionTest() {
         User tutor = us.getUser(3);
@@ -67,7 +62,7 @@ public class SessionServiceTests {
         Session notASession = ss.getSession(100);
         assertNull(notASession);
     }
-    
+
     @Test
     void updateSessionTest() {
         Session session = ss.getSession(2);
@@ -80,11 +75,11 @@ public class SessionServiceTests {
         Session notASess = new Session();
         assertNull(ss.updateSession(notASess));
     }
-    
+
     @Test
     void deleteSessionTest() {
         boolean sDeleted = ss.deleteSession(3);
         assertTrue(sDeleted);
     }
-    
+
 }
