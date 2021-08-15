@@ -111,6 +111,7 @@ export class DashboardComponent implements OnInit {
     // console.log("in:", this.fakeIn);
     // console.log("out:", this.fakeOut);
     // console.log("elapsed:", this.fakeOut.getHours() - this.fakeIn.getHours());
+    this.getSessions();
   }
  
 
@@ -202,7 +203,6 @@ Schedule : Array<any> = [
   } 
 
   sessionList: Array<Session> = [];
-  session!: Session;
 
   getSessions() {
     this.loginServ.getSessions().subscribe (
@@ -215,7 +215,7 @@ Schedule : Array<any> = [
   }
 
   showSession() {
-    this.getSessions()
+    // this.getSessions()
     if (this.sessionList == []) {
       return false
     } else return true;
