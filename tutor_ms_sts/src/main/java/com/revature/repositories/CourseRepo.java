@@ -8,4 +8,5 @@ import com.revature.beans.Course;
 @Repository
 public interface CourseRepo extends CrudRepository<Course, Integer> {
 
+	Course findByName(String name);
 }

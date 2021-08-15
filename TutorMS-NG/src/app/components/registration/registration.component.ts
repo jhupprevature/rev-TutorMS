@@ -21,7 +21,7 @@ export class RegistrationComponent implements OnInit {
   inputTelephone!: string;
   inputEmail!: string;
   inputPassword!: string;
-  accountTypeId: number = 1;
+  accountTypeId: number = 3;
   accountTypeString?: string;
 
   register() {

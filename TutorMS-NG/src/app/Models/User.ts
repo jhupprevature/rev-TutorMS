@@ -16,7 +16,7 @@ export class User {
         this.firstName = firstName;
         this.schoolEmail = username; 
         this.password = password;
-        this.accountType = new AccountType(3, 'Student');
+        this.accountType = new AccountType(4, 'Guest');
     }
 
 }

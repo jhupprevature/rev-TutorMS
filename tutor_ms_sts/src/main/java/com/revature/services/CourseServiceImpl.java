@@ -27,6 +27,11 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
+	public Course getCourse(String name) {
+		return cr.findByName(name);
+	}
+    
+    @Override
     public Course getCourse(int id) {
         Optional<Course> opC = cr.findById(id);
         if (opC.isPresent()) {

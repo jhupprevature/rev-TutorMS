@@ -68,14 +68,15 @@ create table sessions (
 );
 
 create table date_events (
-    date_id    serial primary key,
-    title      varchar(150),
-    start      varchar(50)
+    date_id serial primary key,
+    title varchar(150),
+    start varchar(50),
+    color varchar(50)
 );
 
-insert into date_events values (default, 'pancake making', '2021/08/08');   --1
-insert into date_events values (default, 'meteor shower', '2021/08/12');    --2
-insert into date_events values (default, 'blue moon', '2021/08/22');        --3
+insert into date_events values (default, 'pancake making', '2021-08-08', 'blue');--1
+insert into date_events values (default, 'meteor shower', '2021-08-12', 'red');  --2
+insert into date_events values (default, 'blue moon', '2021-08-22', 'purple');   --3
 
 insert into account_types values (default, 'Tutor Manager');--1
 insert into account_types values (default, 'Tutor');        --2
@@ -136,30 +137,113 @@ insert into courses values
     (default, 'Introductory Physics II', 'PHYS', 1112, 4), --15
     (default, 'Principles of Physics I', 'PHYS', 2211, 4), --16
     (default, 'Principles of Physics II', 'PHYS', 2212, 4);--17
-    
--- The course listed means that the tutor knows that course and any levels below
+
 insert into tutors_courses values 
     (3, 17),
+    (3, 16),
+    (3, 15),
+    (3, 14),
+    
     (4, 13),
+    (4, 12),
+    (4, 11),
+    (4, 2),
+    (4, 1),
+    
     (5, 10),
+    (5, 9),
+    (5, 8),
+    (5, 7),
+    (5, 6),
+    (5, 5),
+    (5, 4),
+    (5, 3),
+    
     (6, 2),
+    (6, 1),
+    
     (7, 7),
+    (7, 6),
+    (7, 5),
+    (7, 4),
+    (7, 3),
+    
     (14, 15),
+    (14, 13),
+    
     (15, 10),
+    (15, 9),
+    (15, 8),
+    (15, 7),
+    (15, 6),
+    (15, 5),
+    (15, 4),
+    (15, 3),
     (15, 13),
+    (15, 12),
+    (15, 11),
+    (15, 2),
+    (15, 1),
     (15, 17),
+    (15, 16),
+    (15, 15),
+    (15, 14),
+    
     (16, 10),
+    (16, 9),
+    (16, 8),
+    (16, 7),
+    (16, 6),
+    (16, 5),
+    (16, 4),
+    (16, 3),
+    
     (1, 10),
+    (1, 9),
+    (1, 8),
+    (1, 7),
+    (1, 6),
+    (1, 5),
+    (1, 4),
+    (1, 3),
     (1, 13),
+    (1, 12),
+    (1, 11),
+    (1, 2),
+    (1, 1),
     (1, 17),
+    (1, 16),
+    (1, 15),
+    (1, 14),
+    
     (2, 10),
+    (2, 9),
+    (2, 8),
+    (2, 7),
+    (2, 6),
+    (2, 5),
+    (2, 4),
+    (2, 3),
     (2, 13),
+    (2, 12),
+    (2, 11),
+    (2, 2),
+    (2, 1),
+    
     (20, 8),
+    (20, 7),
+    (20, 6),
+    (20, 5),
+    (20, 4),
+    (20, 3),
     (20, 2),
-    (20, 15);
+    (20, 15),
+    (20, 14);
 
 insert into sessions values
     (default, 3, 8, 16, 1612890000000, 1612893600000, 'Tutored in STEM Physics 1. Kid did good.', 'Law is the best tutor!'),--1
     (default, 4, 9, 2, 1614694980000, 1614700800000, 'Byrom walked in today to get some help with his paper. Since I was free, I helped out until my shift was over.', null),--2
-    (default, 7, 10, 7, 1617472800000, 1617476400000, 'Tanitansy needed some precalculus help.', 'Please fire this tutor!');--3
-
+    (default, 7, 10, 7, 1617472800000, 1617476400000, 'Tanitansy needed some precalculus help.', 'Please fire this tutor!'),--3
+    (default, 5, 9, 7, 1622642400000, 1622642400000, 'Byrom wanted help on his precalculus.', 'I think I get it now!'),     --4
+    (default, 5, 11, 9, 1626102000000, 1626062400000, 'Lenore wanted to perfect her calculus', 'Ax is so smooth...'),       --5
+    (default, 5, 12, 6, 1629864000000, 1629910800000, null, null);                                                          --6
