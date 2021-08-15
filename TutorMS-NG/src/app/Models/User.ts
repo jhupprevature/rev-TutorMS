@@ -19,16 +19,6 @@ export class User {
         this.accountType = new AccountType(3, 'Student');
     }
 
-    isEmployee() : boolean {
-        // console.log("Verifying is employee...");
-        let accType = this.accountType?.type || '';
-        
-        let employeeTypes = ["Tutor", "Tutor Manager"];
-        // console.log(employeeTypes.indexOf(this.user.accountType.type) > -1);
-        if (employeeTypes.indexOf(accType) > -1) {
-          return true;
-        } else return false;
-    }
 }
 
 // class AccountType {
@@ -68,4 +58,4 @@ class Course {
     // hours!: number;
 }
 
-export const guestUser = new User(-1, 'Guest', 'Guest', '');
+export const guestUser = new User(-1, 'Guest', 'guest', '');
