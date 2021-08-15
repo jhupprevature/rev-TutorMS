@@ -36,3 +36,8 @@ mat-toolbar {
 ::ng-deep .mat-menu-content {
   width: 160px;
 }
+
+
+.flexExpand {
+  flex: 1 1 auto;
+}
