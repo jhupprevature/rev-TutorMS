@@ -72,7 +72,7 @@
                     <td>{{tutor.lastName}}</td>
                     <td>{{tutor.schoolEmail}}@tutors4u</td>
                     <td>
-                      <tr *ngFor ="let set of tutor.coursesToTutor">
+                      <tr *ngFor ="let set of tutor.coursesToTutor" [class.selected]="set === selectedCourse" (click)="courseSelect(set)">
                         <td >{{set.name}}</td>
                       </tr>
                     </td>
