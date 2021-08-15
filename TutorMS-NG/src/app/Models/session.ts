@@ -1,5 +1,5 @@
 export class Session {
-    userId: number;
+    id: number;
     studentId: number;
     courseId: number;
     startTime: number;
@@ -8,7 +8,7 @@ export class Session {
     tutorNotes: string;
   
     constructor(userId: number, studentId: number, courseId: number, startTime: number, endTime: number, studentNotes: string, tutorNotes: string){
-      this.userId = userId;
+      this.id = userId;
       this.studentId = studentId;
       this.courseId = courseId;
       this.startTime = startTime;

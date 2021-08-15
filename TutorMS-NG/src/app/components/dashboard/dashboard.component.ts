@@ -6,6 +6,8 @@ import { FormControl } from '@angular/forms';
 import { FormArray } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { LoginService } from 'src/app/services/login.service';
+import { Session } from 'src/app/models/session';
 
 @Component({
   selector: 'app-dashboard',
@@ -48,7 +50,7 @@ export class DashboardComponent implements OnInit {
    
     
   });
-  constructor(private breakpointObserver: BreakpointObserver,private fb: FormBuilder) {}
+  constructor(private breakpointObserver: BreakpointObserver,private fb: FormBuilder, private loginServ: LoginService) {}
   updateHours() {
     this.updateHoursForm.patchValue({
       ID: '23244',
@@ -198,6 +200,19 @@ Schedule : Array<any> = [
      }
     )
   } 
+
+  sessionList: Array<Session> = [];
+  session!: Session;
+
+  getSessions() {
+    this.loginServ.getSessions().subscribe (
+      (response) => {
+
+        this.sessionList = response;
+        console.log(this.sessionList);
+      }
+    )
+  }
 
 
 }

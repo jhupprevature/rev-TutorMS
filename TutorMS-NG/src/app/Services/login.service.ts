@@ -4,6 +4,7 @@ import { guestUser, User } from '../models/User';
 import { Observable } from 'rxjs';
 import { UserRegister } from '../models/UserRegister';
 import { Subject } from 'rxjs';
+import { Session } from '../models/session';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,9 @@ export class LoginService {
     return this.currentUser;
   }
 
-  // getSessions(): 
+  getSessions(): Observable<Session[]> {
+    return this.http.get<Session[]>('http://localhost:8080/users/'+this.currentUser.id.toString()+'/sessions')
+  }
 
 
 }

@@ -41,6 +41,23 @@
           
           <div *ngIf='"Sessions"==this.card.title'>
             <h1>hi</h1>
+            <button (click)="getSessions()"></button>
+
+            <table>
+              <tr>
+                  <th>ID</th>
+                  <th>Tutor Notes</th>
+                  <th>Student Notes</th>
+    
+              </tr>
+          
+              <tr *ngFor="let sess of sessionList">
+                <td>{{sess.id}}</td>
+                  <td>{{sess.tutorNotes}}</td>
+                  <td>{{sess.studentNotes}}</td>
+              </tr>
+          
+          </table>
 
             
           </div>
