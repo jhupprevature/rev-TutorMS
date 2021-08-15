@@ -24,4 +24,8 @@ export class LoginService {
     return this.http.post<User>('http://localhost:8080/users', user, { headers: this.headers })
   }
 
+  getCurrentUser(): User {
+    return this.currentUser;
+  }
+
 }
