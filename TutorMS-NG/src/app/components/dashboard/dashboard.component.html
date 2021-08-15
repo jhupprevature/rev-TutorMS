@@ -40,10 +40,9 @@
 
           
           <div *ngIf='"Sessions"==this.card.title'>
-            <h1>hi</h1>
-            <button (click)="getSessions()"></button>
+            <!-- <button (click)="getSessions()"></button> -->
 
-            <table>
+            <table *ngIf="showSession()">
               <tr>
                   <th>ID</th>
                   <th>Tutor Notes</th>

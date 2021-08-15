@@ -209,8 +209,16 @@ Schedule : Array<any> = [
       (response) => {
         this.sessionList = response;
         console.log(this.sessionList);
+        return true;
       }
     )
+  }
+
+  showSession() {
+    this.getSessions()
+    if (this.sessionList == []) {
+      return false
+    } else return true;
   }
 
 
