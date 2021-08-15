@@ -3,6 +3,7 @@ package com.revature.services;
 import java.util.List;
 
 import com.revature.beans.AccountType;
+import com.revature.beans.Schedule;
 import com.revature.beans.Session;
 import com.revature.beans.User;
 
@@ -24,6 +25,8 @@ public interface UserService {
 
     public List<Session> getFutureSessionsForUser(int userId);
 
-   
+    public Schedule addScheduleToApprove(int id, Schedule s);
+    
+    public List<User> getUsersWithSchedulesToApprove(int mId);
 
 }

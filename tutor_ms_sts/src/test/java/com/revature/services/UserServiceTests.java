@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -24,13 +25,13 @@ public class UserServiceTests {
 
     @Autowired
     public UserService us;
-    
+
     @Autowired
     public AccountTypeService ats;
-    
+
     @Autowired
     public ScheduleService ss;
-    
+
     @Test
     void addUserTest() {
         AccountType studentType = ats.getAccountType(3);
@@ -39,13 +40,13 @@ public class UserServiceTests {
         newUser = us.addUser(newUser);
         assertNotEquals(0, newUser.getId());
     }
-    
+
     @Test
     void getAllUsersTest() {
         List<User> allUsers = us.getAllUsers();
         assertFalse(allUsers.isEmpty());
     }
-    
+
     @Test
     void getUserTest() {
         AccountType tutorManagerType = ats.getAccountType(1);
@@ -57,7 +58,7 @@ public class UserServiceTests {
         User notAUser = us.getUser(100);
         assertNull(notAUser);
     }
-    
+
     @Test
     void updateUserTest() {
         User user = us.getUser(2);
@@ -70,20 +71,20 @@ public class UserServiceTests {
         User fakeUser = new User(100, null, null, null, null, null, null, null);
         assertNull(us.updateUser(fakeUser));
     }
-    
+
     @Test
     void deleteUserTest() {
         boolean uDeleted = us.deleteUser(3);
         assertTrue(uDeleted);
     }
-    
+
     @Test
     void getUsersByAccountTypeTest() {
         AccountType tutor = ats.getAccountType(2);
         List<User> tutors = us.getUsersByAccountType(tutor);
         assertFalse(tutors.isEmpty());
     }
-    
+
     @Test
     void loginUserTest() {
         User actual = us.loginUser("mspringall5", "NAnFQOzvR");
@@ -93,7 +94,7 @@ public class UserServiceTests {
         User fake = us.loginUser("", "");
         assertNull(fake);
     }
-    
+
     @Test
     void getFutureSessionsForUserTest() {
         List<Session> sessions = us.getFutureSessionsForUser(5);
@@ -101,5 +102,38 @@ public class UserServiceTests {
         List<Session> noSessions = us.getFutureSessionsForUser(1);
         assertTrue(noSessions.isEmpty());
     }
+
+    @Test
+    void addScheduleToApproveTest() {
+        int newTutorId = 16;
+        Schedule newTutorSched = new Schedule(null, null, "19:00", "23:00",
+                "19:00", "23:00", "19:00", "23:00", "19:00", "23:00", "19:00",
+                "23:00", null, null, 1628187125123L);
+        newTutorSched = us.addScheduleToApprove(newTutorId, newTutorSched);
+        assertNotNull(newTutorSched);
+
+        int tutorWithSchedId = 6;
+        Schedule tutorOldSched = us.getUser(6).getSchedule();
+        Schedule tutorWithSchedSched = new Schedule(null, null, "19:00", "23:00",
+                "19:00", "23:00", "19:00", "23:00", "19:00", "23:00", "19:00",
+                "23:00", null, null, 1628187125123L);
+        tutorWithSchedSched = us.addScheduleToApprove(tutorWithSchedId, tutorWithSchedSched);
+        assertNull(ss.getSchedule(tutorOldSched.getId()));
+        assertNotEquals(tutorOldSched.toString(), tutorWithSchedSched.toString());
+        
+        int fakeTutorId = 100;
+        Schedule newSched = new Schedule(null, null, "19:00", "23:00",
+                "19:00", "23:00", "19:00", "23:00", "19:00", "23:00", "19:00",
+                "23:00", null, null, 1628187125123L);
+        newSched = us.addScheduleToApprove(fakeTutorId, newSched);
+        assertNull(newSched);
+    }
     
+    @Test
+    void getUsersWithSchedulesToApproveTest() {
+        List<User> usersToApprove = us.getUsersWithSchedulesToApprove(1);
+        assertFalse(usersToApprove.isEmpty());
+        assertNotNull(usersToApprove.get(0).getSchedule().getPendingApprovalSince());
+    }
+
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.beans.Schedule;
 import com.revature.beans.Session;
 import com.revature.beans.User;
 import com.revature.services.UserService;
@@ -65,5 +66,18 @@ public class UserController {
         Integer intId = Integer.parseInt(id);
         return us.getFutureSessionsForUser(intId);
     }
-
+    
+    @CrossOrigin
+    @PostMapping(value = "/users/{id}/schedules", produces = "application/json")
+    public Schedule addScheduleToApprove(@PathVariable int id, @RequestBody Schedule s) {
+        return us.addScheduleToApprove(id, s);
+    }
+    
+    @CrossOrigin
+    @GetMapping("/users/{managerId}/users_with_schedules_to_approve")
+    public List<User> getUsersWithSchedulesToApprove(@PathVariable String managerId) {
+        Integer intId = Integer.parseInt(managerId);
+        return us.getUsersWithSchedulesToApprove(intId);
+    }
+    
 }
