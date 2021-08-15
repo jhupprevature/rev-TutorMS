@@ -53,13 +53,6 @@ public class AccountTypeRepoTests {
         assertEquals(accountTypeToUpdateId, accountType.getId());
         assertNotEquals(accountTypeToUpdateString, accountType.toString());
     }
-
-//    @Test
-//    void deleteAccountType() {
-//        AccountType accountType = atr.findById(3).get();
-//        atr.delete(accountType);
-//        assertFalse(atr.findById(3).isPresent());
-//    }
     
     @Test
     void deleteAccountTypeById() {
