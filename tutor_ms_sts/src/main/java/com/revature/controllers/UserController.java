@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Schedule;
+import com.revature.beans.Session;
 import com.revature.beans.User;
 import com.revature.services.AccountTypeService;
 import com.revature.services.CourseService;
@@ -79,12 +80,12 @@ public class UserController {
         return us.loginUser(u.getSchoolEmail(), u.getPassword());
     }
 
-//    @CrossOrigin
-//    @GetMapping("/users/{id}/sessions")
-//    public List<Session> getSessionsForUser(@PathVariable String id) {
-//        Integer intId = Integer.parseInt(id);
-//        return us.getSessionsInOrderForUser(intId);
-//    }
+    @CrossOrigin
+    @GetMapping("/users/{id}/sessions")
+    public List<Session> getSessionsForUser(@PathVariable String id) {
+        Integer intId = Integer.parseInt(id);
+        return us.getSessionsInOrderForUser(intId);
+    }
 
     @CrossOrigin
     @PostMapping(value = "/users/{id}/schedules", produces = "application/json")

@@ -5,6 +5,7 @@ import java.util.List;
 import com.revature.beans.AccountType;
 import com.revature.beans.Course;
 import com.revature.beans.Schedule;
+import com.revature.beans.Session;
 import com.revature.beans.User;
 
 public interface UserService {
@@ -25,7 +26,7 @@ public interface UserService {
 
 	public List<User> getUsersByAccountType(AccountType at);
 
-//    public List<Session> getSessionsInOrderForUser(Integer userId);
+    public List<Session> getSessionsInOrderForUser(Integer userId);
 
     public Schedule addScheduleToApprove(int id, Schedule s);
     

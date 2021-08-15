@@ -10,6 +10,6 @@ import com.revature.beans.Session;
 @Repository
 public interface SessionRepo extends JpaRepository<Session, Integer> {
 
-    List<Session> findAllOrderByStartTimeDesc();
-    
+    List<Session> findAllByOrderByStartTimeDesc();
+
 }
