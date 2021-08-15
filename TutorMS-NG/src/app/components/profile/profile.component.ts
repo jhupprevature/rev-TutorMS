@@ -1,6 +1,8 @@
 import { isNull } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-import { workedHours, tutorUser, User, studentUser } from 'src/app/test-data';
+import { workedHours, tutorUser, studentUser } from 'src/app/models/test-data';
+import { User } from 'src/app/models/User';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,24 +15,16 @@ export class ProfileComponent implements OnInit {
   schedule : Workday[];
 
 
-  constructor() {
+  constructor(private loginServ: LoginService) {
     this.workedHours = workedHours;
-    this.user = tutorUser;
+    // this.user = tutorUser;
     this.schedule = this.formatSchedule();
+
+    this.user = loginServ.currentUser;
    }
 
   ngOnInit(): void {
     // console.log("initialising...");
-  }
-
-  isEmployee() : boolean {
-    // console.log("Verifying is employee...");
-    
-    let employeeTypes = ["Tutor", "Tutor Manager"];
-    // console.log(employeeTypes.indexOf(this.user.accountType.type) > -1);
-    if (employeeTypes.indexOf(this.user.accountType.type) > -1) {
-      return true;
-    } else return false;
   }
 
   formatSchedule() : Array<Workday> {

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { dateEvent } from '../Models/dateEvent';
+import { dateEvent } from '../models/dateEvent';
 
 @Injectable({
   providedIn: 'root'

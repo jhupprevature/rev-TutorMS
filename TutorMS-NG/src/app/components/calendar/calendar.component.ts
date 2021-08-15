@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CalendarOptions } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid'; 
 import interactionPlugin from '@fullcalendar/interaction'; 
-import { dateEvent } from 'src/app/Models/dateEvent';
-import { DateEventsService } from 'src/app/Services/date-events.service';
+import { dateEvent } from 'src/app/models/dateEvent';
+import { DateEventsService } from 'src/app/services/date-events.service';
 declare let $: any;
 
 

@@ -1,1 +1,0 @@
-2021-08-06 08:47:01 TRACE TutorMsStsApplication:16 - TRACE: message - ver testing logging out

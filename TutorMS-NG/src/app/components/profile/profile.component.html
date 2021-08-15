@@ -2,10 +2,9 @@
     <div class="d-flex page__box p-3 mt-2">Tutoring Summary</div>
     <div class="page__content shadow p-3 position-relative" style="font-size: 1rem;">
       <div class="page__content-data position-absolute">
-        <!-- TODO: Add variable for the profile's owner -->
         <h2>{{this.user.firstName + ' ' + this.user.lastName + "'s " + this.user.accountType.type}}  Profile</h2>
-        <!-- TODO: Check for account type to determine what to show on profile -->
         
+        <!-- Basic Profile Info-->
         <div class="row">
           <div class="col-sm-3">
             <label class="form-label" for="first_name">First Name</label>
@@ -27,7 +26,7 @@
           <div class="col-sm-4">
             <label class="form-label" for="email">Email</label>
             <input type="text" class="form-control" aria-label="Username" 
-              value={{this.user.username}}@paperu.edu id="email">
+              value={{this.user.schoolEmail}}@paperu.edu id="email">
           </div>
           <div class="col-sm-4">
             <label class="form-label" for="phone_number">Phone Number</label>
@@ -37,7 +36,8 @@
           
         </div>
 
-        <div *ngIf="isEmployee()" class="row my-5">
+        <!-- Employee Schedule -->
+        <div *ngIf="this.user.isEmployee()" class="row my-5">
           <!-- TODO: Control for pending and editing schedules. Planned goal. -->
           <h2 class="u">Schedule</h2>
           <table class="table table-border text-center">
@@ -59,23 +59,6 @@
           </table>
         </div>
 
-        <!-- <h3>School Email</h3>
-        <p id="school_email">kileader@bestcollege.edu</p>
-
-        <h3>Phone Number</h3>
-        <p id="phone_number">123-465-2567</p>
-
-        <h3>Weekly Schedule</h3>
-
-        <h4>Sunday</h4>
-        <p id="sunday">Unavailable</p> -->
-        <!-- p id="sunday" gets its innerHTML set to unavailable if start and end are null -->
-
-        <!-- <h4>Monday</h4>
-        <p id="monday"><span id="monday_start">8:00 AM</span> to <span id="monday_end">2:00 PM</span></p>
-
-        <h4>Tuesday</h4>
-        <p id="tuesday"><span id="tuesday_start">8:00 AM</span> to <span id="tuesday_end">11:30 AM</span></p> -->
       </div>
     </div>
   </div>

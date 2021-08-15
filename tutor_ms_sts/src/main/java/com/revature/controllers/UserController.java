@@ -1,6 +1,5 @@
 package com.revature.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.AccountType;
@@ -19,6 +17,7 @@ import com.revature.beans.Course;
 import com.revature.beans.User;
 import com.revature.services.AccountTypeService;
 import com.revature.services.CourseService;
+import com.revature.beans.Session;
 import com.revature.services.UserService;
 
 @RestController
@@ -95,8 +94,13 @@ public class UserController {
 	@CrossOrigin
 	@PostMapping(value = "/login", consumes = "application/json", produces = "application/json")
 	public User loginUser(@RequestBody User u) {
-		System.out.println(u);
 		return us.loginUser(u.getSchoolEmail(), u.getPassword());
 	}
+	
+    @CrossOrigin
+    @GetMapping("/users/{id}/future_sessions")
+    public List<Session> getFutureSessionsForUser(@PathVariable int id) {
+        return us.getFutureSessionsForUser(id);
+    }
 
 }

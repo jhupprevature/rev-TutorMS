@@ -18,7 +18,7 @@ export interface User {
     id : number,
     firstName : string,
     lastName : string,
-    username : string,
+    schoolEmail : string,
     password : string,
     phoneNumber : string,
     accountType : any
@@ -28,11 +28,11 @@ export const tutorUser: User = {
     id: 42,
     firstName: "Mickey",
     lastName: "Mouse",
-    username: "mmouse0",
+    schoolEmail: "mmouse0",
     password: "pa$$word",
     phoneNumber : "555-867-5309",
     accountType: {
-        id: 1,
+        id: 2,
         type: "Tutor"
     }
 }
@@ -41,11 +41,11 @@ export const studentUser: User = {
     id: 52,
     firstName: "Daisy",
     lastName: "Duck",
-    username: "dduck4",
+    schoolEmail: "dduck4",
     password: "pa$$word",
     phoneNumber: "555-123-4567",
     accountType: {
-        id: 2,
+        id: 3,
         type: "Student"
     }
 }

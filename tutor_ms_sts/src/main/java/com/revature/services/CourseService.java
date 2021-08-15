@@ -5,14 +5,17 @@ import java.util.List;
 import com.revature.beans.Course;
 
 public interface CourseService {
+    
+    public Course addCourse(Course course);
 
-	public Course addCourses(Course at);
+    public Course getCourse(int id);
 
-	public Course getCourses(String courseType);
+    public Course getCourse(String courseType);
 
-	public List<Course> getAllCourses();
+    public List<Course> getAllCourses();
 
-	public Course updateCourses(Course change);
+    public Course updateCourse(Course change);
 
-	public boolean deleteCourses(int id);
+    public boolean deleteCourse(int id);
+    
 }

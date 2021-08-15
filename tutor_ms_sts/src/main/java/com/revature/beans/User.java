@@ -41,7 +41,7 @@ public class User {
 	private String phoneNumber;
 
 	@ManyToOne
-	@JoinColumn(name = "account_type_id", insertable = false, updatable = false)
+	@JoinColumn(name = "account_type_id")
 	private AccountType accountType;
 
 	@OneToOne(targetEntity = Schedule.class)
