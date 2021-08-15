@@ -32,6 +32,7 @@ public class Course {
 
     private int hours;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "course")
     @Transient
     private Set<Session> sessions;
