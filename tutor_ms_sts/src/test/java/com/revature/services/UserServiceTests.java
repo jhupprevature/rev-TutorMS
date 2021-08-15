@@ -97,9 +97,9 @@ public class UserServiceTests {
 
     @Test
     void getFutureSessionsForUserTest() {
-        List<Session> sessions = us.getFutureSessionsForUser(5);
+        List<Session> sessions = us.getSessionsInOrderForUser(5);
         assertFalse(sessions.isEmpty());
-        List<Session> noSessions = us.getFutureSessionsForUser(1);
+        List<Session> noSessions = us.getSessionsInOrderForUser(1);
         assertTrue(noSessions.isEmpty());
     }
 

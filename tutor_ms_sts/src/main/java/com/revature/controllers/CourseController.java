@@ -31,7 +31,7 @@ public class CourseController {
 	@CrossOrigin
 	@GetMapping("courses/{id}")
 	public Course getCourse(@PathVariable("id") String id) {
-		return cs.getCourses(id);
+		return cs.getCourse(id);
 	}
 
 	@CrossOrigin

@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import com.revature.beans.AccountType;
 import com.revature.beans.Course;
 import com.revature.beans.Schedule;
-import com.revature.beans.Session;
 import com.revature.beans.User;
 import com.revature.repositories.ScheduleRepo;
 import com.revature.repositories.SessionRepo;
@@ -33,10 +32,10 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     ScheduleRepo schedR;
-    
+
     @Autowired
     AccountTypeService ats;
-    
+
     @Autowired
     CourseService cs;
 
@@ -69,10 +68,10 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-	@Override
-	public List<User> getUsersbyCourse(Course course) {
-		return ur.findByCoursesToTutor(course);
-	}
+    @Override
+    public List<User> getUsersbyCourse(Course course) {
+        return ur.findByCoursesToTutor(course);
+    }
 
     @Override
     public boolean deleteUser(int id) {
@@ -90,24 +89,25 @@ public class UserServiceImpl implements UserService {
         return ur.findByAccountType(at);
     }
 
-	@Override
-	public User loginUser(String username, String password) {
-		return ur.findBySchoolEmailAndPassword(username, password);
-	}
-
     @Override
-    public List<Session> getFutureSessionsForUser(int userId) {
-        List<Session> allSessions = (List<Session>) sessR.findAll();
-        List<Session> userSessions = new ArrayList<>();
-        for (Session session : allSessions) {
-            int sId = session.getStudent().getId();
-            int tId = session.getTutor().getId();
-            if (sId == userId || tId == userId) {
-                userSessions.add(session);
-            }
-        }
-        return userSessions;
+    public User loginUser(String username, String password) {
+        return ur.findBySchoolEmailAndPassword(username, password);
     }
+
+//    @Override
+//    public List<Session> getSessionsInOrderForUser(Integer userId) {
+//        List<Session> allSessions = (List<Session>) sessR
+//                .findAllOrderByStartTimeDesc();
+//        List<Session> userSessions = new ArrayList<>();
+//        for (Session session : allSessions) {
+//            int sId = session.getStudent().getId();
+//            int tId = session.getTutor().getId();
+//            if (sId == userId || tId == userId) {
+//                userSessions.add(session);
+//            }
+//        }
+//        return userSessions;
+//    }
 
     @Override
     public Schedule addScheduleToApprove(int userId, Schedule s) {
@@ -150,13 +150,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> searchUser(Integer accountTypeId, String courseType) {
-        
-        AccountType accountType;
-        Course course;
-        
-        accountType = ats.getAccountType(accountTypeId);
-        course = cs.getCourses(courseType);
+    public List<User> searchForUsers(Integer accountTypeId, String courseName) {
+
+        AccountType accountType = null;
+        if (accountTypeId != null) {
+            accountType = ats.getAccountType(accountTypeId);
+        }
+
+        Course course = null;
+        if (courseName != null) {
+            course = cs.getCourse(courseName);
+        }
 
         if (course != null) {
             return getUsersbyCourse(course);

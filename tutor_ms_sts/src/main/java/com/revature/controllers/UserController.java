@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Schedule;
-import com.revature.beans.Session;
 import com.revature.beans.User;
 import com.revature.services.AccountTypeService;
 import com.revature.services.CourseService;
@@ -46,10 +45,11 @@ public class UserController {
 
     @CrossOrigin
     @GetMapping("users/search")
-	public List<User> searchUser(@RequestParam(required = false) String courseType,
-			@RequestParam(required = false) Integer accountTypeId) {
-		return us.searchUser(accountTypeId, courseType);
-	}
+    public List<User> searchUser(
+            @RequestParam(required = false) Integer accountTypeId,
+            @RequestParam(required = false) String courseType) {
+        return us.searchForUsers(accountTypeId, courseType);
+    }
 
     @CrossOrigin
     @PostMapping(value = "/users", consumes = "application/json",
@@ -79,12 +79,12 @@ public class UserController {
         return us.loginUser(u.getSchoolEmail(), u.getPassword());
     }
 
-    @CrossOrigin
-    @GetMapping("/users/{id}/future_sessions")
-    public List<Session> getFutureSessionsForUser(@PathVariable String id) {
-        Integer intId = Integer.parseInt(id);
-        return us.getFutureSessionsForUser(intId);
-    }
+//    @CrossOrigin
+//    @GetMapping("/users/{id}/sessions")
+//    public List<Session> getSessionsForUser(@PathVariable String id) {
+//        Integer intId = Integer.parseInt(id);
+//        return us.getSessionsInOrderForUser(intId);
+//    }
 
     @CrossOrigin
     @PostMapping(value = "/users/{id}/schedules", produces = "application/json")

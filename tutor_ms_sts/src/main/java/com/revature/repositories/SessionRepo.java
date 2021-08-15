@@ -8,4 +8,6 @@ import com.revature.beans.Session;
 @Repository
 public interface SessionRepo extends CrudRepository<Session, Integer> {
 
+//    List<Session> findAllOrderByStartTimeDesc();
+    
 }

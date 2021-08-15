@@ -10,7 +10,7 @@ public interface CourseService {
 
     public Course getCourse(int id);
 
-    public Course getCourses(String courseType);
+    public Course getCourse(String courseType);
 
     public List<Course> getAllCourses();
 
