@@ -1,5 +1,4 @@
 export class SessionIDs {
-    id: number;
     tutorId: number;
     studentId: number;
     courseId: number;
@@ -8,8 +7,7 @@ export class SessionIDs {
     studentNotes: string;
     tutorNotes: string;
   
-    constructor(id: number, tutorId: number, studentId: number,courseId: number, startTime: number, endTime: number, studentNotes: string, tutorNotes: string){
-      this.id = id;
+    constructor(tutorId: number, studentId: number,courseId: number, startTime: number, endTime: number, studentNotes: string, tutorNotes: string){
       this.tutorId = tutorId;
       this.studentId = studentId;
       this.courseId = courseId

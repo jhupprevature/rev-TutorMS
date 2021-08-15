@@ -9,6 +9,7 @@ import { Validators } from '@angular/forms';
 import { LoginService } from 'src/app/Services/login.service';
 import { Session } from 'src/app/Models/session';
 import { SessionService } from 'src/app/Services/session.service';
+import { SessionIDs } from 'src/app/Models/SessionIDs';
 
 @Component({
   selector: 'app-dashboard',
@@ -203,7 +204,7 @@ Schedule : Array<any> = [
     )
   } 
 
-  sessionList: Array<Session> = [];
+  sessionList: Array<SessionIDs> = [];
 
   getSessions() {
     this.sessionServ.getUserSessions().subscribe (

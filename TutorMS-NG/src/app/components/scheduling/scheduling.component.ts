@@ -35,7 +35,7 @@ export class SchedulingComponent implements OnInit {
 
   addSession(){
 
-    this.sessionData.addSession(new SessionIDs(0 , this.selectedTutor!.id , this.userData.getCurrentUser().id , this.selectedCourse!.id, 1612890000000 ,  1612895200000, "", "")).subscribe(
+    this.sessionData.addSession(new SessionIDs(this.selectedTutor!.id , this.userData.getCurrentUser().id , this.selectedCourse!.id, 1612890000000 ,  1612895200000, "", "")).subscribe(
       (data) => {
         console.log(data);
         this.sessionList.push(data);
