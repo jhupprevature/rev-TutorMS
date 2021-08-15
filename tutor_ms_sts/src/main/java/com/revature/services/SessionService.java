@@ -2,11 +2,12 @@ package com.revature.services;
 
 import java.util.List;
 
+import com.revature.beans.JsonRequestSession;
 import com.revature.beans.Session;
 
 public interface SessionService {
 
-	public Session addSession(Session s);
+	public Session addSession(JsonRequestSession jrs);
 
 	public Session getSession(int id);
 
