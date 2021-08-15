@@ -31,25 +31,25 @@ public class CourseController {
 	@CrossOrigin
 	@GetMapping("courses/{id}")
 	public Course getCourse(@PathVariable("id") String id) {
-		return cs.getCourses(id);
+		return cs.getCourse(id);
 	}
 
 	@CrossOrigin
 	@PostMapping(value = "/courses", consumes = "application/json", produces = "application/json")
 	public Course addCourse(@RequestBody Course de) {
-		return cs.addCourses(de);
+		return cs.addCourse(de);
 	}
 
 	@CrossOrigin
 	@PutMapping(value = "/courses/{id}", consumes = "application/json", produces = "application/json")
 	public Course updateCourse(@PathVariable int id, @RequestBody Course change) {
 		change.setId(id);
-		return cs.updateCourses(change);
+		return cs.updateCourse(change);
 	}
 
 	@CrossOrigin
 	@DeleteMapping("courses/{id}")
 	public boolean deleteCourse(@PathVariable("id") String id) {
-		return cs.deleteCourses(Integer.parseInt(id));
+		return cs.deleteCourse(Integer.parseInt(id));
 	}
 }
