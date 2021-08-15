@@ -10,6 +10,8 @@ public interface CourseService {
 
     public Course getCourse(int id);
 
+    public Course getCourse(String courseType);
+
     public List<Course> getAllCourses();
 
     public Course updateCourse(Course change);

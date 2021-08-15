@@ -52,6 +52,7 @@ public class DateEventServiceImpl implements DateEventService {
 
 	@Override
 	public boolean deleteDateEvent(int id) {
+
 		try {
 			der.deleteById(id);
 			return true;

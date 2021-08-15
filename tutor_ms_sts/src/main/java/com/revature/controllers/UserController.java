@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.beans.Session;
+import com.revature.beans.AccountType;
+import com.revature.beans.Course;
 import com.revature.beans.User;
+import com.revature.services.AccountTypeService;
+import com.revature.services.CourseService;
+import com.revature.beans.Session;
 import com.revature.services.UserService;
 
 @RestController
@@ -21,6 +25,12 @@ public class UserController {
 
 	@Autowired
 	UserService us;
+
+	@Autowired
+	AccountTypeService ats;
+
+	@Autowired
+	CourseService cs;
 
 	@CrossOrigin
 	@GetMapping(value = "/users", produces = "application/json")
@@ -32,6 +42,34 @@ public class UserController {
 	@GetMapping("users/{id}")
 	public User getUser(@PathVariable("id") String id) {
 		return us.getUser(Integer.parseInt(id));
+	}
+
+	@CrossOrigin
+	@GetMapping("users/search")
+	public List<User> searchUser(@RequestParam(required = false) String courseType,
+			@RequestParam(required = false) Integer accountTypeId) {
+
+		AccountType accountType;
+		Course course;
+
+		try {
+			accountType = ats.getAccountTypes(accountTypeId);
+		} catch (NullPointerException e) {
+			accountType = null;
+		}
+		try {
+			course = cs.getCourses(courseType);
+		} catch (NullPointerException e) {
+			course = null;
+		}
+
+		if (course != null) {
+			return us.getUserbyCourse(course);
+		} else if (accountType != null) {
+			return us.getUserByAccountType(accountType);
+		} else {
+			return new ArrayList<User>();
+		}
 	}
 
 	@CrossOrigin
@@ -52,7 +90,7 @@ public class UserController {
 	public boolean deleteUser(@PathVariable int id) {
 		return us.deleteUser(id);
 	}
-	
+
 	@CrossOrigin
 	@PostMapping(value = "/login", consumes = "application/json", produces = "application/json")
 	public User loginUser(@RequestBody User u) {

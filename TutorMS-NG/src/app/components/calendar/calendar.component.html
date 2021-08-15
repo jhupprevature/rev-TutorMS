@@ -1,8 +1,11 @@
 <div class="container-fluid page">
     <div class="d-flex page__box p-3 mt-2">Calendar</div>
-    <div class="page__content shadow p-3 position-relative">
+  <div class="page__content shadow p-3 position-relative">
       <div>
-        <full-calendar [options]="calendarOptions"></full-calendar>
+        Check this box to delete an event:
+        <input type="checkbox"  id="isCheckBox" (change)="checkingDeleteButton($event)"/>
+        <span *ngIf="checkbox">(Click on an event to delete it)</span>
+        <full-calendar id="calender" [options]="calendarOptions"></full-calendar>
       </div>
       <div class="modal" id="myModal">
         <div class="modal-dialog">
@@ -16,29 +19,27 @@
             <div class="modal-body">
               <div [formGroup]="addEventForm">
                 <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                            <label>Event Title</label>
+                            <input placeholder="Add Event Title" type="text" formControlName="title" class="titleinp form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }"/><br>
+                            <input placeholder="Enter a Color" type="text" class="titleinp form-control" [(ngModel)]="colorChoice" [ngModelOptions]="{standalone: true}"/>
+                            <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                                  <div *ngIf="f.title.errors?.required">Title is required</div>
+                            </div>
+                    </div> 
                    <div class="col-sm-12">
                       <div class="form-group">
-                            <label>Event Title</label>
-                            <input placeholder="Add Event Title" type="text" class="titleinp form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" [(ngModel)]="title" [ngModelOptions]="{standalone: true}"/>
-                            <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-                                  <div *ngIf="f.title.errors.required">Title is required</div>
-                            </div>
-                         </div>
-                   </div> 
-                   <div class="col-sm-12">
-                    <div class="form-group">
-                          <label>Event Start Date:</label>
+                          <label>Event Date:</label>
                           <div class="form-control eventstarttitle"></div>
-                       </div>
-                 </div> 
+                      </div>
+                   </div>
+                  </div> 
                 </div>
                 <button type="button" class="btn btn-primary" (click)="onSubmit()" style="margin-right: 15px;">Submit</button>
-                <button type="button" class="btn btn-primary" (click)="onDelete()">Delete</button>
-                <input placeholder="Event Title to Delete" type="text" [(ngModel)]="deleteTitle" [ngModelOptions]="{standalone: true}">
               </div>
-             </div>
            </div>
          </div>
        </div>
-    </div>
   </div>
+</div>

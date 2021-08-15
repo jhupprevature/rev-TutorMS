@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.revature.beans.AccountType;
+import com.revature.beans.Course;
 import com.revature.beans.Session;
 import com.revature.beans.User;
 import com.revature.repositories.SessionRepo;
@@ -69,6 +70,11 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	@Override
+	public List<User> getUserbyCourse(Course course) {
+		return ur.findByCoursesToTutor(course);
+	}
+
     @Override
 	public List<User> getUsersByAccountType(AccountType at) {
 		return ur.findByAccountType(at);
@@ -76,6 +82,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User loginUser(String username, String password) {
+
 		return ur.findBySchoolEmailAndPassword(username, password);
 	}
 
