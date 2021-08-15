@@ -61,10 +61,10 @@ public class DateEventRepoTests {
 //        assertFalse(der.findById(3).isPresent());
 //    }
 
-   @Test
-   void deleteDateEventById() {
-       der.deleteById(3);
-       assertFalse(der.findById(3).isPresent());
-   }
-    
+	@Test
+	void deleteDateEventById() {
+		der.deleteById(3);
+		assertFalse(der.findById(3).isPresent());
+	}
+
 }

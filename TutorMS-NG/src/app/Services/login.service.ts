@@ -1,10 +1,10 @@
 import { Injectable, Input, OnChanges } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { guestUser, User } from '../models/User';
+import { guestUser, User } from '../Models/User';
 import { Observable } from 'rxjs';
-import { UserRegister } from '../models/UserRegister';
+import { UserRegister } from '../Models/UserRegister';
 import { Subject } from 'rxjs';
-import { Session } from '../models/session';
+import { Session } from '../Models/session';
 
 @Injectable({
   providedIn: 'root'

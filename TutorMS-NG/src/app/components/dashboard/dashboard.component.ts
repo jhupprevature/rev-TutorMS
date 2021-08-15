@@ -6,9 +6,10 @@ import { FormControl } from '@angular/forms';
 import { FormArray } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { LoginService } from 'src/app/services/login.service';
-import { Session } from 'src/app/models/session';
-import { SessionService } from 'src/app/services/session.service';
+import { LoginService } from 'src/app/Services/login.service';
+import { Session } from 'src/app/Models/session';
+import { SessionService } from 'src/app/Services/session.service';
+import { SessionIDs } from 'src/app/Models/SessionIDs';
 
 @Component({
   selector: 'app-dashboard',
@@ -203,7 +204,7 @@ Schedule : Array<any> = [
     )
   } 
 
-  sessionList: Array<Session> = [];
+  sessionList: Array<SessionIDs> = [];
 
   getSessions() {
     this.sessionServ.getUserSessions().subscribe (

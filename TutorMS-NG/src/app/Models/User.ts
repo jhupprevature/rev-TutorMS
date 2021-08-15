@@ -1,4 +1,4 @@
-import { AccountType } from "./AccountType";
+import { AccountType } from "src/app/Models/AccountType"
 
 export class User {
     id: number;

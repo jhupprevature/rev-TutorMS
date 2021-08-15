@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { workedHours } from 'src/app/models/test-data';
+import { workedHours } from 'src/app/Models/test-data';
 
 @Component({
   selector: 'app-hours-summary',
