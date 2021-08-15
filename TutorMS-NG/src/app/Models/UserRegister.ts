@@ -1,15 +1,15 @@
 import { AccountType } from "./AccountType";
 
 export class UserRegister {
-    firstName: String;
-    lastName: String;
-    schoolEmail: String;
-    password: String;
-    phoneNumber: String;
+    firstName: string;
+    lastName: string;
+    schoolEmail: string;
+    password: string;
+    phoneNumber: string;
     accountType: AccountType;
     schedule: null;
 
-    constructor(firstName: String, lastName: String, schoolEmail: String, password: String, phoneNumber: String, accountType: AccountType) {
+    constructor(firstName: string, lastName: string, schoolEmail: string, password: string, phoneNumber: string, accountType: AccountType) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.schoolEmail = schoolEmail;

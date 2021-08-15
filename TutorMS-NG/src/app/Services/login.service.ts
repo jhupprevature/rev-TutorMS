@@ -2,7 +2,7 @@ import { Injectable, Input, OnChanges } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { guestUser, User } from '../models/User';
 import { Observable } from 'rxjs';
-import { UserRegister } from '../Models/UserRegister';
+import { UserRegister } from '../models/UserRegister';
 import { Subject } from 'rxjs';
 
 @Injectable({

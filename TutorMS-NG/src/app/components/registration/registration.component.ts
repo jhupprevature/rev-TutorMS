@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AccountType } from 'src/app/Models/AccountType';
-import { UserRegister } from 'src/app/Models/UserRegister';
-import { LoginService } from 'src/app/Services/login.service';
+import { AccountType } from 'src/app/models/AccountType';
+import { UserRegister } from 'src/app/models/UserRegister';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-registration',
@@ -16,13 +16,13 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  inputFirstName!: String;
-  inputLastName!: String;
-  inputTelephone!: String;
-  inputEmail!: String;
-  inputPassword!: String;
+  inputFirstName!: string;
+  inputLastName!: string;
+  inputTelephone!: string;
+  inputEmail!: string;
+  inputPassword!: string;
   accountTypeId: number = 1;
-  accountTypeString?: String;
+  accountTypeString?: string;
 
   register() {
   
@@ -50,7 +50,7 @@ export class RegistrationComponent implements OnInit {
         if (r) {
           console.log("going in here!")
           this.loginServ.currentUser = r;
-          this.router.navigateByUrl("/home");
+          this.router.navigateByUrl("/dashboard");
         } 
       }
     )

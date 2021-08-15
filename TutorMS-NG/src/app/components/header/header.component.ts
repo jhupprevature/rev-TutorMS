@@ -22,6 +22,11 @@ export class HeaderComponent implements OnInit {
   }
 
   getUsername() {
+    if (this.loginServ.currentUser.firstName != "Guest") {
+      this.loggedIn = true;
+    } else {
+      this.loggedIn = false;
+    }
     return this.loginServ.currentUser.schoolEmail;
   }
 
