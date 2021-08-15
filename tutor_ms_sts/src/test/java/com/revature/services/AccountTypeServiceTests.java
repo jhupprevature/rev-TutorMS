@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -39,6 +40,8 @@ public class AccountTypeServiceTests {
         AccountType expectedType = new AccountType(1, "Tutor Manager");
         AccountType actualType = ats.getAccountType(1);
         assertEquals(expectedType.toString(), actualType.toString());
+        AccountType notAnAccountType = ats.getAccountType(20);
+        assertNull(notAnAccountType);
     }
     
     @Test
@@ -46,13 +49,12 @@ public class AccountTypeServiceTests {
         AccountType accountType = ats.getAccountType(2);
         String atToUpdateString = accountType.toString();
         int atToUpdateId = 2;
-        
         accountType.setType("Person");
-        
         accountType = ats.updateAccountType(accountType);
-        
         assertEquals(atToUpdateId, accountType.getId());
         assertNotEquals(atToUpdateString, accountType.toString());
+        AccountType fakeAt = new AccountType();
+        assertNull(ats.updateAccountType(fakeAt));
     }
     
     @Test

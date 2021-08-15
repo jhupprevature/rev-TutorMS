@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.beans.Session;
 import com.revature.beans.User;
 import com.revature.services.UserService;
 
@@ -57,5 +58,11 @@ public class UserController {
 	public User loginUser(@RequestBody User u) {
 		return us.loginUser(u.getSchoolEmail(), u.getPassword());
 	}
+	
+    @CrossOrigin
+    @GetMapping("/users/{id}/future_sessions")
+    public List<Session> getFutureSessionsForUser(@PathVariable int id) {
+        return us.getFutureSessionsForUser(id);
+    }
 
 }

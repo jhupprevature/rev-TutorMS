@@ -1,6 +1,7 @@
 package com.revature.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,12 @@ public class AccountTypeServiceImpl implements AccountTypeService {
 
 	@Override
 	public AccountType getAccountType(int id) {
-		return atr.findById(id).get();
+	    Optional<AccountType> opAt = atr.findById(id);
+	    if (opAt.isPresent()) {
+	        return opAt.get();
+	    } else {
+	        return null;
+	    }
 	}
 
 	@Override
@@ -37,7 +43,11 @@ public class AccountTypeServiceImpl implements AccountTypeService {
 
 	@Override
 	public AccountType updateAccountType(AccountType change) {
-		return atr.save(change);
+        if (atr.existsById(change.getId())) {
+            return atr.save(change);
+        } else {
+            return null;
+        }
 	}
 
 	@Override

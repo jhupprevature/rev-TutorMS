@@ -3,6 +3,7 @@ package com.revature.services;
 import java.util.List;
 
 import com.revature.beans.AccountType;
+import com.revature.beans.Session;
 import com.revature.beans.User;
 
 public interface UserService {
@@ -19,6 +20,10 @@ public interface UserService {
 
 	public User loginUser(String username, String password);
 
-	public List<User> getUserByAccountType(AccountType id);
+	public List<User> getUsersByAccountType(AccountType at);
+
+    public List<Session> getFutureSessionsForUser(int userId);
+
+   
 
 }

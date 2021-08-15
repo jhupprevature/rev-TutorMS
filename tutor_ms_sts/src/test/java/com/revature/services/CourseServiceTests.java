@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -41,6 +42,8 @@ public class CourseServiceTests {
         Course expectedCourse = new Course(1, "Composition I", "ENGL", 1101, 3);
         Course actualCourse = cs.getCourse(1);
         assertEquals(expectedCourse.toString(), actualCourse.toString());
+        Course notACourse = cs.getCourse(100);
+        assertNull(notACourse);
     }
 
     @Test
@@ -48,14 +51,13 @@ public class CourseServiceTests {
         Course course = cs.getCourse(2);
         String courseToUpdateString = course.toString();
         int courseToUpdateId = course.getId();
-
         course.setName("Poetry");
         course.setLevel(1105);
-
         course = cs.updateCourse(course);
-
         assertEquals(courseToUpdateId, course.getId());
         assertNotEquals(courseToUpdateString, course.toString());
+        Course fakeCourse = new Course();
+        assertNull(cs.updateCourse(fakeCourse));
     }
 
     @Test

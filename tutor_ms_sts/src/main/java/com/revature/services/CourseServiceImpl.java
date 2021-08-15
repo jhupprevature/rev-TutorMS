@@ -1,6 +1,7 @@
 package com.revature.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,12 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Course getCourse(int id) {
-        return cr.findById(id).get();
+        Optional<Course> opC = cr.findById(id);
+        if (opC.isPresent()) {
+            return opC.get();
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -37,7 +43,11 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Course updateCourse(Course change) {
-        return cr.save(change);
+        if (cr.existsById(change.getId())) {
+            return cr.save(change);
+        } else {
+            return null;
+        }
     }
 
     @Override
