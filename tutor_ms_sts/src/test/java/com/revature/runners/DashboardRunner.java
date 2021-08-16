@@ -26,8 +26,8 @@ public class DashboardRunner {
 	public static void setUp() {
 
 		// YOU NEED TO PUT YOUR OWN CHROME OR FIREFOX DRIVER FOR PATH
-//		String path = "C:/Users/Presentfob/Documents/chromedriver_win32/chromedriver.exe";
-//		System.setProperty("webdriver.chrome.driver", path);
+		String path = "C:/Users/jehup/Desktop/Revature Desktop/chromedriver.exe";
+		System.setProperty("webdriver.chrome.driver", path);
 
 		driver = new ChromeDriver();
 		homePage = new HomePage(driver);
