@@ -20,8 +20,8 @@
 
         <!-------------------------  Upcoming Schedule section  ---------------------------------->
         <mat-card-content class="dashboard-card-content">
-          <div *ngIf='"Upcoming Schedule"==this.card.title'>
-            <table>
+          <div style="align-items: center;" *ngIf='"Upcoming Schedule"==this.card.title'>
+            <table style="margin: auto;">
               <thead>
                 <th>Day</th>
                 <th>Time In</th>
@@ -170,13 +170,13 @@
               <button type="submit" [disabled]="!profileForm.valid">Submit</button>
             </form>
             
-            <hr>
+            <!-- <hr> -->
             
-            <p>Form Value: {{ profileForm.value | json }}</p>
+            <!-- <p>Form Value: {{ profileForm.value | json }}</p> -->
             
-            <p>Form Status: {{ profileForm.status }}</p>
+            <!-- <p>Form Status: {{ profileForm.status }}</p> -->
             
-            <button (click)="updateProfile()">Update Profile</button>
+            <!-- <button (click)="updateProfile()">Update Profile</button> -->
             
             </div>
 

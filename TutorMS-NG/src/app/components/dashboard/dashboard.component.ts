@@ -25,16 +25,16 @@ export class DashboardComponent implements OnInit {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Upcoming Schedule', cols: 1, rows: 1 },
           { title: 'Sessions', cols: 1, rows: 1 },
+          { title: 'Upcoming Schedule', cols: 1, rows: 1 },
           { title: 'Edit Profile', cols: 1, rows: 1 },
           { title: 'Add/Delete Hours', cols: 1, rows: 1 }
         ];
       }
 
       return [
-        { title: 'Upcoming Schedule', cols: 2, rows: 1 },
-        { title: 'Sessions', cols: 1, rows: 1 },
+        { title: 'Sessions', cols: 2, rows: 1 },
+        { title: 'Upcoming Schedule', cols: 1, rows: 1 },
         { title: 'Edit Profile', cols: 1, rows: 2 },
         { title: 'Add/Delete Hours', cols: 1, rows: 1 }
       ];
