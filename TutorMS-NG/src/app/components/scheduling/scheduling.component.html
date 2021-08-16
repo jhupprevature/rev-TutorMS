@@ -4,7 +4,8 @@
 
       <div *ngIf="selectedTutor">
         <h2>{{selectedTutor.firstName | uppercase}} {{selectedTutor.lastName | uppercase}} Details</h2>
-        <div><button style="font-size: medium;" (click)="addSession()">Schedule Tutoring Session</button><br><br>
+        <span><b>{{successText}}</b></span>
+        <div><button style="font-size: medium;" (click)="addSession()" id="scheduleBtn">Schedule Tutoring Session</button><br><br>
           <span><b>Phone Number: </b></span>{{selectedTutor.phoneNumber}} <br><br>
           <span><b>School Email: </b></span>{{selectedTutor.schoolEmail}}@tutors4u.edu <br><br>
           <span><b>Schedule: </b></span>

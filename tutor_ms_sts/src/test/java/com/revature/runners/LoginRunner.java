@@ -12,7 +12,8 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources/Login.feature", glue = { "com.revature.steps", "LoginSteps" })
+@CucumberOptions(features = "src/test/resources/com/revature/features/Login.feature", glue = { "com.revature.steps",
+		"LoginSteps" })
 public class LoginRunner {
 
 	public static WebDriver driver;
