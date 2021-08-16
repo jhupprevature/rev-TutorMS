@@ -17,15 +17,6 @@ public class HomePageTest {
 		String url = "http://localhost:4200/home";
 
 		driver.get(url);
-		homePage.clickHome();
-
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
-		driver.get(url);
 		homePage.clickDashboard();
 
 		try {
@@ -45,15 +36,6 @@ public class HomePageTest {
 
 		driver.get(url);
 		homePage.clickScheduling();
-
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
-		driver.get(url);
-		homePage.clickSummary();
 
 		try {
 			Thread.sleep(2000);

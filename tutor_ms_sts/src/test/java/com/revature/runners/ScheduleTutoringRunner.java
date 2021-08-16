@@ -12,8 +12,8 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources/ScheduleTutoring.feature", glue = { "com.revature.steps",
-		"ScheduleTutoringSteps" })
+@CucumberOptions(features = "src/test/resources/com/revature/features/ScheduleTutoring.feature", glue = {
+		"com.revature.steps", "ScheduleTutoringSteps" })
 public class ScheduleTutoringRunner {
 
 	public static WebDriver driver;

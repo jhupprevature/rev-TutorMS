@@ -4,7 +4,8 @@
       <div>
         Check this box to delete an event:
         <input type="checkbox"  id="isCheckBox" (change)="checkingDeleteButton($event)"/>
-        <span *ngIf="checkbox">(Click on an event to delete it)</span>
+        <span *ngIf="checkbox">(Click on an event to delete it)</span><br>
+        <span><b>{{successDeleteText}}</b></span>
         <full-calendar id="calender" [options]="calendarOptions"></full-calendar>
       </div>
       <div class="modal" id="myModal">
@@ -36,7 +37,8 @@
                    </div>
                   </div> 
                 </div>
-                <button type="button" class="btn btn-primary" (click)="onSubmit()" style="margin-right: 15px;">Submit</button>
+                <button type="button" class="btn btn-primary" (click)="onSubmit()" style="margin-right: 15px;">Submit</button><br>
+                <span><b>{{successCreateText}}</b></span>
               </div>
            </div>
          </div>

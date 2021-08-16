@@ -12,8 +12,8 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources/UserSummary.feature", glue = { "com.revature.steps",
-		"UserSummarySteps" })
+@CucumberOptions(features = "src/test/resources/com/revature/features/UserSummary.feature", glue = {
+		"com.revature.steps", "UserSummarySteps" })
 public class UserSummaryRunner {
 
 	public static WebDriver driver;
