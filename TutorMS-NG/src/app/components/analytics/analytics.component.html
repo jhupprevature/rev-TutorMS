@@ -22,11 +22,8 @@
               <th scope="col" class="col-2">Tutor</th>
               <th scope="col" class="col-2"># Of Sessions</th>
             </thead>
-            <tbody>
-              <tr>
-                <td *ngFor="let key of getAnalysis().keys()"></td>
-                <td *ngFor="let val of getAnalysis().values()"></td>
-              </tr>
+            <tbody id="tutorDemandBody">
+              <!-- <tr *ngFor="let tutor of tutorDemand"></tr> -->
             </tbody>
           </table>
         </div>

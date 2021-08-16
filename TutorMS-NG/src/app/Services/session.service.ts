@@ -19,6 +19,10 @@ export class SessionService {
   addSession(session: Session): Observable<Session> {
     return this.http.post<Session>('http://localhost:8080/Sessions', session, { headers: this.postHeaders });
   }
+
+  getAnalytics(): Observable<any> {
+    return this.http.get<any>('http://localhost:8080/Sessions/analytics');
+  }
 /*
   getSession(id): Observable<Session> {
     return this.http.get<Session>('http://localhost:8080/Sessions/' + id);
