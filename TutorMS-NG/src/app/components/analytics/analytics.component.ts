@@ -23,9 +23,9 @@ export class AnalyticsComponent implements OnInit, OnChanges {
       (response) => {
         console.log(response);
 
-        this.tutorDemand = response.tutorDemand;
-        this.courseDemand = response.courseDemand;
-        this.studentVisits = response.studentVisits;
+        this.tutorDemand = response.tutorCounts;
+        this.courseDemand = response.courseCounts;
+        this.studentVisits = response.studentCounts;
       }
     );
   }

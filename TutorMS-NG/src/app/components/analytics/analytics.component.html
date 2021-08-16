@@ -23,17 +23,44 @@
               <th scope="col" class="col-2"># Of Sessions</th>
             </thead>
             <tbody id="tutorDemandBody">
-              <!-- <tr *ngFor="let tutor of tutorDemand"></tr> -->
+              <tr *ngFor="let item of tutorDemand">
+                <td>{{item.string}}</td>
+                <td>{{item.number}}</td>
+              </tr>
             </tbody>
           </table>
         </div>
 
         <div class="row" *ngIf="showingCourseDemand">
           <h3 class="my-5">Course Demand</h3>
+          <table class="table table-border text-center">
+            <thead class="thead">
+              <th scope="col" class="col-2">Course</th>
+              <th scope="col" class="col-2"># Of Sessions</th>
+            </thead>
+            <tbody id="courseDemandBody">
+              <tr *ngFor="let item of courseDemand">
+                <td>{{item.string}}</td>
+                <td>{{item.number}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         <div class="row" *ngIf="showingStudentVisits">
           <h3 class="my-5">Student Visits</h3>
+          <table class="table table-border text-center">
+            <thead class="thead">
+              <th scope="col" class="col-2">Student</th>
+              <th scope="col" class="col-2"># Of Sessions</th>
+            </thead>
+            <tbody id="studentVisitsBody">
+              <tr *ngFor="let item of studentVisits">
+                <td>{{item.string}}</td>
+                <td>{{item.number}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
