@@ -1,4 +1,6 @@
-import { AccountType } from "src/app/Models/AccountType"
+import { AccountType } from "./AccountType"
+import { Schedule } from "./Schedule";
+import { Course } from "./Course";
 
 export class User {
     id: number;
@@ -11,24 +13,24 @@ export class User {
     schedule?: Schedule;
     courses?: Course[];
 
-    constructor(id:number, firstName: string, username:string, password:string) {
-        this.id = id;
-        this.firstName = firstName;
-        this.schoolEmail = username; 
-        this.password = password;
-        this.accountType = new AccountType(4, 'Guest');
+    constructor(options?: {id?:number, firstName?: string, 
+                username?:string, password?:string, accountType?:AccountType}) {
+        if(!options) {
+            options = {
+                id: -1,
+                firstName: 'Guest',
+                username: 'Guest',
+                password: '',
+                accountType: new AccountType(4, 'Guest')
+            }
+        }
+        this.id = options!.id || -1;
+        this.firstName = options!.firstName || 'Guest';
+        this.schoolEmail = options!.username || 'Guest'; 
+        this.password = options!.password || '';
+        this.accountType = options!.accountType || new AccountType(4, 'Guest');
     }
 
-    isEmployee() : boolean {
-        // console.log("Verifying is employee...");
-        let accType = this.accountType?.type || '';
-        
-        let employeeTypes = ["Tutor", "Tutor Manager"];
-        // console.log(employeeTypes.indexOf(this.user.accountType.type) > -1);
-        if (employeeTypes.indexOf(accType) > -1) {
-          return true;
-        } else return false;
-    }
 }
 
 // class AccountType {
@@ -41,31 +43,31 @@ export class User {
 //     }
 // }
 
-class Schedule {
-    id!: number;
-    sundayStart!: string;
-    sundayEnd!: string;
-    mondayStart!: string;
-    mondayEnd!: string;
-    tuesdayStart!: string;
-    tuesdayEnd!: string;
-    wednesdayStart!: string;
-    wednesdayEnd!: string;
-    thursdayStart!: string;
-    thursdayEnd!: string;
-    fridayStart!: string;
-    fridayEnd!: string;
-    saturdayStart!: string;
-    saturdayEnd!: string;
-    pendingApprovalSince!: number;
-}
+// class Schedule {
+//     id!: number;
+//     sundayStart!: string;
+//     sundayEnd!: string;
+//     mondayStart!: string;
+//     mondayEnd!: string;
+//     tuesdayStart!: string;
+//     tuesdayEnd!: string;
+//     wednesdayStart!: string;
+//     wednesdayEnd!: string;
+//     thursdayStart!: string;
+//     thursdayEnd!: string;
+//     fridayStart!: string;
+//     fridayEnd!: string;
+//     saturdayStart!: string;
+//     saturdayEnd!: string;
+//     pendingApprovalSince!: number;
+// }
 
-class Course {
-    id!: number;
-    name!: string;
-    subject!: string;
-    level!: number;
-    // hours!: number;
-}
+// class Course {
+//     id!: number;
+//     name!: string;
+//     subject!: string;
+//     level!: number;
+//     // hours!: number;
+// }
 
-export const guestUser = new User(-1, 'Guest', 'Guest', '');
+// export const guestUser = new User({id:-1, firstName:'Guest', username:'Guest', password:''});

@@ -1,6 +1,6 @@
-import { Injectable, Input, OnChanges } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { guestUser, User } from '../Models/User';
+import { User } from '../Models/User';
 import { Observable } from 'rxjs';
 import { UserRegister } from '../Models/UserRegister';
 import { Subject } from 'rxjs';
@@ -13,7 +13,7 @@ import { UserUpdate } from '../Models/UserUpdate';
 })
 export class LoginService {
 
-  currentUser = guestUser;
+  currentUser = new User();
 
   constructor(private http: HttpClient) { }
 

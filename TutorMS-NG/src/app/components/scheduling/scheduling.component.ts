@@ -1,3 +1,4 @@
+import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
 import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/Models/Course';
 import { Tutor } from 'src/app/Models/tutor';
