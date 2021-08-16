@@ -1,0 +1,30 @@
+2021-08-15 21:31:44 INFO  LoginSteps:34 - INFO: user went to homepage
+2021-08-15 21:31:44 INFO  LoginSteps:42 - INFO: user inputs username
+2021-08-15 21:31:44 INFO  LoginSteps:50 - INFO: user inputs password
+2021-08-15 21:31:48 INFO  LoginSteps:63 - INFO: user clicks submit
+2021-08-15 21:31:48 INFO  LoginSteps:70 - INFO: user see the Dashboard homepage
+2021-08-15 21:31:48 INFO  LoginSteps:34 - INFO: user went to homepage
+2021-08-15 21:31:49 INFO  LoginSteps:77 - INFO: user inputs invalid email
+2021-08-15 21:31:49 INFO  LoginSteps:84 - INFO: user inputs invalid password
+2021-08-15 21:31:55 INFO  LoginSteps:97 - INFO: user clicks login
+2021-08-15 21:31:55 INFO  LoginSteps:105 - INFO: user sees an invalid login message
+2021-08-15 21:31:55 INFO  LoginSteps:34 - INFO: user went to homepage
+2021-08-15 21:31:55 INFO  LoginSteps:113 - INFO: user clicks to the registration page
+2021-08-15 21:32:01 INFO  LoginSteps:140 - INFO: user inputs fields to register
+2021-08-15 21:32:01 INFO  LoginSteps:148 - INFO: user goes to homepage after register
+2021-08-15 21:32:01 INFO  LoginSteps:163 - INFO: user see their account type
+2021-08-15 22:30:44 INFO  LoginSteps:34 - INFO: user went to homepage
+2021-08-15 22:30:44 INFO  LoginSteps:42 - INFO: user inputs username
+2021-08-15 22:30:45 INFO  LoginSteps:50 - INFO: user inputs password
+2021-08-15 22:30:49 INFO  LoginSteps:63 - INFO: user clicks submit
+2021-08-15 22:30:49 INFO  LoginSteps:70 - INFO: user see the Dashboard homepage
+2021-08-15 22:30:49 INFO  LoginSteps:34 - INFO: user went to homepage
+2021-08-15 22:30:49 INFO  LoginSteps:77 - INFO: user inputs invalid email
+2021-08-15 22:30:49 INFO  LoginSteps:84 - INFO: user inputs invalid password
+2021-08-15 22:30:55 INFO  LoginSteps:97 - INFO: user clicks login
+2021-08-15 22:30:55 INFO  LoginSteps:105 - INFO: user sees an invalid login message
+2021-08-15 22:30:55 INFO  LoginSteps:34 - INFO: user went to homepage
+2021-08-15 22:30:56 INFO  LoginSteps:113 - INFO: user clicks to the registration page
+2021-08-15 22:31:01 INFO  LoginSteps:140 - INFO: user inputs fields to register
+2021-08-15 22:31:01 INFO  LoginSteps:148 - INFO: user goes to homepage after register
+2021-08-15 22:31:01 INFO  LoginSteps:163 - INFO: user see their account type
