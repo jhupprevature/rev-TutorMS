@@ -82,6 +82,22 @@ public class HomePage {
 
 	@FindBy(xpath = "/html/body/app-root/mat-drawer-container/mat-drawer/div/app-sidenav/mat-nav-list/a[4]")
 	public WebElement login;
+	
+	@FindBy(className = "mat-h1")
+	public WebElement dashboardTitle;
+	
+	@FindBy(id = "registerBtn")
+	public WebElement registerBtn;
+
+	@FindBy(id = "logout")
+	public WebElement logout;
+	
+	@FindBy(id = "menuBtn")
+	public WebElement menuBtn;
+	
+	@FindBy(id = "accountType")
+	public WebElement getAccountType;
+	
 
 	@FindBy(xpath = "//*[@id=\"username\"]")
 	public WebElement searchUsername;
