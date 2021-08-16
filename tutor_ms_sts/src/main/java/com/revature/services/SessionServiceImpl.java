@@ -35,7 +35,7 @@ public class SessionServiceImpl implements SessionService {
         User tutor = us.getUser(jrs.getTutorId());
         User student = us.getUser(jrs.getStudentId());
         Course course = cs.getCourse(jrs.getCourseId());
-        
+
         long startTime = jrs.getStartTime();
         long endTime = jrs.getEndTime();
         String tutorNotes = jrs.getTutorNotes();
