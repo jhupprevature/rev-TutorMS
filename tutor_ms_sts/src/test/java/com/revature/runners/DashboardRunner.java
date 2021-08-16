@@ -9,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import com.revature.pages.DashboardPage;
 import com.revature.pages.HomePage;
 import com.revature.pages.LoginPage;
-import com.revature.pages.RegisterPage;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;

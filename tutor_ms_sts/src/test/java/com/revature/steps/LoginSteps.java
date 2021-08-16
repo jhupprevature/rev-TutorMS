@@ -90,7 +90,7 @@ public class LoginSteps {
 		// Write code here that turns the phrase above into concrete actions
 		loginPage.submitBtn.click();
 		try {
-			Thread.sleep(6000);
+			Thread.sleep(4000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}	
