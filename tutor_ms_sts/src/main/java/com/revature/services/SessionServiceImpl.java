@@ -76,7 +76,7 @@ public class SessionServiceImpl implements SessionService {
             sr.deleteById(id);
             return true;
         } catch (IllegalArgumentException e) {
-            log.warn(e);;
+            log.warn(e);
             return false;
         }
     }

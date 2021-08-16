@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Date;
@@ -12,6 +13,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.beans.Schedule;
@@ -19,10 +21,10 @@ import com.revature.beans.Schedule;
 @SpringBootTest(classes = com.revature.app.TutorMsStsApplication.class)
 @Transactional
 public class ScheduleServiceTests {
-    
+
     @Autowired
     public ScheduleService ss;
-    
+
     @Test
     void addScheduleTest() {
         Date dateTime = new Date();
@@ -70,6 +72,9 @@ public class ScheduleServiceTests {
     void deleteScheduleTest() {
         boolean sDeleted = ss.deleteSchedule(3);
         assertTrue(sDeleted);
+        assertThrows(EmptyResultDataAccessException.class, () -> {
+            ss.deleteSchedule(100);
+        });
     }
-    
+
 }

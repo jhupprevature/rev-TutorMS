@@ -17,10 +17,10 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     private static final Logger log = Logger
             .getLogger(ScheduleServiceImpl.class);
-    
+
     @Autowired
     ScheduleRepo sr;
-    
+
     @Override
     public Schedule addSchedule(Schedule s) {
         return sr.save(s);
@@ -60,5 +60,5 @@ public class ScheduleServiceImpl implements ScheduleService {
             return false;
         }
     }
-    
+
 }
