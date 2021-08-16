@@ -1,6 +1,5 @@
 import { isNull } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-import { tutorUser, studentUser } from 'src/app/models/test-data';
 import { User } from 'src/app/models/User';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -15,8 +14,6 @@ export class ProfileComponent implements OnInit {
 
 
   constructor(private loginServ: LoginService) {
-    // this.user = tutorUser;
-    // this.schedule = this.formatSchedule();
 
     this.user = loginServ.currentUser;
     this.schedule = this.formatSchedule(loginServ.currentUser.schedule);
@@ -27,25 +24,6 @@ export class ProfileComponent implements OnInit {
   }
 
   formatSchedule(raw_sched: any) : Array<Workday> {
-    // let raw_sched = {
-    //   id: 42,
-    //   sunday_start:   null,
-    //   sunday_end:     null,
-    //   monday_start:   '10:00',
-    //   monday_end:     '18:00',
-    //   tuesday_start:  '10:00',
-    //   tuesday_end:    '18:00',
-    //   wednesday_start:'10:00',
-    //   wednesday_end:  '18:00',
-    //   thursday_start: '10:00',
-    //   thursday_end:   '18:00',
-    //   friday_start:   '10:00',
-    //   friday_end:     '18:00',
-    //   saturday_start: null,
-    //   saturday_end:   null,
-    //   pending_approval_since: null
-    // };
-
     //TODO: Control for pending approvals. Planned goal.
     // if (!raw_sched.pending_approval_since) return [];
 

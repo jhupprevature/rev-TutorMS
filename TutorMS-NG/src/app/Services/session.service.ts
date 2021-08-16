@@ -1,14 +1,16 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Session } from '../models/Session';
+import { Session } from '../models/session';
+import { SessionIDs } from '../models/SessionIDs';
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SessionService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private loginServ: LoginService) { }
 
   private postHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -16,7 +18,7 @@ export class SessionService {
     return this.http.get<Session[]>('http://localhost:8080/Sessions');
   }
 
-  addSession(session: Session): Observable<Session> {
+  addSession(session: SessionIDs): Observable<Session> {
     return this.http.post<Session>('http://localhost:8080/Sessions', session, { headers: this.postHeaders });
   }
 
@@ -31,4 +33,10 @@ export class SessionService {
   updateSession(Session: Session): Observable<Session> {
     return this.http.put<Session>('http://localhost:8080/Sessions/' + Session.id, Session, { headers: this.postHeaders });
   }*/
+
+  //I switched Session to SessionIDs, Cao might want to check this.
+  getUserSessions(): Observable<SessionIDs[]> {
+    return this.http.get<SessionIDs[]>('http://localhost:8080/users/'+this.loginServ.currentUser.id.toString()+'/sessions')
+  }
+
 }

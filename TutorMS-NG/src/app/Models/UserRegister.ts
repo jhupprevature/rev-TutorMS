@@ -1,4 +1,4 @@
-import { AccountType } from "./AccountType";
+import { AccountType } from "../Models/AccountType";
 
 export class UserRegister {
     firstName: string;

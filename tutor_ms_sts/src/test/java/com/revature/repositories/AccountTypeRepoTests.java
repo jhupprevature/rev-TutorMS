@@ -45,21 +45,13 @@ public class AccountTypeRepoTests {
         AccountType accountType = atr.findById(2).get();
         String accountTypeToUpdateString = accountType.toString();
         int accountTypeToUpdateId = accountType.getId();
-
         accountType.setType("Person");
-        
+
         accountType = atr.save(accountType);
 
         assertEquals(accountTypeToUpdateId, accountType.getId());
         assertNotEquals(accountTypeToUpdateString, accountType.toString());
     }
-
-//    @Test
-//    void deleteAccountType() {
-//        AccountType accountType = atr.findById(3).get();
-//        atr.delete(accountType);
-//        assertFalse(atr.findById(3).isPresent());
-//    }
     
     @Test
     void deleteAccountTypeById() {

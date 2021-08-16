@@ -6,6 +6,10 @@ import { FormControl } from '@angular/forms';
 import { FormArray } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { LoginService } from 'src/app/Services/login.service';
+import { Session } from 'src/app/Models/session';
+import { SessionService } from 'src/app/Services/session.service';
+import { SessionIDs } from 'src/app/Models/SessionIDs';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,16 +25,16 @@ export class DashboardComponent implements OnInit {
     map(({ matches }) => {
       if (matches) {
         return [
+          { title: 'Sessions', cols: 1, rows: 1 },
           { title: 'Upcoming Schedule', cols: 1, rows: 1 },
-          { title: 'Total Hours', cols: 1, rows: 1 },
           { title: 'Edit Profile', cols: 1, rows: 1 },
           { title: 'Add/Delete Hours', cols: 1, rows: 1 }
         ];
       }
 
       return [
-        { title: 'Upcoming Schedule', cols: 2, rows: 1 },
-        { title: 'Total Hours', cols: 1, rows: 1 },
+        { title: 'Sessions', cols: 2, rows: 1 },
+        { title: 'Upcoming Schedule', cols: 1, rows: 1 },
         { title: 'Edit Profile', cols: 1, rows: 2 },
         { title: 'Add/Delete Hours', cols: 1, rows: 1 }
       ];
@@ -48,7 +52,7 @@ export class DashboardComponent implements OnInit {
    
     
   });
-  constructor(private breakpointObserver: BreakpointObserver,private fb: FormBuilder) {}
+  constructor(private breakpointObserver: BreakpointObserver,private fb: FormBuilder, private sessionServ: SessionService) {}
   updateHours() {
     this.updateHoursForm.patchValue({
       ID: '23244',
@@ -109,6 +113,7 @@ export class DashboardComponent implements OnInit {
     // console.log("in:", this.fakeIn);
     // console.log("out:", this.fakeOut);
     // console.log("elapsed:", this.fakeOut.getHours() - this.fakeIn.getHours());
+    this.getSessions();
   }
  
 
@@ -199,5 +204,22 @@ Schedule : Array<any> = [
     )
   } 
 
+  sessionList: Array<SessionIDs> = [];
+
+  getSessions() {
+    this.sessionServ.getUserSessions().subscribe (
+      (response) => {
+        this.sessionList = response;
+        console.log(this.sessionList);
+        return true;
+      }
+    )
+  }
+
+  showSession() {
+    if (this.sessionList == []) {
+      return false
+    } else return true;
+  }
 
 }
