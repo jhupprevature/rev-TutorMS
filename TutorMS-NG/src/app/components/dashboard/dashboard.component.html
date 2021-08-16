@@ -26,14 +26,74 @@
                 <th>Day</th>
                 <th>Time In</th>
                 <th>Time Out</th>
-                <th>Total</th>
               </thead>
-              <tr *ngFor="let workday of fakeHoursList">
-                <td>{{workday.day}}</td>
-                <td>{{this.formatHours(workday.inTime)}}</td>
-                <td>{{this.formatHours(workday.outTime)}}</td>
-                <td>{{this.formatHours(this.subtractHours(workday))}}</td>
+              <tr *ngIf="user">
+                <td>Sunday</td>
+
+                <td>{{ user.schedule?.sundayStart ?? '0.00'}}</td>
+
+                <td>{{ user.schedule?.sundayEnd ?? '0.00'}}</td>
+
               </tr>
+
+              <tr *ngIf="user">
+                <td>Monday</td>
+
+                <td>{{ user.schedule?.mondayStart ?? '0.00'}}</td>
+
+                <td>{{ user.schedule?.mondayEnd ?? '0.00'}}</td>
+
+              </tr>
+
+              <tr *ngIf="user">
+                <td>Tuesday</td>
+
+                <td>{{ user.schedule?.tuesdayStart ?? '0.00'}}</td>
+
+                <td>{{ user.schedule?.tuesdayEnd ?? '0.00'}}</td>
+
+              </tr>
+
+              <tr *ngIf="user">
+                <td>Wednesday</td>
+
+                <td>{{ user.schedule?.wednesdayStart ?? '0.00'}}</td>
+
+                <td>{{ user.schedule?.wednesdayEnd ?? '0.00'}}</td>
+
+              </tr>
+
+              <tr *ngIf="user">
+                <td>Thursday</td>
+
+                <td>{{ user.schedule?.thursdayStart ?? '0.00'}}</td>
+
+                <td>{{ user.schedule?.thursdayEnd ?? '0.00'}}</td>
+
+              </tr>
+
+              <tr *ngIf="user">
+                <td>Friday</td>
+
+                <td>{{ user.schedule?.fridayStart ?? '0.00'}}</td>
+
+                <td>{{ user.schedule?.fridayEnd ?? '0.00'}}</td>
+
+              </tr>
+
+              <tr *ngIf="user">
+                <td>Saturday</td>
+
+                <td>{{ user.schedule?.saturdayStart ?? '0.00'}}</td>
+
+                <td>{{ user.schedule?.saturdayEnd ?? '0.00'}}</td>
+
+              </tr>
+
+
+
+
+
 
             </table>
           </div>
@@ -170,13 +230,13 @@
               <button type="submit" [disabled]="!profileForm.valid">Submit</button>
             </form>
             
-            <hr>
+            <!-- <hr> -->
             
-            <p>Form Value: {{ profileForm.value | json }}</p>
+            <!-- <p>Form Value: {{ profileForm.value | json }}</p> -->
             
-            <p>Form Status: {{ profileForm.status }}</p>
+            <!-- <p>Form Status: {{ profileForm.status }}</p> -->
             
-            <button (click)="updateProfile()">Update Profile</button>
+            <!-- <button (click)="updateProfile()">Update Profile</button> -->
             
             </div>
 

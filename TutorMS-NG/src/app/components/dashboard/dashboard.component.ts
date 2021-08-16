@@ -10,6 +10,7 @@ import { LoginService } from 'src/app/Services/login.service';
 import { Session } from 'src/app/Models/session';
 import { SessionService } from 'src/app/Services/session.service';
 import { SessionIDs } from 'src/app/Models/SessionIDs';
+import { User } from 'src/app/Models/User';
 
 @Component({
   selector: 'app-dashboard',
@@ -52,7 +53,11 @@ export class DashboardComponent implements OnInit {
    
     
   });
-  constructor(private breakpointObserver: BreakpointObserver,private fb: FormBuilder, private sessionServ: SessionService) {}
+  user: User;
+  constructor(private breakpointObserver: BreakpointObserver,private fb: FormBuilder, private sessionServ: SessionService, private loginServ: LoginService) {
+    this.user = this.loginServ.currentUser;
+  }
+
   updateHours() {
     this.updateHoursForm.patchValue({
       ID: '23244',
