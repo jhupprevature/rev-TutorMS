@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.beans.Analytic;
 import com.revature.beans.JsonRequestSession;
 import com.revature.beans.Session;
 import com.revature.services.SessionService;
@@ -52,6 +53,12 @@ public class SessionController {
 	@DeleteMapping("Sessions/{id}")
 	public boolean deleteSession(@PathVariable("id") String id) {
 		return ss.deleteSession(Integer.parseInt(id));
+	}
+	
+	@CrossOrigin
+	@GetMapping(value = "Sessions/analytics", produces = "application/json")
+	public Analytic getAnalytic() {
+	    return ss.getAnalytic();
 	}
 	
 }
