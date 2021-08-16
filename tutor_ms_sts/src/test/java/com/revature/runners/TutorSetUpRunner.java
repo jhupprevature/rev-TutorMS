@@ -12,7 +12,8 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources/TutorSetUp.feature", glue = { "com.revature.steps", "TutorSetUpSteps" })
+@CucumberOptions(features = "src/test/resources/com/revature/features/TutorSetUp.feature", glue = {
+		"com.revature.steps", "TutorSetUpSteps" })
 public class TutorSetUpRunner {
 
 	public static WebDriver driver;

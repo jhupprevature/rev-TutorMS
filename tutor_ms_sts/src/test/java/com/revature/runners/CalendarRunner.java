@@ -12,9 +12,9 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources/com/revature/features/UserPage.feature", glue = { "com.revature.steps",
-		"UserPageSteps" })
-public class UserPageRunner {
+@CucumberOptions(features = "src/test/resources/com/revature/features/Calendar.feature", glue = { "com.revature.steps",
+		"CalendarSteps" })
+public class CalendarRunner {
 
 	public static WebDriver driver;
 	public static HomePage homePage;

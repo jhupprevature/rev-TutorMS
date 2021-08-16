@@ -13,13 +13,17 @@ export class SessionService {
   constructor(private http: HttpClient, private loginServ: LoginService) { }
 
   private postHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-/*
-  getAllSession(): Observable<any> {
+
+  getAllSessions(): Observable<Session[]> {
     return this.http.get<Session[]>('http://localhost:8080/Sessions');
   }
-*/
+
   addSession(session: SessionIDs): Observable<SessionIDs> {
     return this.http.post<SessionIDs>('http://localhost:8080/Sessions', session, { headers: this.postHeaders });
+  }
+
+  getAnalytics(): Observable<any> {
+    return this.http.get<any>('http://localhost:8080/Sessions/analytics');
   }
 /*
   getSession(id): Observable<Session> {

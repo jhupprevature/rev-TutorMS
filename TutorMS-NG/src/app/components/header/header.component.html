@@ -8,7 +8,7 @@
     <div class="row mr-2 ml-auto">
       <ul class="row m-0 align-items-center">
         <li>
-          <button mat-button [matMenuTriggerFor]="menu" class="user mt-2 d-flex align-items-center">
+          <button id="menuBtn" mat-button [matMenuTriggerFor]="menu" class="user mt-2 d-flex align-items-center">
             <!-- <img src="./assets/User.png" alt="" class="user-image mr-1 p-2" /> -->
             <mat-icon>account_circle</mat-icon>
               {{ getUsername() }}
@@ -25,14 +25,14 @@
               <mat-icon>settings</mat-icon>
               Settings
             </button> -->
-            <button (click)="logout()" mat-menu-item routerLink="/login">
+            <button id="logout" (click)="logout()" mat-menu-item routerLink="/login">
               <mat-icon>exit_to_app</mat-icon>
               Logout
             </button>
           </div>
 
           <div *ngIf="!loggedIn">
-            <button mat-menu-item routerLinkActive="list-item-active" routerLink="/registration">
+            <button id="registerBtn" mat-menu-item routerLinkActive="list-item-active" routerLink="/registration">
               <mat-icon>mode_edit</mat-icon>
               Register
             </button>
@@ -51,7 +51,7 @@
     <div class="row mr-2 ml-auto" *ngIf="loggedIn">
       <ul class="row m-0 align-items-center">
         <li>
-          <button mat-icon-button (click)="toggleSidebar()" class="user mt-2 d-flex align-items-center" [disabled]="true" style="color: black;">
+          <button id="accountType" mat-icon-button (click)="toggleSidebar()" class="user mt-2 d-flex align-items-center" [disabled]="true" style="color: black;">
             {{ setAccountType() }}
           </button>
         </li>

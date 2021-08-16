@@ -1,5 +1,5 @@
-import { Course } from "../Models/Course";
-import { Schedule } from "../Models/Schedule";
+import { Course } from "src/app/Models/Course";
+import { Schedule } from "src/app/Models/Schedule";
 
 export class Tutor{
   id: number;

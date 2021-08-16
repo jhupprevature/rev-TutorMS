@@ -1,3 +1,4 @@
+import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
 import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/Models/Course';
 import { Tutor } from 'src/app/Models/tutor';
@@ -13,6 +14,7 @@ import { SessionIDs } from 'src/app/Models/SessionIDs';
 })
 export class SchedulingComponent implements OnInit {
 
+  successText: string = '';
   searchBox!: string;
   sessionList: SessionIDs[] = [];
   tutorsData: Tutor[] = [];
@@ -27,6 +29,7 @@ export class SchedulingComponent implements OnInit {
 
   onSelect(tutor: Tutor): void {
     this.selectedTutor = tutor;
+    this.successText = '';
   }
 
   courseSelect(course: Course){
@@ -39,6 +42,7 @@ export class SchedulingComponent implements OnInit {
       (data) => {
         console.log(data);
         this.sessionList.push(data);
+        this.successText = "Scheduled Successfully!"
       },
       (data) => {
         console.log(data);
