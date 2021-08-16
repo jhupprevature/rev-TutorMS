@@ -66,7 +66,7 @@ public class LoginSteps {
 
 	@Then("User is re-directed to role-appropriate home page.")
 	public void user_is_re_directed_to_role_appropriate_home_page() {
-		assertEquals("Dashboard", homePage.dashboardTitle.getText());
+		assertEquals("Dashboard", homePage.dashboardTitle1.getText());
 		log.info("INFO: user see the Dashboard homepage");
 	}
 

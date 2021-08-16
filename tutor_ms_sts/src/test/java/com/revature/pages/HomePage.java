@@ -84,7 +84,7 @@ public class HomePage {
 	public WebElement login;
 	
 	@FindBy(className = "mat-h1")
-	public WebElement dashboardTitle;
+	public WebElement dashboardTitle1;
 	
 	@FindBy(id = "registerBtn")
 	public WebElement registerBtn;
