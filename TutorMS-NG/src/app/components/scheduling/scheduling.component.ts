@@ -47,5 +47,12 @@ export class SchedulingComponent implements OnInit {
       });
   }
 
+  isGuest() :boolean {
+    if (this.userData.currentUser.firstName == 'Guest') {
+      return true;
+    } else return false;
+
+  }
+
 }
 

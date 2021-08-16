@@ -10,6 +10,8 @@ import { LoginService } from 'src/app/Services/login.service';
 import { Session } from 'src/app/Models/session';
 import { SessionService } from 'src/app/Services/session.service';
 import { SessionIDs } from 'src/app/Models/SessionIDs';
+import { User } from 'src/app/Models/User';
+import { UserUpdate } from 'src/app/Models/UserUpdate';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,17 +28,17 @@ export class DashboardComponent implements OnInit {
       if (matches) {
         return [
           { title: 'Sessions', cols: 1, rows: 1 },
-          { title: 'Upcoming Schedule', cols: 1, rows: 1 },
+          { title: 'My Schedule', cols: 1, rows: 1 },
           { title: 'Edit Profile', cols: 1, rows: 1 },
-          { title: 'Add/Delete Hours', cols: 1, rows: 1 }
+          // { title: 'Add/Delete Hours', cols: 1, rows: 1 }
         ];
       }
 
       return [
         { title: 'Sessions', cols: 2, rows: 1 },
-        { title: 'Upcoming Schedule', cols: 1, rows: 1 },
-        { title: 'Edit Profile', cols: 1, rows: 2 },
-        { title: 'Add/Delete Hours', cols: 1, rows: 1 }
+        { title: 'My Schedule', cols: 1, rows: 1 },
+        { title: 'Edit Profile', cols: 1, rows: 1 },
+        // { title: 'Add/Delete Hours', cols: 1, rows: 1 }
       ];
     })
   );
@@ -52,7 +54,20 @@ export class DashboardComponent implements OnInit {
    
     
   });
-  constructor(private breakpointObserver: BreakpointObserver,private fb: FormBuilder, private sessionServ: SessionService) {}
+
+  user: User;
+
+  updateFirstName!: string;
+  updateLastName!: string;
+  updateEmail!: string;
+  
+  constructor(private breakpointObserver: BreakpointObserver,private fb: FormBuilder, private sessionServ: SessionService, private loginServ: LoginService) {
+    this.user = this.loginServ.currentUser;
+    this.updateFirstName = this.user.firstName;
+    this.updateLastName = this.user.lastName!;
+    this.updateEmail = this.user.schoolEmail
+  }
+
   updateHours() {
     this.updateHoursForm.patchValue({
       ID: '23244',
@@ -81,8 +96,6 @@ export class DashboardComponent implements OnInit {
   get aliases() {
     return this.profileForm.get('aliases') as FormArray;
   }
-
- 
 
   updateProfile() {
     this.profileForm.patchValue({
@@ -220,6 +233,26 @@ Schedule : Array<any> = [
     if (this.sessionList == []) {
       return false
     } else return true;
+  }
+
+  
+
+  updatedUser?: UserUpdate;
+
+  updateComplete: boolean = false;
+
+
+  updateAccount() {
+    this.updatedUser = new UserUpdate(this.user.id.toString(), this.updateFirstName, this.updateLastName, this.updateEmail);
+
+    console.log(this.updatedUser);
+    this.loginServ.updateUser(this.updatedUser).subscribe(
+      (response) => {
+        this.loginServ.currentUser = response;
+        this.updateComplete = true;
+      }
+    )
+
   }
 
 }

@@ -2,7 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/User';
 import { Observable } from 'rxjs';
+<<<<<<< HEAD
 import { UserRegister } from '../models/UserRegister';
+=======
+import { UserRegister } from '../Models/UserRegister';
+import { Subject } from 'rxjs';
+import { Session } from '../Models/session';
+import { UserUpdate } from '../Models/UserUpdate';
+
+>>>>>>> origin/main
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +33,11 @@ export class LoginService {
 
   getCurrentUser(): User {
     return this.currentUser;
+  }
+
+  updateUser(change: UserUpdate): Observable<User> {
+
+    return this.http.put<User>('http://localhost:8080/users/'+this.currentUser.id.toString(), change, { headers: this.headers })
   }
 
 }
