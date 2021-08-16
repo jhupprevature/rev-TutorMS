@@ -139,7 +139,7 @@ public class SessionServiceImpl implements SessionService {
             studentCounts.add(san);
         }
         ArrayList<StringAndNumber> courseCounts = new ArrayList<>();
-        for (Map.Entry<String, Integer> entry : tutorSessMap.entrySet()) {
+        for (Map.Entry<String, Integer> entry : courseSessMap.entrySet()) {
             StringAndNumber san = new StringAndNumber(entry.getKey(),
                     entry.getValue());
             courseCounts.add(san);
