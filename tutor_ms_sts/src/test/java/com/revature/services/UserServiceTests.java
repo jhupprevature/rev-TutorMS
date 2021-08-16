@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.beans.AccountType;
@@ -76,6 +78,9 @@ public class UserServiceTests {
     void deleteUserTest() {
         boolean uDeleted = us.deleteUser(3);
         assertTrue(uDeleted);
+        assertThrows(EmptyResultDataAccessException.class, () -> {
+            us.deleteUser(100);
+        });
     }
 
     @Test
@@ -96,9 +101,13 @@ public class UserServiceTests {
     }
 
     @Test
-    void getFutureSessionsForUserTest() {
+    void getSessionsInOrderForUserTest() {
         List<Session> sessions = us.getSessionsInOrderForUser(5);
         assertFalse(sessions.isEmpty());
+        assertTrue(
+                sessions.get(0).getStartTime() > sessions.get(1).getStartTime()
+                        && sessions.get(1).getStartTime() > sessions.get(2)
+                                .getStartTime());
         List<Session> noSessions = us.getSessionsInOrderForUser(1);
         assertTrue(noSessions.isEmpty());
     }
@@ -114,26 +123,36 @@ public class UserServiceTests {
 
         int tutorWithSchedId = 6;
         Schedule tutorOldSched = us.getUser(6).getSchedule();
-        Schedule tutorWithSchedSched = new Schedule(null, null, "19:00", "23:00",
-                "19:00", "23:00", "19:00", "23:00", "19:00", "23:00", "19:00",
-                "23:00", null, null, 1628187125123L);
-        tutorWithSchedSched = us.addScheduleToApprove(tutorWithSchedId, tutorWithSchedSched);
+        Schedule tutorWithSchedSched = new Schedule(null, null, "19:00",
+                "23:00", "19:00", "23:00", "19:00", "23:00", "19:00", "23:00",
+                "19:00", "23:00", null, null, 1628187125123L);
+        tutorWithSchedSched = us.addScheduleToApprove(tutorWithSchedId,
+                tutorWithSchedSched);
         assertNull(ss.getSchedule(tutorOldSched.getId()));
-        assertNotEquals(tutorOldSched.toString(), tutorWithSchedSched.toString());
-        
+        assertNotEquals(tutorOldSched.toString(),
+                tutorWithSchedSched.toString());
+
         int fakeTutorId = 100;
-        Schedule newSched = new Schedule(null, null, "19:00", "23:00",
-                "19:00", "23:00", "19:00", "23:00", "19:00", "23:00", "19:00",
-                "23:00", null, null, 1628187125123L);
+        Schedule newSched = new Schedule(null, null, "19:00", "23:00", "19:00",
+                "23:00", "19:00", "23:00", "19:00", "23:00", "19:00", "23:00",
+                null, null, 1628187125123L);
         newSched = us.addScheduleToApprove(fakeTutorId, newSched);
         assertNull(newSched);
     }
-    
+
     @Test
     void getUsersWithSchedulesToApproveTest() {
         List<User> usersToApprove = us.getUsersWithSchedulesToApprove(1);
         assertFalse(usersToApprove.isEmpty());
-        assertNotNull(usersToApprove.get(0).getSchedule().getPendingApprovalSince());
+        assertNotNull(
+                usersToApprove.get(0).getSchedule().getPendingApprovalSince());
+    }
+    
+    @Test
+    void searchForUsersTest() {
+        assertTrue(us.searchForUsers(null, null).isEmpty());
+        assertNotNull(us.searchForUsers(2, null));
+        assertNotNull(us.searchForUsers(null, "Precalculus"));
     }
 
 }

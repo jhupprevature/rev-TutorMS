@@ -3,6 +3,7 @@ package com.revature.repositories;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
@@ -27,6 +28,9 @@ public class UserRepoTests {
 
     @Autowired
     public ScheduleRepo sr;
+
+    @Autowired
+    public CourseRepo cr;
 
     @Test
     void addUser() {
@@ -67,13 +71,6 @@ public class UserRepoTests {
         assertNotEquals(userToUpdateString, user.toString());
     }
 
-//    @Test
-//    void deleteUser() {
-//        User user = ur.findById(3).get();
-//        ur.delete(user);
-//        assertFalse(ur.findById(3).isPresent());
-//    }
-//    
     @Test
     void deleteUserById() {
         ur.deleteById(3);
@@ -91,12 +88,20 @@ public class UserRepoTests {
     @Test
     void findBySchoolEmailAndPasswordTest() {
         AccountType student = atr.findById(3).get();
-        User expectedTina = new User(8, "Tina", "Dymick", "tdymick7",
-                "bqm4f4", "560-285-5415", student, null);
+        User expectedTina = new User(8, "Tina", "Dymick", "tdymick7", "bqm4f4",
+                "560-285-5415", student, null);
         String schoolEmail = "tdymick7";
         String password = "bqm4f4";
-        User actualTina = ur.findBySchoolEmailAndPassword(schoolEmail, password);
+        User actualTina = ur.findBySchoolEmailAndPassword(schoolEmail,
+                password);
         assertEquals(expectedTina.toString(), actualTina.toString());
+    }
+
+    @Test
+    void findByCoursesToTutorTest() {
+        List<User> users = ur.findByCoursesToTutor(cr.findById(17).get());
+        assertFalse(users.isEmpty());
+        assertTrue(users.size() == 3);
     }
 
 }

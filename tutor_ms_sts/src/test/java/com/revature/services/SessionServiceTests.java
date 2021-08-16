@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.beans.Course;
@@ -80,6 +82,9 @@ public class SessionServiceTests {
     void deleteSessionTest() {
         boolean sDeleted = ss.deleteSession(3);
         assertTrue(sDeleted);
+        assertThrows(EmptyResultDataAccessException.class, () -> {
+            ss.deleteSession(100);
+        });
     }
 
 }
