@@ -62,17 +62,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User updateUser(User change) {
+        if (!ur.existsById(change.getId())) {
+            return null;
+        }
         User tempUser = change;
         change = ur.findById(change.getId()).get();
         change.setFirstName(tempUser.getFirstName());
         change.setLastName(tempUser.getLastName());
         change.setSchoolEmail(tempUser.getSchoolEmail());
-
-        if (ur.existsById(change.getId())) {
-            return ur.save(change);
-        } else {
-            return null;
-        }
+        return ur.save(change);
     }
 
     @Override
