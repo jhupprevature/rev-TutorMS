@@ -55,13 +55,6 @@ public class DateEventRepoTests {
         assertNotEquals(dateEventToUpdateString, dateEvent.toString());
     }
 
-//    @Test
-//    void deleteDateEvent() {
-//        DateEvent dateEvent = der.findById(3).get();
-//        der.delete(dateEvent);
-//        assertFalse(der.findById(3).isPresent());
-//    }
-
     @Test
     void deleteDateEventById() {
         der.deleteById(3);

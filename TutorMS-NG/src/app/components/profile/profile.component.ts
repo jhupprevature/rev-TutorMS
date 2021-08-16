@@ -1,8 +1,8 @@
 import { isNull } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-import { workedHours, tutorUser, studentUser } from 'src/app/models/test-data';
-import { User } from 'src/app/models/User';
-import { LoginService } from 'src/app/services/login.service';
+import { workedHours, tutorUser, studentUser } from 'src/app/Models/test-data';
+import { User } from 'src/app/Models/User';
+import { LoginService } from 'src/app/Services/login.service';
 
 @Component({
   selector: 'app-profile',

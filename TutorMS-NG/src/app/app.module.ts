@@ -30,10 +30,10 @@ import { ProfileComponent } from './components/profile/profile.component'
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SearchfilterPipe } from './pipes/searchfilter.pipe';
-import { TutorsService } from './services/tutors.service';
-import { DateEventsService } from './services/date-events.service';
-import { SessionService } from './services/session.service';
+import { SearchfilterPipe } from 'src/app/Pipes/searchfilter.pipe';
+import { TutorsService } from 'src/app/Services/tutors.service';
+import { DateEventsService } from './Services/date-events.service';
+import { SessionService } from 'src/app/Services/session.service';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
