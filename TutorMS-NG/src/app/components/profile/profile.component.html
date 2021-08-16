@@ -26,7 +26,7 @@
           <div class="col-sm-4">
             <label class="form-label" for="email">Email</label>
             <input type="text" class="form-control" aria-label="Username" 
-              value={{this.user.schoolEmail}}@paperu.edu id="email">
+              value={{this.user.schoolEmail}}@tutors4u.edu id="email">
           </div>
           <div class="col-sm-4">
             <label class="form-label" for="phone_number">Phone Number</label>
@@ -37,7 +37,7 @@
         </div>
 
         <!-- Employee Schedule -->
-        <div *ngIf="this.user.isEmployee()" class="row my-5">
+        <div *ngIf="isEmployee()" class="row my-5">
           <!-- TODO: Control for pending and editing schedules. Planned goal. -->
           <h2 class="u">Schedule</h2>
           <table class="table table-border text-center">
