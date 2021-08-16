@@ -17,49 +17,48 @@ public class DateEventServiceImpl implements DateEventService {
 
     private static final Logger log = Logger
             .getLogger(DateEventServiceImpl.class);
-    
-	@Autowired
-	DateEventRepo der;
 
-	@Override
-	public DateEvent addDateEvent(DateEvent de) {
-		return der.save(de);
-	}
+    @Autowired
+    DateEventRepo der;
 
-	@Override
-	public DateEvent getDateEvent(int id) {
-	    Optional<DateEvent> opDe = der.findById(id);
+    @Override
+    public DateEvent addDateEvent(DateEvent de) {
+        return der.save(de);
+    }
+
+    @Override
+    public DateEvent getDateEvent(int id) {
+        Optional<DateEvent> opDe = der.findById(id);
         if (opDe.isPresent()) {
             return opDe.get();
         } else {
             return null;
         }
-	}
+    }
 
-	@Override
-	public List<DateEvent> getAllDateEvents() {
-		return (List<DateEvent>) der.findAll();
-	}
+    @Override
+    public List<DateEvent> getAllDateEvents() {
+        return (List<DateEvent>) der.findAll();
+    }
 
-	@Override
-	public DateEvent updateDateEvent(DateEvent change) {
+    @Override
+    public DateEvent updateDateEvent(DateEvent change) {
         if (der.existsById(change.getId())) {
             return der.save(change);
         } else {
             return null;
         }
-	}
+    }
 
-	@Override
-	public boolean deleteDateEvent(int id) {
-
-		try {
-			der.deleteById(id);
-			return true;
-		} catch (IllegalArgumentException e) {
-			log.warn(e);
-			return false;
-		}
-	}
+    @Override
+    public boolean deleteDateEvent(int id) {
+        try {
+            der.deleteById(id);
+            return true;
+        } catch (IllegalArgumentException e) {
+            log.warn(e);
+            return false;
+        }
+    }
 
 }

@@ -3,6 +3,7 @@ package com.revature.repositories;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.List;
 
@@ -55,16 +56,15 @@ public class CourseRepoTests {
         assertNotEquals(courseToUpdateString, course.toString());
     }
     
-//    @Test
-//    void deleteCourse() {
-//        Course course = cr.findById(3).get();
-//        cr.delete(course);
-//        assertFalse(cr.findById(3).isPresent());
-//    }
-    
     @Test
     void deleteCourseById() {
         cr.deleteById(3);
         assertFalse(cr.findById(3).isPresent());
+    }
+    
+    @Test
+    void findByNameTest() {
+        Course course = cr.findByName("Trigonometry");
+        assertNotNull(course);
     }
 }

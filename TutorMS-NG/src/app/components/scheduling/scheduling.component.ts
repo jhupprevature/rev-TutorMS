@@ -1,3 +1,4 @@
+import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
 import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/Models/Course';
 import { Tutor } from 'src/app/Models/tutor';
@@ -47,6 +48,13 @@ export class SchedulingComponent implements OnInit {
         console.log(data);
         console.log("Failed to add session.");
       });
+  }
+
+  isGuest() :boolean {
+    if (this.userData.currentUser.firstName == 'Guest') {
+      return true;
+    } else return false;
+
   }
 
 }

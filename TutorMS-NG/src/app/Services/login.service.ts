@@ -1,17 +1,19 @@
-import { Injectable, Input, OnChanges } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { guestUser, User } from '../Models/User';
+import { User } from '../Models/User';
 import { Observable } from 'rxjs';
 import { UserRegister } from '../Models/UserRegister';
 import { Subject } from 'rxjs';
 import { Session } from '../Models/session';
+import { UserUpdate } from '../Models/UserUpdate';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  currentUser = guestUser;
+  currentUser = new User();
 
   constructor(private http: HttpClient) { }
 
@@ -27,6 +29,11 @@ export class LoginService {
 
   getCurrentUser(): User {
     return this.currentUser;
+  }
+
+  updateUser(change: UserUpdate): Observable<User> {
+
+    return this.http.put<User>('http://localhost:8080/users/'+this.currentUser.id.toString(), change, { headers: this.headers })
   }
 
 }

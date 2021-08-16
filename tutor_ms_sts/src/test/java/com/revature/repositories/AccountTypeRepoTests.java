@@ -45,9 +45,8 @@ public class AccountTypeRepoTests {
         AccountType accountType = atr.findById(2).get();
         String accountTypeToUpdateString = accountType.toString();
         int accountTypeToUpdateId = accountType.getId();
-
         accountType.setType("Person");
-        
+
         accountType = atr.save(accountType);
 
         assertEquals(accountTypeToUpdateId, accountType.getId());

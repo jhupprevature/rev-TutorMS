@@ -3,6 +3,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+**/log.txt
 
 ### STS ###
 .apt_generated
@@ -64,7 +65,8 @@ npm-debug.log
 yarn-error.log  
 testem.log  
 /typings  
-  
+/log.txt
+
 # System Files  
 .DS_Store  
 Thumbs.db  

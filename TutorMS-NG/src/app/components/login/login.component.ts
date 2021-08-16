@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     console.log(this.password);
 
     this.invalidLogin = false;
-    let user = new User(-1, 'Guest', this.username, this.password);
+    let user = new User({id:-1, firstName:'Guest', username:this.username, password:this.password});
     this.loginServ.login(user).subscribe(
       (r) => {
         if (r) {
