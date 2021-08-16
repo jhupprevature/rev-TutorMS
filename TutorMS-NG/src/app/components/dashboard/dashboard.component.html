@@ -20,8 +20,8 @@
 
         <!-------------------------  Upcoming Schedule section  ---------------------------------->
         <mat-card-content class="dashboard-card-content">
-          <div *ngIf='"Upcoming Schedule"==this.card.title'>
-            <table>
+          <div style="align-items: center;" *ngIf='"My Schedule"==this.card.title'>
+            <table style="margin: auto;">
               <thead>
                 <th>Day</th>
                 <th>Time In</th>
@@ -29,71 +29,52 @@
               </thead>
               <tr *ngIf="user">
                 <td>Sunday</td>
-
                 <td>{{ user.schedule?.sundayStart ?? '0.00'}}</td>
-
                 <td>{{ user.schedule?.sundayEnd ?? '0.00'}}</td>
 
               </tr>
 
               <tr *ngIf="user">
                 <td>Monday</td>
-
                 <td>{{ user.schedule?.mondayStart ?? '0.00'}}</td>
-
                 <td>{{ user.schedule?.mondayEnd ?? '0.00'}}</td>
 
               </tr>
 
               <tr *ngIf="user">
                 <td>Tuesday</td>
-
                 <td>{{ user.schedule?.tuesdayStart ?? '0.00'}}</td>
-
                 <td>{{ user.schedule?.tuesdayEnd ?? '0.00'}}</td>
 
               </tr>
 
               <tr *ngIf="user">
                 <td>Wednesday</td>
-
                 <td>{{ user.schedule?.wednesdayStart ?? '0.00'}}</td>
-
                 <td>{{ user.schedule?.wednesdayEnd ?? '0.00'}}</td>
 
               </tr>
 
               <tr *ngIf="user">
                 <td>Thursday</td>
-
                 <td>{{ user.schedule?.thursdayStart ?? '0.00'}}</td>
-
                 <td>{{ user.schedule?.thursdayEnd ?? '0.00'}}</td>
 
               </tr>
 
               <tr *ngIf="user">
                 <td>Friday</td>
-
                 <td>{{ user.schedule?.fridayStart ?? '0.00'}}</td>
-
                 <td>{{ user.schedule?.fridayEnd ?? '0.00'}}</td>
 
               </tr>
 
               <tr *ngIf="user">
                 <td>Saturday</td>
-
                 <td>{{ user.schedule?.saturdayStart ?? '0.00'}}</td>
-
                 <td>{{ user.schedule?.saturdayEnd ?? '0.00'}}</td>
 
               </tr>
-
-
-
-
-
 
             </table>
           </div>
@@ -102,17 +83,17 @@
           <div *ngIf='"Sessions"==this.card.title'>
             <!-- <button (click)="getSessions()"></button> -->
 
-            <table *ngIf="showSession()" class="table">
+            <table *ngIf="showSession()" class="table table-striped">
               <tr>
-                  <th scope="col">ID</th>
+                  <th scope="col">#</th>
                   <th scope="col">Tutor Notes</th>
                   <th scope="col">Student Notes</th>
               </tr>
           
-              <tr *ngFor="let sess of sessionList">
-                  <td scope="row">{{sess.studentId}}</td>
-                  <td>{{sess.tutorNotes}}</td>
-                  <td>{{sess.studentNotes}}</td>
+              <tr *ngFor="let sess of sessionList; let i = index">
+                  <td scope="row">{{ i+1 }}</td>
+                  <td>{{ sess.tutorNotes == '' ? "No notes from tutor" : sess.tutorNotes }}</td>
+                  <td>{{ sess.studentNotes == '' ? "No notes from student" : sess.studentNotes }}</td>
               </tr>
           
           </table>
@@ -191,44 +172,31 @@
           </div>
           <!-----------------------               End of  ADD/Delete section                  -------------------------->
           <div *ngIf='"Edit Profile"==this.card.title'>
-            <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+            <!-- <form [formGroup]="profileForm" (ngSubmit)="onSubmit()"> -->
               <label for="first-name">First Name: </label>
-              <input id="first-name" type="text" formControlName="firstName" required>
+              <input id="first-name" type="text"  placeholder="{{ user.firstName }}" [(ngModel)]="updateFirstName"/>
             
               <label for="last-name">Last Name: </label>
-              <input id="last-name" type="text" formControlName="lastName">
+              <input id="last-name" type="text" placeholder="{{ user.lastName }}" [(ngModel)]="updateLastName">
             
-              <div formGroupName="address">
+              <div >
            
             
-                <label for="street">Street: </label>
-                <input id="street" type="text" formControlName="street">
-            
-                <label for="city">City: </label>
-                <input id="city" type="text" formControlName="city">
-            
-                <label for="state">State: </label>
-                <input id="state" type="text" formControlName="state">
-            
-                <label for="zip">Zip Code: </label>
-                <input id="zip"type="text" formControlName="zip">
+                <label for="street">School Email: </label>
+                <input id="street" type="text" placeholder=" {{ user.schoolEmail }} " [(ngModel)]="updateEmail" >
+             
               </div>
             
-              <div formArrayName="aliases">
-                <h2>Aliases</h2>
-                <button (click)="addAlias()">+ Add another alias</button>
-            
-                <div *ngFor="let alias of aliases.controls; let i=index">
-                  <!-- The repeated alias template -->
-                  <label for="alias-{{ i }}">Alias:</label>
-                  <input id="alias-{{ i }}" type="text" [formControlName]="i">
+              <button (click)="updateAccount()" style="margin-top: 10px;">Update</button>
+              <div class="form-group" *ngIf="updateComplete">
+                <div style="text-align: left; margin-top: 4px;">
+                  <h4><span style="color: green;">Account Updated</span></h4>
                 </div>
               </div>
             
-            
-              <p>Complete the form to enable button.</p>
-              <button type="submit" [disabled]="!profileForm.valid">Submit</button>
-            </form>
+              <!-- <p>Complete the form to enable button.</p>
+              <button [disabled]="!profileForm.valid">Submit</button> -->
+            <!-- </form> -->
             
             <!-- <hr> -->
             

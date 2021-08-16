@@ -5,13 +5,13 @@
   <mat-divider></mat-divider>
   <h2 matSubheader class="mt-2">APPLICATIONS</h2>
 
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard">
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard" *ngIf="!isGuest()">
     <mat-icon>dashboard</mat-icon> Dashboard
   </a>
   <a mat-list-item routerLinkActive="list-item-active" routerLink="/calendar">
     <mat-icon>today</mat-icon> Calendar
   </a>
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/scheduling">
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/scheduling" *ngIf="!isGuest()">
     <mat-icon>schedule</mat-icon> Scheduling
   </a>
   <a mat-list-item routerLinkActive="list-item-active" routerLink="/analytics"
