@@ -1,21 +1,44 @@
 package com.revature.steps;
 
+import org.openqa.selenium.WebDriver;
+
+import com.revature.pages.LoginPage;
+import com.revature.runners.LoginRunner;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class LoginSteps {
+	
+	public static WebDriver driver = LoginRunner.driver;
+	public static LoginPage tuitionMain = LoginRunner.loginPage;
 
 	@Given("User is on Login page")
 	public void user_is_on_login_page() {
 		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		String url = "http://localhost:4200/";
+//		String url = "https://www.google.com/";
+
+		driver.get(url);
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@When("User inputs valid email")
 	public void user_inputs_valid_email() {
 		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		String url = "http://localhost:4200/profile";
+		driver.get(url);
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	
 	}
 
 	@When("User inputs valid password")
