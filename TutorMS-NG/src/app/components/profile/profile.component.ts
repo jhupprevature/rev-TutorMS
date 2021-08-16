@@ -1,7 +1,7 @@
 import { isNull } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/models/User';
-import { LoginService } from 'src/app/services/login.service';
+import { User } from 'src/app/Models/User';
+import { LoginService } from 'src/app/Services/login.service';
 
 @Component({
   selector: 'app-profile',

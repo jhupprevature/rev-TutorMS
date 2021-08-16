@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from '../models/User';
+import { User } from '../Models/User';
 import { Observable } from 'rxjs';
-import { UserRegister } from '../models/UserRegister';
+import { UserRegister } from '../Models/UserRegister';
 import { Subject } from 'rxjs';
-import { Session } from '../models/session';
-import { UserUpdate } from '../models/UserUpdate';
+import { Session } from '../Models/session';
+import { UserUpdate } from '../Models/UserUpdate';
 
 
 @Injectable({

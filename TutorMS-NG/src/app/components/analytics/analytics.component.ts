@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnChanges, OnInit } from '@angular/core';
-import { Session } from 'src/app/models/Session';
+import { Session } from 'src/app/Models/session';
 import { Observable } from 'rxjs';
-import { SessionService } from 'src/app/services/session.service';
-import { User } from 'src/app/models/User'
+import { SessionService } from 'src/app/Services/session.service';
+import { User } from 'src/app/Models/User'
 
 @Component({
   selector: 'app-analytics',

@@ -1,11 +1,11 @@
 import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
 import { Component, OnInit } from '@angular/core';
-import { Course } from 'src/app/models/Course';
-import { Tutor } from 'src/app/models/tutor';
-import { SessionService } from 'src/app/services/session.service';
-import { TutorsService } from 'src/app/services/tutors.service';
-import { LoginService } from 'src/app/services/login.service';
-import { SessionIDs } from 'src/app/models/SessionIDs';
+import { Course } from 'src/app/Models/Course';
+import { Tutor } from 'src/app/Models/tutor';
+import { SessionService } from 'src/app/Services/session.service';
+import { TutorsService } from 'src/app/Services/tutors.service';
+import { LoginService } from 'src/app/Services/login.service';
+import { SessionIDs } from 'src/app/Models/SessionIDs';
 
 @Component({
   selector: 'app-scheduling',
