@@ -17,6 +17,8 @@ export class CalendarComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private dateEventData:DateEventsService){}
 
+  successCreateText: string = '';
+  successDeleteText: string = '';
   colorChoice: string = '';
   checkbox: any;
   updateDate: any;
@@ -104,10 +106,12 @@ hideForm(){
   }
   
   addDateEvent(){
+
     this.dateEventData.addDateEvent(new dateEvent( 0,this.addEventForm.value.title, this.clickedDate, this.colorChoice)).subscribe(
       (data) => {
         console.log(data);
         this.dateEvents.push(data);
+        this.successCreateText = "Successfully created Event!"
       },
       (data) => {
         console.log(data);
@@ -123,9 +127,11 @@ hideForm(){
 
     deleteEvent(info:any){
       if(this.checkbox){
-        console.log('Success');
         let dateId = info.event.id;
-        this.dateEventData.deleteDateEvent(dateId).subscribe();
+        this.dateEventData.deleteDateEvent(dateId).subscribe(
+          (data) => {
+          console.log(data);
+          this.successDeleteText = "Successfully Deleted Event!"});
       }else{
         console.log("checkbox not checked!");
         console.log(this.checkbox);
