@@ -17,8 +17,6 @@ import javax.persistence.Table;
 
 import org.springframework.data.annotation.Transient;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "users")
 public class User {
@@ -95,14 +93,14 @@ public class User {
     }
 
     public User(int id, String firstName, String lastName, String schoolEmail) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.schoolEmail = schoolEmail;
-	}
+        super();
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.schoolEmail = schoolEmail;
+    }
 
-	public int getId() {
+    public int getId() {
         return id;
     }
 

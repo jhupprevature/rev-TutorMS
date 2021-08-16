@@ -65,7 +65,7 @@ public class UserController {
     public User updateUser(@PathVariable int id, @RequestBody User change) {
         change.setId(id);
         return us.updateUser(change);
-    } 
+    }
 
     @CrossOrigin
     @DeleteMapping("/users/{id}")
