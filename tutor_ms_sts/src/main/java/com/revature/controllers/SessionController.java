@@ -21,44 +21,47 @@ import com.revature.services.SessionService;
 @CrossOrigin(origins = "http://localhost:4200")
 public class SessionController {
 
-	@Autowired
-	SessionService ss;
+    @Autowired
+    SessionService ss;
 
-	@CrossOrigin
-	@GetMapping(value = "/Sessions", produces = "application/json")
-	public List<Session> getAllSessions() {
-		return ss.getAllSessions();
-	}
+    @CrossOrigin
+    @GetMapping(value = "/Sessions", produces = "application/json")
+    public List<Session> getAllSessions() {
+        return ss.getAllSessions();
+    }
 
-	@CrossOrigin
-	@GetMapping("Sessions/{id}")
-	public Session getSession(@PathVariable("id") String id) {
-		return ss.getSession(Integer.parseInt(id));
-	}
+    @CrossOrigin
+    @GetMapping("Sessions/{id}")
+    public Session getSession(@PathVariable("id") String id) {
+        return ss.getSession(Integer.parseInt(id));
+    }
 
-	@CrossOrigin
-	@PostMapping(value = "/Sessions", consumes = "application/json", produces = "application/json")
-	public Session addSession(@RequestBody JsonRequestSession jrs) {
-		return ss.addSession(jrs);
-	}
+    @CrossOrigin
+    @PostMapping(value = "/Sessions", consumes = "application/json",
+            produces = "application/json")
+    public Session addSession(@RequestBody JsonRequestSession jrs) {
+        return ss.addSession(jrs);
+    }
 
-	@CrossOrigin
-	@PutMapping(value = "/Sessions/{id}", consumes = "application/json", produces = "application/json")
-	public Session updateSession(@PathVariable int id, @RequestBody Session change) {
-		change.setId(id);
-		return ss.updateSession(change);
-	}
+    @CrossOrigin
+    @PutMapping(value = "/Sessions/{id}", consumes = "application/json",
+            produces = "application/json")
+    public Session updateSession(@PathVariable int id,
+            @RequestBody Session change) {
+        change.setId(id);
+        return ss.updateSession(change);
+    }
 
-	@CrossOrigin
-	@DeleteMapping("Sessions/{id}")
-	public boolean deleteSession(@PathVariable("id") String id) {
-		return ss.deleteSession(Integer.parseInt(id));
-	}
-	
-	@CrossOrigin
-	@GetMapping(value = "Sessions/analytics", produces = "application/json")
-	public Analytic getAnalytic() {
-	    return ss.getAnalytic();
-	}
-	
+    @CrossOrigin
+    @DeleteMapping("Sessions/{id}")
+    public boolean deleteSession(@PathVariable("id") String id) {
+        return ss.deleteSession(Integer.parseInt(id));
+    }
+
+    @CrossOrigin
+    @GetMapping(value = "Sessions/analytics", produces = "application/json")
+    public Analytic getAnalytic() {
+        return ss.getAnalytic();
+    }
+
 }

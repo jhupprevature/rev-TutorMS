@@ -1,5 +1,7 @@
 package com.revature.services;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +16,7 @@ import com.revature.beans.Analytic;
 import com.revature.beans.Course;
 import com.revature.beans.JsonRequestSession;
 import com.revature.beans.Session;
+import com.revature.beans.StringAndNumber;
 import com.revature.beans.User;
 import com.revature.repositories.SessionRepo;
 
@@ -94,7 +97,7 @@ public class SessionServiceImpl implements SessionService {
         Map<String, Integer> courseSessMap = new HashMap<>();
 
         for (Session session : allSessions) {
-            
+
             String tutorString = session.getTutor().getFirstName() + " "
                     + session.getTutor().getLastName();
             if (tutorSessMap.containsKey(tutorString)) {
@@ -103,7 +106,7 @@ public class SessionServiceImpl implements SessionService {
             } else {
                 tutorSessMap.put(tutorString, 1);
             }
-            
+
             String studentString = session.getStudent().getFirstName() + " "
                     + session.getStudent().getLastName();
             if (studentSessMap.containsKey(studentString)) {
@@ -112,12 +115,42 @@ public class SessionServiceImpl implements SessionService {
             } else {
                 studentSessMap.put(studentString, 1);
             }
-            
+
             String courseString = session.getCourse().getName();
-            
+            if (courseSessMap.containsKey(courseString)) {
+                int courseValue = courseSessMap.get(courseString) + 1;
+                courseSessMap.put(courseString, courseValue);
+            } else {
+                courseSessMap.put(courseString, 1);
+            }
+
         }
 
-        return null;
+        ArrayList<StringAndNumber> tutorCounts = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : tutorSessMap.entrySet()) {
+            StringAndNumber san = new StringAndNumber(entry.getKey(),
+                    entry.getValue());
+            tutorCounts.add(san);
+        }
+        ArrayList<StringAndNumber> studentCounts = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : studentSessMap.entrySet()) {
+            StringAndNumber san = new StringAndNumber(entry.getKey(),
+                    entry.getValue());
+            studentCounts.add(san);
+        }
+        ArrayList<StringAndNumber> courseCounts = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : tutorSessMap.entrySet()) {
+            StringAndNumber san = new StringAndNumber(entry.getKey(),
+                    entry.getValue());
+            courseCounts.add(san);
+        }
+        
+        Collections.sort(tutorCounts, new SortArrayOfStringAndNumber());
+        Collections.sort(studentCounts, new SortArrayOfStringAndNumber());
+        Collections.sort(courseCounts, new SortArrayOfStringAndNumber());
+        
+        Analytic analytic = new Analytic(tutorCounts, studentCounts, courseCounts);
+        return analytic;
     }
 
 }

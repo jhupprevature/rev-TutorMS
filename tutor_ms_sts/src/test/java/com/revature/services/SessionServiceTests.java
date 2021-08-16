@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -9,12 +10,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.revature.beans.Analytic;
 import com.revature.beans.Course;
 import com.revature.beans.JsonRequestSession;
 import com.revature.beans.Session;
@@ -24,6 +27,9 @@ import com.revature.beans.User;
 @Transactional
 public class SessionServiceTests {
 
+    private static final Logger log = Logger
+            .getLogger(SessionServiceTests.class);
+    
     @Autowired
     public SessionService ss;
 
@@ -85,6 +91,13 @@ public class SessionServiceTests {
         assertThrows(EmptyResultDataAccessException.class, () -> {
             ss.deleteSession(100);
         });
+    }
+    
+    @Test
+    void getAnalyticTest() {
+        Analytic a = ss.getAnalytic();
+        log.info(a);
+        assertNotNull(a);
     }
 
 }

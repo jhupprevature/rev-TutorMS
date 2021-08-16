@@ -26,5 +26,10 @@ public class StringAndNumber {
     public void setNumber(Integer number) {
         this.number = number;
     }
+
+    @Override
+    public String toString() {
+        return "StringAndNumber [string=" + string + ", number=" + number + "]";
+    }
     
 }
