@@ -15,6 +15,15 @@ export class User {
 
     constructor(options?: {id?:number, firstName?: string, 
                 username?:string, password?:string, accountType?:AccountType}) {
+        if(!options) {
+            options = {
+                id: -1,
+                firstName: 'Guest',
+                username: 'Guest',
+                password: '',
+                accountType: new AccountType(4, 'Guest')
+            }
+        }
         this.id = options!.id || -1;
         this.firstName = options!.firstName || 'Guest';
         this.schoolEmail = options!.username || 'Guest'; 

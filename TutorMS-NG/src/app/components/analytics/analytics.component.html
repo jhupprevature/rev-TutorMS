@@ -1,43 +1,42 @@
 <div class="container-fluid page">
     <div class="d-flex page__box p-3 mt-2">Tutoring Analytics</div>
     <div class="page__content shadow p-3 position-relative">
-      <div class="container-fluid col-10 my-5">
-        <h3>Analytics</h3>
+      <div class="container-fluid col-10">
+        <h1 class="my-5">Analytics</h1>
         <div class="row">
           <div class="col">
-            <button>Tutor Demand</button>
+            <button (click)=showTutorDemand()>Tutor Demand</button>
           </div>
           <div class="col">
-            <button>Course Demand</button>
+            <button (click)=showCourseDemand()>Course Demand</button>
           </div>
           <div class="col">
-            <button>Time Demand</button>
+            <button (click)=showStudentVisits()>Time Demand</button>
           </div>
         </div>
 
-        <div>
-          <h5>Tutor Demand</h5>
-          <table>
-            <thead>
-              <th scope="col" class="col-2"></th>
-              <th scope="col" class="col-2"></th>
-              <th scope="col" class="col-2"></th>
-              <th scope="col" class="col-2"></th>
-              <th scope="col" class="col-2"></th>
-              <th scope="col" class="col-2"></th>
+        <div class="row" *ngIf="showingTutorDemand">
+          <h3 class="my-5">Tutor Demand</h3>
+          <table class="table table-border text-center">
+            <thead class="thead">
+              <th scope="col" class="col-2">Tutor</th>
+              <th scope="col" class="col-2"># Of Sessions</th>
             </thead>
             <tbody>
-              <tr *ngFor="let sess of this.sessions"></tr>
+              <tr>
+                <td *ngFor="let key of getAnalysis().keys()"></td>
+                <td *ngFor="let val of getAnalysis().values()"></td>
+              </tr>
             </tbody>
           </table>
         </div>
 
-        <div>
-          <h5>Course Demand</h5>
+        <div class="row" *ngIf="showingCourseDemand">
+          <h3 class="my-5">Course Demand</h3>
         </div>
 
-        <div>
-          <h5>Time Demand</h5>
+        <div class="row" *ngIf="showingStudentVisits">
+          <h3 class="my-5">Student Visits</h3>
         </div>
       </div>
     </div>
