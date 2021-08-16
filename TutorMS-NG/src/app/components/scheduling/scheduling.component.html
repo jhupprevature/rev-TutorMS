@@ -4,7 +4,7 @@
 
       <div *ngIf="selectedTutor">
         <h2>{{selectedTutor.firstName | uppercase}} {{selectedTutor.lastName | uppercase}} Details</h2>
-        <div><button style="font-size: medium;" (click)="addSession()">Schedule Tutoring Session</button><br><br>
+        <div><button style="font-size: medium;" (click)="addSession()" *ngIf="!isGuest()">Schedule Tutoring Session</button><br><br>
           <span><b>Phone Number: </b></span>{{selectedTutor.phoneNumber}} <br><br>
           <span><b>School Email: </b></span>{{selectedTutor.schoolEmail}}@tutors4u.edu <br><br>
           <span><b>Schedule: </b></span>
@@ -51,18 +51,16 @@
 
 
           <h2 style="clear:both;">Tutor List</h2>
-        <div class="col-md-auto" style="text-align: center;">
+        <div class="col-md-auto" style="margin: auto;">
           <table class="table table-hover table-bordered" id="datatableexample">
             <thead>
               <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>School Email</th>
                 <th>Course</th>
                 <th>Subject</th>
                 <th>Level</th>
                 <th>Hours</th>
-                <th>Phone Number</th>
               </tr>
             </thead>
             <tbody>
@@ -70,7 +68,6 @@
                 <tr *ngFor="let tutor of tutorsData | searchfilter : searchBox" [class.selected]="tutor === selectedTutor" (click)="onSelect(tutor)">
                     <td>{{tutor.firstName}}</td>
                     <td>{{tutor.lastName}}</td>
-                    <td>{{tutor.schoolEmail}}@tutors4u</td>
                     <td>
                       <tr *ngFor ="let set of tutor.coursesToTutor" [class.selected]="set === selectedCourse" (click)="courseSelect(set)">
                         <td >{{set.name}}</td>
@@ -91,7 +88,6 @@
                         <td>{{set.hours}}</td>
                       </tr>
                     </td>
-                    <td>{{tutor.phoneNumber}}</td>
                 </tr>
                
             </tbody>
