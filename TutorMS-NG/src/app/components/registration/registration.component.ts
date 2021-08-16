@@ -21,19 +21,19 @@ export class RegistrationComponent implements OnInit {
   inputTelephone!: string;
   inputEmail!: string;
   inputPassword!: string;
-  accountTypeId: number = 3;
+  accountTypeId: string = "3";
   accountTypeString?: string;
 
   register() {
   
     switch (this.accountTypeId) {
-      case 1:
+      case "1":
         this.accountTypeString = "Tutor Manager";
         break;
-      case 2:
+      case "2":
         this.accountTypeString = "Tutor";
         break;
-      case 3:
+      case "3":
         this.accountTypeString = "Student";
         break;
       default:
@@ -41,7 +41,7 @@ export class RegistrationComponent implements OnInit {
 
     }
 
-    let accountType = new AccountType(this.accountTypeId, this.accountTypeString);
+    let accountType = new AccountType(parseInt(this.accountTypeId), this.accountTypeString);
 
     let user = new UserRegister(this.inputFirstName, this.inputLastName, this.inputEmail, this.inputPassword, this.inputTelephone, accountType);
 

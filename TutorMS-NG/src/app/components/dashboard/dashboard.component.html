@@ -174,20 +174,20 @@
           <div *ngIf='"Edit Profile"==this.card.title'>
             <!-- <form [formGroup]="profileForm" (ngSubmit)="onSubmit()"> -->
               <label for="first-name">First Name: </label>
-              <input id="first-name" type="text"  placeholder="{{ user.firstName }}" [(ngModel)]="updateFirstName"/>
+              <input id="firstName" type="text"   [(ngModel)]="updateFirstName"/>
             
-              <label for="last-name">Last Name: </label>
-              <input id="last-name" type="text" placeholder="{{ user.lastName }}" [(ngModel)]="updateLastName">
+              <label for="lastName">Last Name: </label>
+              <input id="lastName" type="text" [(ngModel)]="updateLastName">
             
               <div >
            
             
-                <label for="street">School Email: </label>
-                <input id="street" type="text" placeholder=" {{ user.schoolEmail }} " [(ngModel)]="updateEmail" >
+                <label for="street">Username: </label>
+                <input id="username" type="text" [(ngModel)]="updateEmail" >
              
               </div>
             
-              <button (click)="updateAccount()" style="margin-top: 10px;">Update</button>
+              <button id="updateBtn" (click)="updateAccount()" style="margin-top: 10px;">Update</button>
               <div class="form-group" *ngIf="updateComplete">
                 <div style="text-align: left; margin-top: 4px;">
                   <h4><span style="color: green;">Account Updated</span></h4>
