@@ -17,48 +17,48 @@ public class AccountTypeServiceImpl implements AccountTypeService {
 
     private static final Logger log = Logger
             .getLogger(AccountTypeServiceImpl.class);
-    
-	@Autowired
-	AccountTypeRepo atr;
 
-	@Override
-	public AccountType addAccountType(AccountType at) {
-		return atr.save(at);
-	}
+    @Autowired
+    AccountTypeRepo atr;
 
-	@Override
-	public AccountType getAccountType(int id) {
-	    Optional<AccountType> opAt = atr.findById(id);
-	    if (opAt.isPresent()) {
-	        return opAt.get();
-	    } else {
-	        return null;
-	    }
-	}
+    @Override
+    public AccountType addAccountType(AccountType at) {
+        return atr.save(at);
+    }
 
-	@Override
-	public List<AccountType> getAllAccountTypes() {
-		return (List<AccountType>) atr.findAll();
-	}
+    @Override
+    public AccountType getAccountType(int id) {
+        Optional<AccountType> opAt = atr.findById(id);
+        if (opAt.isPresent()) {
+            return opAt.get();
+        } else {
+            return null;
+        }
+    }
 
-	@Override
-	public AccountType updateAccountType(AccountType change) {
+    @Override
+    public List<AccountType> getAllAccountTypes() {
+        return (List<AccountType>) atr.findAll();
+    }
+
+    @Override
+    public AccountType updateAccountType(AccountType change) {
         if (atr.existsById(change.getId())) {
             return atr.save(change);
         } else {
             return null;
         }
-	}
+    }
 
-	@Override
-	public boolean deleteAccountType(int id) {
-		try {
-			atr.deleteById(id);
-			return true;
-		} catch (IllegalArgumentException e) {
-			log.warn(e);
-			return false;
-		}
-	}
+    @Override
+    public boolean deleteAccountType(int id) {
+        try {
+            atr.deleteById(id);
+            return true;
+        } catch (IllegalArgumentException e) {
+            log.warn(e);
+            return false;
+        }
+    }
 
 }

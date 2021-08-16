@@ -3,6 +3,7 @@ package com.revature.repositories;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.List;
 
@@ -63,32 +64,30 @@ public class SessionRepoTests {
         Session actualSession = sr.findById(1).get();
         assertEquals(expectedSession.toString(), actualSession.toString());
     }
-    
+
     @Test
     void updateSession() {
         Session session = sr.findById(2).get();
         String sessionToUpdateString = session.toString();
         int sessionToUpdateId = session.getId();
-        
+
         session.setStudentNotes("I actually had fun.");
-        
+
         session = sr.save(session);
-        
+
         assertEquals(sessionToUpdateId, session.getId());
         assertNotEquals(sessionToUpdateString, session.toString());
     }
-    
-//    @Test
-//    void deleteSession() {
-//        Session session = sr.findById(3).get();
-//        sr.delete(session);
-//        assertFalse(sr.findById(3).isPresent());
-//    }
-    
+
     @Test
     void deleteSessionById() {
         sr.deleteById(3);
         assertFalse(sr.findById(3).isPresent());
+    }
+
+    @Test
+    void findAllByOrderByStartTimeDesc() {
+        assertNotNull(sr.findAllByOrderByStartTimeDesc());
     }
 
 }
