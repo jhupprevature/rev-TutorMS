@@ -21,7 +21,6 @@ Testing technologies:
 * SLF4J - version 1.7.30
 * Log4J -  version 1.2.17
 * JUnit - version 5
-* Mockito - version 1.10.19
 * Postman
 * Selenium 
 * Cucumber - version 6.10.2
