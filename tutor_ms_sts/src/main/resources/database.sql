@@ -95,14 +95,14 @@ insert into schedules values
     (default, null, null, '15:00', '19:00', '15:00', '19:00', '15:00', '19:00', '15:00', '19:00', '15:00', '19:00', null, null, 1628187125123);--10 awaiting approval
 
 
-insert into users values (default, 'Archibold', 'Moorhouse','amoorhouse0', 'AvF4qVJ', '455-764-2236', 1, 1);    --1
+insert into users values (default, 'Archibold', 'Moorhouse','amoorhouse0', 'amoorhouse0', '455-764-2236', 1, 1);    --1
 insert into users values (default, 'Murielle', 'Arrundale', 'marrundale1', 'XANVv5IOWC0', '687-838-8250', 1, 2);--2
 insert into users values (default, 'Law', 'Overel', 'loverel2', 'kLTq8k', '999-160-5044', 2, 4);                --3
 insert into users values (default, 'Addie', 'Hurst', 'ahurst3', 'yQvDuW', '190-408-9564', 2, 5);                --4
-insert into users values (default, 'Ax', 'McOrkill', 'amcorkill4', 'Y4nj627QP', '462-854-5968', 2, 6);          --5
+insert into users values (default, 'Ax', 'McOrkill', 'amcorkill4', 'amcorkill4', '462-854-5968', 2, 6);          --5
 insert into users values (default, 'Meade', 'Springall', 'mspringall5', 'NAnFQOzvR', '851-422-5573', 2, 7);     --6
 insert into users values (default, 'Cynthy', 'Fullom', 'cfullom6', 'bP0WFUQ6g', '570-380-1292', 2, 8);          --7
-insert into users values (default, 'Tina', 'Dymick', 'tdymick7', 'bqm4f4', '560-285-5415', 3, null);            --8
+insert into users values (default, 'Tina', 'Dymick', 'tdymick7', 'tdymick7', '560-285-5415', 3, null);            --8
 insert into users values (default, 'Byrom', 'Parmeter', 'bparmeter8', 'ZRPbuOPy9k', '559-528-9800', 3, null);   --9
 insert into users values (default, 'Tanitansy', 'Kleuer', 'tkleuer9', 'YeBlSsv0YoER', '671-981-4339', 3, null); --10
 insert into users values (default, 'Lenore', 'Purple', 'lpurplea', 'UfqSYAJvx', '129-422-9435', 3, null);       --11
