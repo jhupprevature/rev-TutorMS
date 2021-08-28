@@ -53,7 +53,7 @@ To-do list:
 - Open the Hibernate configuration located at `rev-TutorMS/tutor_ms_sts/src/main/resources/hibernate.cfg.xml`.
 - Edt the Hibernate connection *url*, *username*, and *password* to match the information for your RDS.
 - In your database tool, run the `database.sql` file located in `rev-TutorMS/tutor_ms_sts/src/main/resources/`
-- Compile and run the project to establish Javalin server.
+- Compile and run the project to establish Spring Tomcat server.
 - In your CLI, navigate to `rev-TutorMS/TutorMS-NG`.
 - Install *node_modules* and run the server with
     * Node is assumed to be on your device.
